@@ -1,44 +1,44 @@
 {
-  "updated_at": "2026-11-05 22:03:38 JST",
-  "cycle": 3,
-  "is_final": false,
-  "total_themes": 20,
+  "updated_at": "2026-11-06 04:12:20 JST",
+  "cycle": 25,
+  "is_final": true,
+  "total_themes": 42,
   "latest_theme": {
-    "id": 20,
-    "category_tag": "NITROGEN-CRISIS",
-    "title": "化学肥料依存と土壌収穫逓減の罠",
-    "status_color": "yellow",
-    "headline": "過剰施肥でも伸び悩む収量：窒素限界が揺るがす食糧安保",
+    "id": 42,
+    "category_tag": "RATES-CLEANTECH",
+    "title": "金利高止まりと再エネ資本調達の危機",
+    "status_color": "red",
+    "headline": "米長期金利の高止まりが再エネ投資を直撃、脱炭素資本が逃避",
     "causal_chain": [
-      "人口増と食料需要を背景とした化学窒素肥料の集約的投入の加速",
-      "土壌微生物生態系の破壊と地力低下に伴う単位施肥あたりの増収逓減",
-      "天然ガス等の化石原料依存による肥料調達価格の急激な乱高下",
-      "施肥限界と環境流出リスクが招くグローバル農業生産性の構造的停滞"
+      "世界的なインフレ抑制に伴う米長期金利（^TNX）の高止まり定着",
+      "設備投資先行型（CAPEX集約）である再エネ事業の調達金利・利払い負担が急増",
+      "クリーンエネルギー指数（ICLN）の急落と機関投資家マネーの市場流出",
+      "採算悪化により洋上風力や大型蓄電など大型脱炭素事業の凍結・撤退が続発"
     ],
-    "deep_story": "過去数十年の食糧増産を牽引してきた化学肥料モデルが曲がり角を迎えています。FAOSTATのデータによると、農地1ヘクタールあたりの窒素施肥量は114kgを超えて過去最高水準を更新し続ける一方、穀物収量の伸び率は明らかな鈍化を示しています。過度な施肥は土壌酸性化や富栄養化を引き起こし、追加投入に対する生産性向上の限界効果が著しく低下しています。さらに窒素肥料の主原料であるアンモニア合成は天然ガスに強く依存するため、エネルギー危機がそのまま食料増産コストに直結します。投入拡大頼みの増産モデルから脱却し、精密農業や土壌再生への移行が急務となっています。",
-    "future_watch": "天然ガス先物（NG=F）価格の急騰と、主要穀倉地帯における土壌炭素保持率・単位施肥効率の推移。",
+    "deep_story": "脱炭素社会の実現に向けた最大のボトルネックは、技術的制約から「資本コスト」の急激な悪化へと移行している。太陽光や洋上風力発電は運転時の燃料費がゼロである一方、初期の設備投資（CAPEX）比率が火力発電より圧倒的に高い。米10年債利回りが4%台後半へと高止まりしたことで、巨額の負債をレバレッジするプロジェクトファイナンスの金利負担が急増し、将来キャッシュフローの割引現在価値が大幅に毀損された。クリーンエネルギーETF（ICLN）は低金利下の高値から約4割以上下落し、欧米の主要デベロッパーで洋上風力事業の減損や入札辞退が相次ぐなど、民間資本による脱炭素投資に急ブレーキがかかっている。",
+    "future_watch": "主要中銀の利下げペースと再エネデベロッパーの社債借り換え動向。資本コスト高止まりが長期化すれば、2030年の国際脱炭素目標達成は絶望的となる。",
     "key_metrics": [
       {
-        "label": "窒素施肥量",
-        "value": "114.2 kg/ha",
-        "sub": "2017年比+5.2%の過密投入水準",
+        "label": "米10年債利回り (^TNX)",
+        "value": "4.83%",
+        "sub": "高金利レジームの定着",
         "trend": "up"
       },
       {
-        "label": "平均穀物収量",
-        "value": "4.28 t/ha",
-        "sub": "収穫逓減による増収ペースの鈍化",
-        "trend": "flat"
+        "label": "クリーンエネルギー指数 (ICLN)",
+        "value": "$16.14",
+        "sub": "ピーク比約4割安の低迷水準",
+        "trend": "down"
       },
       {
-        "label": "天然ガス先物指標",
-        "value": "$2.94 /MMBtu",
-        "sub": "原料費乱高下の潜在的トリガー",
-        "trend": "down"
+        "label": "再エネ発電比率 (世界)",
+        "value": "27.84%",
+        "sub": "設備投資減速で伸び悩み",
+        "trend": "flat"
       }
     ],
     "chart_data": {
-      "title": "窒素肥料投入量と穀物収量の推移（限界利益逓減の相関）",
+      "title": "米10年債利回り推移とクリーンエネルギーETF価格",
       "labels": [
         "2017",
         "2018",
@@ -52,53 +52,54 @@
         "2026"
       ],
       "primary_series": {
-        "label": "窒素施肥量 (kg/ha)",
+        "label": "米10年債利回り (^TNX, %)",
         "data": [
-          108.5,
-          109.4,
-          110.2,
-          111.8,
-          112.5,
-          109.1,
-          111.4,
-          112.9,
-          113.6,
-          114.2
+          2.41,
+          2.68,
+          1.92,
+          0.91,
+          1.51,
+          3.88,
+          3.88,
+          4.4,
+          4.62,
+          4.83
         ],
-        "type": "bar"
+        "type": "line"
       },
       "secondary_series": {
-        "label": "穀物収量 (t/ha)",
+        "label": "クリーンエネルギーETF価格 (ICLN, USD)",
         "data": [
-          3.98,
-          4.01,
-          4.06,
-          4.1,
-          4.13,
-          4.11,
-          4.16,
-          4.21,
-          4.25,
-          4.28
+          8.85,
+          8.42,
+          11.75,
+          27.8,
+          21.3,
+          19.8,
+          17.2,
+          16.85,
+          16.4,
+          16.14
         ],
         "type": "line"
       }
     },
     "sources": [
-      "FAOSTAT Agricultural Inputs Database",
-      "World Bank Open Data",
-      "CCKP Climate Modeling"
+      "U.S. Department of the Treasury",
+      "S&P Global Clean Energy Index",
+      "World Bank Data",
+      "OECD Financial Market Trends"
     ],
     "data_science_metrics": {
-      "pearson_r": 0.908,
-      "correlation_strength": "Strong Positive",
-      "lead_lag_years": 0.0,
-      "tipping_point_year": "2022",
-      "cagr_primary": 0.57,
-      "cagr_secondary": 0.81,
-      "r_squared": 0.824
+      "pearson_r": -0.208,
+      "correlation_strength": "Decoupled / Weak",
+      "lead_lag_years": -2.0,
+      "tipping_point_year": "2020",
+      "cagr_primary": 8.03,
+      "cagr_secondary": 6.9,
+      "r_squared": 0.043
     },
     "is_autonomous": true,
-    "discovered_at": "2026-11-05"
+    "discovered_at": "2026-11-06"
   }
 }
