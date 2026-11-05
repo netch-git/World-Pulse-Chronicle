@@ -1,0 +1,61 @@
+{
+  "world_bank_indicators": [
+    "NY.GDP.PCAP.PP.CD",
+    "SH.STA.OWAD.ZS",
+    "ER.H2O.FWST.ZS",
+    "ER.H2O.FWAG.ZS",
+    "SL.GDP.PCAP.EM.KD",
+    "NY.GDP.MKTP.KD.ZG",
+    "EN.GHG.CO2.MT.CE.AR5",
+    "EG.FEC.RNEW.ZS",
+    "SP.POP.1564.TO.ZS",
+    "BX.KLT.DINV.WD.GD.ZS",
+    "SE.SEC.ENRR",
+    "GC.DOD.TOTL.GD.ZS",
+    "TM.VAL.FOOD.ZS.UN",
+    "SP.POP.65UP.TO.ZS",
+    "SP.DYN.TFRT.IN",
+    "TX.VAL.TECH.MF.ZS",
+    "EG.ELC.RNEW.ZS",
+    "AG.LND.FRST.ZS",
+    "SH.XPD.CHEX.GD.ZS",
+    "SE.TER.ENRR",
+    "IT.NET.USER.ZS",
+    "NE.TRD.GNFS.ZS",
+    "SN.ITK.MSFP.ZS"
+  ],
+  "cckp_climate_metrics": [
+    "tas (mean temperature)",
+    "pr (precipitation)",
+    "hd35 (hot days)",
+    "cdd (dry days)",
+    "ocean_temp_anomaly"
+  ],
+  "faostat_domains": [
+    "QCL (Crop production/Yield)",
+    "FBS (Food balance/Nutrition)",
+    "TM (Bilateral trade)",
+    "RFN (Fertilizer)",
+    "LC (Land cover)",
+    "Fish Prices"
+  ],
+  "oecd_metrics": [
+    "ANHRS (Working hours)",
+    "AV_AN_WAGE (Real wages)",
+    "PAT_DEV (Green patents)",
+    "R&D Expenditure (% GDP)",
+    "Senior employment"
+  ],
+  "market_futures": [
+    "ZW=F (Wheat)",
+    "KC=F (Coffee)",
+    "NG=F (Gas)",
+    "HG=F (Copper)",
+    "GC=F (Gold)",
+    "CL=F (Crude Oil)",
+    "SOXX (Semiconductors)",
+    "^VIX (Volatility)",
+    "JPY=X",
+    "EEM"
+  ]
+}
