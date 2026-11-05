@@ -41,3 +41,7 @@ Thumbs.db
 .env
 .env.*
 !*.example
+
+*.ini
+desktop.ini
+Desktop.ini

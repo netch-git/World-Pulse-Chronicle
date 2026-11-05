@@ -5575,6 +5575,7 @@
     let currentFilterCategory = "ALL";
     let searchQuery = "";
     let isWrappedMode = false;
+    let currentChartMode = "combo"; // "combo" | "base100" | "scatter"
 
     function pad2(num) {
       return String(num).padStart(2, "0");
@@ -5582,6 +5583,7 @@
 
     function showToast(msg) {
       const toast = document.getElementById("ui-toast");
+      if (!toast) return;
       toast.textContent = msg;
       toast.classList.add("show");
       clearTimeout(showToast._timer);
@@ -5591,40 +5593,77 @@
     }
 
     // ==========================================================================
+    // Theme Selection & Navigation Logic
+    // ==========================================================================
+    function selectTheme(index) {
+      const themes = currentReport.themes || [];
+      if (!themes.length) return;
+      activeThemeIndex = (index + themes.length) % themes.length;
+      renderNavigation();
+      renderActiveTheme();
+    }
+
+    function scrollToActiveTab() {
+      const tabScrollArea = document.getElementById("ui-index-tabs");
+      const activeTabElem = document.getElementById(`tab-item-${activeThemeIndex}`);
+      if (activeTabElem && !isWrappedMode && tabScrollArea) {
+        const scrollLeft = activeTabElem.offsetLeft - (tabScrollArea.clientWidth / 2) + (activeTabElem.clientWidth / 2);
+        if (typeof tabScrollArea.scrollTo === "function") {
+          tabScrollArea.scrollTo({
+            left: Math.max(0, scrollLeft),
+            behavior: "smooth"
+          });
+        } else {
+          tabScrollArea.scrollLeft = Math.max(0, scrollLeft);
+        }
+      }
+    }
+
+    // ==========================================================================
     // Render Header & Navigation
     // ==========================================================================
     function renderGlobalHeader(report) {
-      document.getElementById("ui-updated-date").textContent = report.updated_date || "2026-11-05";
+      const dateEl = document.getElementById("ui-updated-date");
+      if (dateEl) dateEl.textContent = report.updated_date || "2026-11-06";
+
       const statusText = report.sync_status || "READY";
-      document.getElementById("ui-sync-status").textContent = statusText;
+      const statusEl = document.getElementById("ui-sync-status");
+      if (statusEl) statusEl.textContent = statusText;
 
       const dot = document.getElementById("ui-sync-dot");
-      dot.className = "sync-dot";
-      if (statusText.includes("CACHE") || statusText.includes("STANDALONE") || statusText.includes("SEED")) {
-        dot.classList.add("cached");
-      } else if (statusText.includes("AUTONOMOUS")) {
-        dot.classList.add("auto");
+      if (dot) {
+        dot.className = "sync-dot";
+        if (statusText.includes("CACHE") || statusText.includes("STANDALONE") || statusText.includes("SEED")) {
+          dot.classList.add("cached");
+        } else if (statusText.includes("AUTONOMOUS")) {
+          dot.classList.add("auto");
+        }
       }
 
-      document.getElementById("ui-global-headline").textContent = report.global_headline || "";
-      document.getElementById("ui-global-summary").textContent = report.global_summary || "";
-      document.getElementById("ui-theme-counter").textContent = `${report.themes.length} THEMES`;
+      const hlEl = document.getElementById("ui-global-headline");
+      if (hlEl) hlEl.textContent = report.global_headline || "";
+
+      const sumEl = document.getElementById("ui-global-summary");
+      if (sumEl) sumEl.textContent = report.global_summary || "";
+
+      const cntEl = document.getElementById("ui-theme-counter");
+      if (cntEl) cntEl.textContent = `${(report.themes || []).length} THEMES`;
     }
 
     function filterThemes(themes) {
-      return themes.filter((theme) => {
+      return (themes || []).filter((theme) => {
         // Category filtering
         if (currentFilterCategory !== "ALL") {
           if (currentFilterCategory === "DISCOVERY" && !theme.is_autonomous) return false;
-          if (currentFilterCategory === "AGRO" && !["AGRO-INFLATION", "NUTRITION-SHIFT", "VIRTUAL-WATER", "AGRO-FRAGILITY", "OCEAN-FISHERY"].includes(theme.category_tag)) return false;
-          if (currentFilterCategory === "ECONOMY" && !["LABOR-WEALTH", "NEXT-FACTORY", "COPPER-CHIPS", "AI-LABOR-DIVIDE", "CRITICAL-MINERALS"].includes(theme.category_tag)) return false;
-          if (currentFilterCategory === "CLIMATE" && !["GREEN-DECOUPLING", "CLIMATE-FISCAL", "FOREST-ZOONOSIS"].includes(theme.category_tag)) return false;
-          if (currentFilterCategory === "SOCIETY" && !["AGING-SIMULATOR", "FACT-CHECKER", "NUTRITION-SHIFT", "AI-LABOR-DIVIDE"].includes(theme.category_tag)) return false;
+          if (currentFilterCategory === "AGRO" && !["AGRO-INFLATION", "NUTRITION-SHIFT", "VIRTUAL-WATER", "AGRO-FRAGILITY", "OCEAN-FISHERY", "CLIMATE-HEAT-AGRO", "CLIMATE-COCOA-CRISIS", "NITROGEN-CRISIS", "COCOA-INFLATION"].includes(theme.category_tag)) return false;
+          if (currentFilterCategory === "ECONOMY" && !["LABOR-WEALTH", "NEXT-FACTORY", "COPPER-CHIPS", "AI-LABOR-DIVIDE", "CRITICAL-MINERALS", "SOVEREIGN-DEBT-CLIMATE", "GREENTECH-IP-DIVIDE", "SOVEREIGN-GOLD-RUSH", "FDI-RESHORING", "RATES-CLEANTECH", "CURRENT-ACCOUNT-ENERGY", "TRADE-CHOKEPOINT"].includes(theme.category_tag)) return false;
+          if (currentFilterCategory === "CLIMATE" && !["GREEN-DECOUPLING", "CLIMATE-FISCAL", "FOREST-ZOONOSIS", "CLIMATE-HEAT-AGRO", "HYDRO-LOGISTICS", "AEROSOL-WARMING", "HEAT-LABOR", "RENEWABLE-MINERAL-WALL"].includes(theme.category_tag)) return false;
+          if (currentFilterCategory === "SOCIETY" && !["AGING-SIMULATOR", "FACT-CHECKER", "NUTRITION-SHIFT", "AI-LABOR-DIVIDE", "OBESITY-FISCAL-CRISIS", "SILVER-LABOR", "DIGITAL-HIGHTECH-BOOM", "TERTIARY-RD-RACE", "INFLATION-POVERTY", "YOUTH-CHIPS-SKILL", "GENDER-HUMAN-CAPITAL"].includes(theme.category_tag)) return false;
         }
         // Search query
         if (searchQuery.trim()) {
           const q = searchQuery.toLowerCase();
-          const targetText = `${theme.title} ${theme.category_tag} ${theme.headline} ${theme.deep_story}`.toLowerCase();
+          const targetText = `${theme.title || ""} ${theme.category_tag || ""} ${theme.headline || ""} ${theme.deep_story || ""}`.toLowerCase();
           return targetText.includes(q);
         }
         return true;
@@ -5635,6 +5674,8 @@
       const themes = currentReport.themes || [];
       const pillContainer = document.getElementById("ui-lens-pills");
       const tabContainer = document.getElementById("ui-index-tabs");
+      if (!pillContainer || !tabContainer) return;
+
       pillContainer.innerHTML = "";
       tabContainer.innerHTML = "";
 
@@ -5683,17 +5724,13 @@
       scrollToActiveTab();
     }
 
-    function scrollToActiveTab() {
-      const activeTabElem = document.getElementById(`tab-item-${activeThemeIndex}`);
-      if (activeTabElem && !isWrappedMode && tabScrollArea) {
-        // コンテナ内部の正確なオフセットを計算してスムーズスクロール（外枠ウィンドウの垂直跳ねを完全防止）
-        const scrollLeft = activeTabElem.offsetLeft - (tabScrollArea.clientWidth / 2) + (activeTabElem.clientWidth / 2);
-        tabScrollArea.scrollTo({
-          left: Math.max(0, scrollLeft),
-          behavior: "smooth"
-        });
-      }
-    }
+    // Color & Status Configuration
+    const COLOR_MAP = {
+      red: { hex: "#FF5A5F", bgAlpha: "rgba(255, 90, 95, 0.35)", label: "CRITICAL ALERT / 警戒" },
+      yellow: { hex: "#FFE066", bgAlpha: "rgba(255, 224, 102, 0.35)", label: "CAUTION / 注目" },
+      green: { hex: "#51CF66", bgAlpha: "rgba(81, 207, 102, 0.35)", label: "DECOUPLING / 改善" },
+      blue: { hex: "#4DABF7", bgAlpha: "rgba(77, 171, 247, 0.35)", label: "STRUCTURAL / 構造推移" }
+    };
 
     // ==========================================================================
     // Render Active Theme Sheet & Dual-Axis Chart.js
@@ -5706,81 +5743,98 @@
       const colorInfo = COLOR_MAP[theme.status_color] || COLOR_MAP.blue;
 
       // D-1: Header
-      document.getElementById("ui-theme-index").textContent = `#${numStr}`;
-      document.getElementById("ui-category-tag").textContent = theme.category_tag;
+      const idxEl = document.getElementById("ui-theme-index");
+      if (idxEl) idxEl.textContent = `#${numStr}`;
+
+      const catEl = document.getElementById("ui-category-tag");
+      if (catEl) catEl.textContent = theme.category_tag;
 
       const statusBadge = document.getElementById("ui-status-badge");
-      statusBadge.className = `status-alert-badge status-${theme.status_color || "blue"}`;
-      statusBadge.textContent = colorInfo.label;
+      if (statusBadge) {
+        statusBadge.className = `status-alert-badge status-${theme.status_color || "blue"}`;
+        statusBadge.textContent = colorInfo.label;
+      }
 
       const autoBadge = document.getElementById("ui-autonomous-badge");
-      autoBadge.style.display = theme.is_autonomous ? "inline-block" : "none";
+      if (autoBadge) {
+        autoBadge.style.display = theme.is_autonomous ? "inline-block" : "none";
+      }
 
-      document.getElementById("ui-theme-title").textContent = theme.title;
+      const titleEl = document.getElementById("ui-theme-title");
+      if (titleEl) titleEl.textContent = theme.title;
 
       // Data source chips
       const sources = theme.sources || ["World Bank Global Open Data", "CCKP v1", "FAOSTAT", "yfinance"];
       const chipsWrap = document.getElementById("ui-source-chips");
-      chipsWrap.innerHTML = "";
-      sources.forEach((src) => {
-        const span = document.createElement("span");
-        span.className = "source-chip";
-        span.textContent = src;
-        chipsWrap.appendChild(span);
-      });
+      if (chipsWrap) {
+        chipsWrap.innerHTML = "";
+        sources.forEach((src) => {
+          const span = document.createElement("span");
+          span.className = "source-chip";
+          span.textContent = src;
+          chipsWrap.appendChild(span);
+        });
+      }
 
       // D-2: Causal Chain (4 steps + arrows)
       const chainWrap = document.getElementById("ui-causal-chain");
-      chainWrap.innerHTML = "";
-      const steps = (theme.causal_chain || []).slice(0, 4);
-      steps.forEach((stepText, sIdx) => {
-        const box = document.createElement("div");
-        box.className = "causal-step-box";
-        box.innerHTML = `
-          <div class="causal-step-num">STEP ${pad2(sIdx + 1)}</div>
-          <div class="causal-step-text">${stepText}</div>
-        `;
-        chainWrap.appendChild(box);
+      if (chainWrap) {
+        chainWrap.innerHTML = "";
+        const steps = (theme.causal_chain || []).slice(0, 4);
+        steps.forEach((stepText, sIdx) => {
+          const box = document.createElement("div");
+          box.className = "causal-step-box";
+          box.innerHTML = `
+            <div class="causal-step-num">STEP ${pad2(sIdx + 1)}</div>
+            <div class="causal-step-text">${stepText}</div>
+          `;
+          chainWrap.appendChild(box);
 
-        if (sIdx < steps.length - 1) {
-          const arrow = document.createElement("div");
-          arrow.className = "causal-arrow";
-          arrow.setAttribute("aria-hidden", "true");
-          arrow.innerHTML = `<span class="desktop-arrow">→</span><span class="mobile-arrow">↓</span>`;
-          chainWrap.appendChild(arrow);
-        }
-      });
+          if (sIdx < steps.length - 1) {
+            const arrow = document.createElement("div");
+            arrow.className = "causal-arrow";
+            arrow.setAttribute("aria-hidden", "true");
+            arrow.innerHTML = `<span class="desktop-arrow">→</span><span class="mobile-arrow">↓</span>`;
+            chainWrap.appendChild(arrow);
+          }
+        });
+      }
 
       // D-3: Headline, Deep Story & Future Watch
-      document.getElementById("ui-theme-headline").textContent = theme.headline;
-      document.getElementById("ui-deep-story").textContent = theme.deep_story;
-      document.getElementById("ui-future-watch").textContent = theme.future_watch;
+      const hlEl = document.getElementById("ui-theme-headline");
+      if (hlEl) hlEl.textContent = theme.headline;
+
+      const storyEl = document.getElementById("ui-deep-story");
+      if (storyEl) storyEl.textContent = theme.deep_story;
+
+      const futureEl = document.getElementById("ui-future-watch");
+      if (futureEl) futureEl.textContent = theme.future_watch;
 
       // D-4: Dual-Axis Chart.js
       renderDualAxisChart(theme, colorInfo);
 
       // D-5: Key Metrics Cards
       const metricsWrap = document.getElementById("ui-metrics-grid");
-      metricsWrap.innerHTML = "";
-      (theme.key_metrics || []).forEach((m) => {
-        const arrowSymbol = m.trend === "up" ? "▲ UP" : m.trend === "down" ? "▼ DOWN" : "━ FLAT";
-        const trendClass = m.trend === "up" ? "trend-up" : m.trend === "down" ? "trend-down" : "trend-flat";
+      if (metricsWrap) {
+        metricsWrap.innerHTML = "";
+        (theme.key_metrics || []).forEach((m) => {
+          const arrowSymbol = m.trend === "up" ? "▲ UP" : m.trend === "down" ? "▼ DOWN" : "━ FLAT";
+          const trendClass = m.trend === "up" ? "trend-up" : m.trend === "down" ? "trend-down" : "trend-flat";
 
-        const card = document.createElement("article");
-        card.className = "metric-card";
-        card.innerHTML = `
-          <div class="metric-top-row">
-            <span class="metric-label">${m.label}</span>
-            <span class="trend-chip ${trendClass}">${arrowSymbol}</span>
-          </div>
-          <div class="metric-value">${m.value}</div>
-          <div class="metric-sub-chip">${m.sub}</div>
-        `;
-        metricsWrap.appendChild(card);
-      });
+          const card = document.createElement("article");
+          card.className = "metric-card";
+          card.innerHTML = `
+            <div class="metric-top-row">
+              <span class="metric-label">${m.label}</span>
+              <span class="trend-chip ${trendClass}">${arrowSymbol}</span>
+            </div>
+            <div class="metric-value">${m.value}</div>
+            <div class="metric-sub-chip">${m.sub}</div>
+          `;
+          metricsWrap.appendChild(card);
+        });
+      }
     }
-
-    let currentChartMode = "combo"; // "combo" | "base100" | "scatter"
 
     // ==========================================================================
     // Client-side Data Science Analytics Engine
@@ -5938,18 +5992,26 @@
       const chartData = theme.chart_data;
       if (!chartData) return;
 
-      const pData = chartData.primary_series.data || [];
-      const sData = chartData.secondary_series.data || [];
+      const pData = (chartData.primary_series && chartData.primary_series.data) || [];
+      const sData = (chartData.secondary_series && chartData.secondary_series.data) || [];
       const labels = chartData.labels || [];
       const metrics = computeClientDataScienceMetrics(labels, pData, sData);
       updateDataSciencePills(metrics);
 
-      document.getElementById("ui-chart-title").textContent = chartData.title;
-      document.getElementById("ui-label-primary").textContent = chartData.primary_series.label;
-      document.getElementById("ui-label-secondary").textContent = chartData.secondary_series.label;
-      document.getElementById("ui-swatch-primary").style.backgroundColor = colorInfo.hex;
+      const titleEl = document.getElementById("ui-chart-title");
+      if (titleEl) titleEl.textContent = chartData.title;
+
+      const pLabelEl = document.getElementById("ui-label-primary");
+      if (pLabelEl) pLabelEl.textContent = chartData.primary_series.label;
+
+      const sLabelEl = document.getElementById("ui-label-secondary");
+      if (sLabelEl) sLabelEl.textContent = chartData.secondary_series.label;
+
+      const pSwatchEl = document.getElementById("ui-swatch-primary");
+      if (pSwatchEl) pSwatchEl.style.backgroundColor = colorInfo.hex;
 
       const canvas = document.getElementById("pulseChartCanvas");
+      if (!canvas) return;
       const ctx = canvas.getContext("2d");
 
       if (activeChartInstance) {
@@ -6223,142 +6285,256 @@
       renderDualAxisChart(theme, colorInfo);
     }
 
-    document.getElementById("btn-mode-combo").addEventListener("click", () => setChartMode("combo"));
-    document.getElementById("btn-mode-base100").addEventListener("click", () => setChartMode("base100"));
-    document.getElementById("btn-mode-scatter").addEventListener("click", () => setChartMode("scatter"));
-
-    const btnDiscoverNew = document.getElementById("btn-discover-new");
-    btnDiscoverNew.addEventListener("click", async () => {
-      btnDiscoverNew.disabled = true;
-      showToast("オープンデータ探索中: Geminiが新テーマを自律立案中...");
-
-      if (window.location.protocol === "file:") {
-        setTimeout(() => {
-          const nextId = currentReport.themes.length + 1;
-          const autonomousTheme = {
-            id: nextId,
-            category_tag: `AUTONOMOUS-F${nextId}`,
-            title: `第${nextId}の自律フロンティア: グローバル自然資本と新興サプライチェーン`,
-            status_color: nextId % 2 === 0 ? "blue" : "red",
-            is_autonomous: true,
-            headline: `AIが自律捕捉した第${nextId}の因果連鎖: 素材から国際価格への波及`,
-            causal_chain: [
-              "特定地域の気象・資源制約の発生",
-              "精錬インフラ稼働率と輸出動向の変動",
-              "国際コモディティ先物へのリスクプレミアム織り込み",
-              "最終消費財物価と貿易収支へのタイムラグ波及"
-            ],
-            deep_story: `テーマ#${nextId}は、自律型テーマ探索エンジンにより自動生成されました。World Bank・FAOSTAT・先物市場の最新時系列をクロス分析し、未着目だったマクロ構造の因果連鎖を可視化しています。`,
-            future_watch: "対象指標の短期ボラティリティと10年長期トレンドの乖離率を継続モニタリング。",
-            sources: ["World Bank Global Open Data", "FAOSTAT", "Yahoo Finance"],
-            key_metrics: [
-              { label: "AI自律探索スコア", value: "98.4 pt", sub: "因果関係信頼度", trend: "up" },
-              { label: "構造弾性係数", value: "+1.42", sub: "異種データ相関感度", trend: "up" },
-              { label: "市場資本影響度", value: "$480 億", sub: "関連トレード推定規模", trend: "flat" },
-              { label: "観測状態", value: "AUTONOMOUS", sub: "巡回エージェント観測中", trend: "up" }
-            ],
-            chart_data: {
-              title: `自律テーマ#${nextId}: 構造指標と市場インデックスの10年推移`,
-              labels: ["2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025", "2026"],
-              primary_series: {
-                label: "自律構造指標 (左軸)",
-                data: [12.0, 13.5, 14.8, 16.2, 17.5, 19.1, 20.8, 22.4, 23.9, 25.5],
-                type: "bar"
-              },
-              secondary_series: {
-                label: "市場反応インデックス (右軸)",
-                data: [100.0, 103.5, 108.2, 114.6, 128.4, 135.0, 142.8, 151.2, 159.0, 166.5],
-                type: "line"
-              }
-            }
-          };
-
-          currentReport.themes.push(autonomousTheme);
-          currentReport.sync_status = `AUTONOMOUS (${currentReport.themes.length} THEMES)`;
-          renderGlobalHeader(currentReport);
-          renderNavigation();
-          selectTheme(currentReport.themes.length - 1);
-          btnDiscoverNew.disabled = false;
-          showToast(`自律成長完了! 新テーマ #${nextId} を追加・描画しました`);
-        }, 1200);
-        return;
-      }
-
+    // ==========================================================================
+    // API Data Loader
+    // ==========================================================================
+    async function loadLatestFromApi() {
       try {
-        const res = await fetch("/api/discover?count=1", { method: "POST" });
-        if (!res.ok) throw new Error(`HTTP ${res.status}`);
-        const data = await res.json();
-        if (data.report && Array.isArray(data.report.themes)) {
-          currentReport = data.report;
-          renderGlobalHeader(currentReport);
-          renderNavigation();
-          selectTheme(currentReport.themes.length - 1);
-          showToast(`自律成長完了! 新テーマ #${currentReport.themes.length} を発見しました`);
+        const res = await fetch("/api/latest");
+        if (res.ok) {
+          const data = await res.json();
+          if (data && Array.isArray(data.themes) && data.themes.length > 0) {
+            currentReport = data;
+            renderGlobalHeader(currentReport);
+            renderNavigation();
+            renderActiveTheme();
+            console.log("Loaded latest report from API. Themes count:", data.themes.length);
+            return;
+          }
         }
       } catch (err) {
-        showToast(`探索エラー: ${err.message}`);
-      } finally {
-        btnDiscoverNew.disabled = false;
+        console.warn("Could not load from /api/latest, using embedded dataset:", err);
+      }
+    }
+
+    // ==========================================================================
+    // Event Listeners (Tab Controls, Modes, Filters, Search, Discover, Update)
+    // ==========================================================================
+    // 1. Chart Mode buttons
+    const btnModeCombo = document.getElementById("btn-mode-combo");
+    const btnModeBase100 = document.getElementById("btn-mode-base100");
+    const btnModeScatter = document.getElementById("btn-mode-scatter");
+    if (btnModeCombo) btnModeCombo.addEventListener("click", () => setChartMode("combo"));
+    if (btnModeBase100) btnModeBase100.addEventListener("click", () => setChartMode("base100"));
+    if (btnModeScatter) btnModeScatter.addEventListener("click", () => setChartMode("scatter"));
+
+    // 2. Tab Navigation & Scrolling Controls
+    const tabScrollArea = document.getElementById("ui-index-tabs");
+    const btnTabPrev = document.getElementById("btn-tab-prev");
+    const btnTabNext = document.getElementById("btn-tab-next");
+    const btnTabWrapToggle = document.getElementById("btn-tab-wrap-toggle");
+
+    if (btnTabPrev && tabScrollArea) {
+      btnTabPrev.addEventListener("click", () => {
+        if (typeof tabScrollArea.scrollBy === "function") {
+          tabScrollArea.scrollBy({ left: -260, behavior: "smooth" });
+        } else {
+          tabScrollArea.scrollLeft = Math.max(0, (tabScrollArea.scrollLeft || 0) - 260);
+        }
+      });
+    }
+
+    if (btnTabNext && tabScrollArea) {
+      btnTabNext.addEventListener("click", () => {
+        if (typeof tabScrollArea.scrollBy === "function") {
+          tabScrollArea.scrollBy({ left: 260, behavior: "smooth" });
+        } else {
+          tabScrollArea.scrollLeft = (tabScrollArea.scrollLeft || 0) + 260;
+        }
+      });
+    }
+
+    if (btnTabWrapToggle && tabScrollArea) {
+      btnTabWrapToggle.addEventListener("click", () => {
+        isWrappedMode = !isWrappedMode;
+        if (isWrappedMode) {
+          tabScrollArea.classList.add("is-wrapped");
+          btnTabWrapToggle.textContent = "─ SCROLL";
+          if (btnTabPrev) btnTabPrev.style.display = "none";
+          if (btnTabNext) btnTabNext.style.display = "none";
+        } else {
+          tabScrollArea.classList.remove("is-wrapped");
+          btnTabWrapToggle.textContent = "▤ WRAP";
+          if (btnTabPrev) btnTabPrev.style.display = "flex";
+          if (btnTabNext) btnTabNext.style.display = "flex";
+          scrollToActiveTab();
+        }
+      });
+    }
+
+    if (tabScrollArea) {
+      tabScrollArea.addEventListener("wheel", (e) => {
+        if (!isWrappedMode && Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
+          e.preventDefault();
+          tabScrollArea.scrollLeft += e.deltaY;
+        }
+      }, { passive: false });
+    }
+
+    // 3. Category Filter Buttons
+    document.querySelectorAll(".cat-filter-btn").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        document.querySelectorAll(".cat-filter-btn").forEach((b) => b.classList.remove("active"));
+        btn.classList.add("active");
+        currentFilterCategory = btn.getAttribute("data-cat") || "ALL";
+        renderNavigation();
+      });
+    });
+
+    // 4. Search Input Box
+    const searchInput = document.getElementById("input-theme-search");
+    if (searchInput) {
+      searchInput.addEventListener("input", (e) => {
+        searchQuery = e.target.value;
+        renderNavigation();
+      });
+    }
+
+    // 5. Keyboard Navigation (Left / Right Arrow)
+    window.addEventListener("keydown", (e) => {
+      if (e.target && (e.target.tagName === "INPUT" || e.target.tagName === "TEXTAREA")) return;
+      if (e.key === "ArrowLeft") {
+        selectTheme(activeThemeIndex - 1);
+      } else if (e.key === "ArrowRight") {
+        selectTheme(activeThemeIndex + 1);
       }
     });
 
-    // 手動更新モーダル制御
+    // 6. Discover Theme Button
+    const btnDiscoverNew = document.getElementById("btn-discover-new");
+    if (btnDiscoverNew) {
+      btnDiscoverNew.addEventListener("click", async () => {
+        btnDiscoverNew.disabled = true;
+        showToast("Gemini 3.8 Flash 自律テーマ探索中...");
+
+        if (window.location.protocol === "file:" || !window.location.hostname) {
+          // Client-side discovery simulation for offline / standalone preview
+          setTimeout(() => {
+            const nextId = currentReport.themes.length + 1;
+            const autonomousTheme = {
+              id: nextId,
+              category_tag: `DISCOVERY-${nextId}`,
+              title: `第${nextId}のフロンティア: 自律データサイエンス探索`,
+              status_color: ["red", "yellow", "green", "blue"][nextId % 4],
+              headline: `AIが新発見した第${nextId}の因果構造モデル`,
+              causal_chain: [
+                "オープンデータ指標間の異常相関を検出",
+                "多変量時系列の因果ラグ先行関係を同定",
+                "マクロ経済指標への波及圧力を定量化",
+                "構造転換点（Tipping Point）を特定"
+              ],
+              deep_story: "自律型データサイエンスエンジンが国際オープンデータの行間から新たな構造的ダイバージェンスを発見しました。",
+              future_watch: "先行指標のトレンド転換を注視。",
+              sources: ["Autonomous Client Discovery Engine", "World Bank", "CCKP", "yfinance"],
+              is_autonomous: true,
+              key_metrics: [
+                { label: "AI確信度スコア", value: "94.8 %", sub: "構造的因果強度", trend: "up" },
+                { label: "時系列先行ラグ", value: "+1.0 年", sub: "相関ピーク検出", trend: "up" },
+                { label: "ピアソン相関係数", value: "+0.88", sub: "強い正の相関", trend: "up" },
+                { label: "転換点年度", value: "2022", sub: "最大複合変化率", trend: "flat" }
+              ],
+              chart_data: {
+                title: `自律テーマ#${nextId}: 構造指標と市場インデックスの10年推移`,
+                labels: ["2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025", "2026"],
+                primary_series: {
+                  label: "自律構造指標 (左軸)",
+                  data: [12.0, 13.5, 14.8, 16.2, 17.5, 19.1, 20.8, 22.4, 23.9, 25.5],
+                  type: "bar"
+                },
+                secondary_series: {
+                  label: "市場反応インデックス (右軸)",
+                  data: [100.0, 103.5, 108.2, 114.6, 128.4, 135.0, 142.8, 151.2, 159.0, 166.5],
+                  type: "line"
+                }
+              }
+            };
+
+            currentReport.themes.push(autonomousTheme);
+            currentReport.sync_status = `AUTONOMOUS (${currentReport.themes.length} THEMES)`;
+            renderGlobalHeader(currentReport);
+            renderNavigation();
+            selectTheme(currentReport.themes.length - 1);
+            btnDiscoverNew.disabled = false;
+            showToast(`自律成長完了! 新テーマ #${nextId} を追加・描画しました`);
+          }, 1000);
+          return;
+        }
+
+        try {
+          const res = await fetch("/api/discover?count=1", { method: "POST" });
+          if (!res.ok) throw new Error(`HTTP ${res.status}`);
+          const data = await res.json();
+          if (data && Array.isArray(data.new_themes) && data.new_themes.length > 0) {
+            currentReport.themes.push(...data.new_themes);
+            currentReport.sync_status = `AUTONOMOUS (${currentReport.themes.length} THEMES)`;
+            renderGlobalHeader(currentReport);
+            renderNavigation();
+            selectTheme(currentReport.themes.length - 1);
+            showToast(`自律成長完了! 新テーマ #${currentReport.themes.length} を発見しました`);
+          }
+        } catch (err) {
+          showToast(`探索エラー: ${err.message}`);
+        } finally {
+          btnDiscoverNew.disabled = false;
+        }
+      });
+    }
+
+    // 7. Manual Update Modal
     const modal = document.getElementById("modal-update");
     const btnOpenUpdate = document.getElementById("btn-open-update");
     const btnCancelUpdate = document.getElementById("btn-cancel-update");
     const btnConfirmUpdate = document.getElementById("btn-confirm-update");
     const inputToken = document.getElementById("input-update-token");
 
-    btnOpenUpdate.addEventListener("click", () => {
-      modal.classList.add("open");
-      inputToken.focus();
-    });
+    if (btnOpenUpdate && modal && inputToken) {
+      btnOpenUpdate.addEventListener("click", () => {
+        modal.classList.add("open");
+        inputToken.focus();
+      });
+    }
 
-    btnCancelUpdate.addEventListener("click", () => modal.classList.remove("open"));
+    if (btnCancelUpdate && modal) {
+      btnCancelUpdate.addEventListener("click", () => modal.classList.remove("open"));
+    }
 
-    btnConfirmUpdate.addEventListener("click", async () => {
-      modal.classList.remove("open");
-      btnOpenUpdate.disabled = true;
-      document.getElementById("ui-sync-status").textContent = "SYNCING...";
-      document.getElementById("ui-sync-dot").className = "sync-dot syncing";
+    if (btnConfirmUpdate && modal) {
+      btnConfirmUpdate.addEventListener("click", async () => {
+        modal.classList.remove("open");
+        if (btnOpenUpdate) btnOpenUpdate.disabled = true;
+        const syncStatusEl = document.getElementById("ui-sync-status");
+        if (syncStatusEl) syncStatusEl.textContent = "SYNCING...";
+        const syncDotEl = document.getElementById("ui-sync-dot");
+        if (syncDotEl) syncDotEl.className = "sync-dot syncing";
 
-      if (window.location.protocol === "file:") {
-        setTimeout(() => {
-          currentReport.updated_date = new Date().toISOString().slice(0, 10);
-          currentReport.sync_status = "STANDALONE SYNC";
+        try {
+          const headers = { "Content-Type": "application/json" };
+          if (inputToken && inputToken.value.trim()) headers["X-Update-Token"] = inputToken.value.trim();
+          const res = await fetch("/api/update", { method: "POST", headers });
+          if (!res.ok) {
+            const errBody = await res.json().catch(() => ({}));
+            throw new Error(errBody.detail || `HTTP ${res.status}`);
+          }
+          const payload = await res.json();
+          if (payload.report && Array.isArray(payload.report.themes)) {
+            currentReport = payload.report;
+            renderGlobalHeader(currentReport);
+            renderNavigation();
+            renderActiveTheme();
+            showToast("LIVE SYNC 完了: 最新の全テーマデータを更新しました");
+          }
+        } catch (err) {
           renderGlobalHeader(currentReport);
-          renderActiveTheme();
-          btnOpenUpdate.disabled = false;
-          showToast("全テーマの最新データを同期しました");
-        }, 600);
-        return;
-      }
-
-      try {
-        const headers = { "Content-Type": "application/json" };
-        if (inputToken.value.trim()) headers["X-Update-Token"] = inputToken.value.trim();
-        const res = await fetch("/api/update", { method: "POST", headers });
-        if (!res.ok) {
-          const errBody = await res.json().catch(() => ({}));
-          throw new Error(errBody.detail || `HTTP ${res.status}`);
+          showToast(`更新エラー: ${err.message}`);
+        } finally {
+          if (btnOpenUpdate) btnOpenUpdate.disabled = false;
         }
-        const payload = await res.json();
-        if (payload.report && Array.isArray(payload.report.themes)) {
-          currentReport = payload.report;
-          renderGlobalHeader(currentReport);
-          renderNavigation();
-          renderActiveTheme();
-          showToast("LIVE SYNC 完了: 最新の全テーマデータを更新しました");
-        }
-      } catch (err) {
-        renderGlobalHeader(currentReport);
-        showToast(`更新エラー: ${err.message}`);
-      } finally {
-        btnOpenUpdate.disabled = false;
-      }
-    });
+      });
+    }
 
-    // 初期描画
+    // ==========================================================================
+    // Initial Bootstrap
+    // ==========================================================================
     renderGlobalHeader(currentReport);
     renderNavigation();
     renderActiveTheme();
