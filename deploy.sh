@@ -70,7 +70,7 @@ fi
 
 echo "    Service URL: ${SERVICE_URL}"
 
-echo "==> [Step 4] Configuring Cloud Scheduler job '${SCHEDULER_JOB_NAME}' (Every Monday 09:00 JST)..."
+echo "==> [Step 4] Configuring Cloud Scheduler job '${SCHEDULER_JOB_NAME}' (Every Day 06:00 JST - 1 Run/Day)..."
 if gcloud scheduler jobs describe "${SCHEDULER_JOB_NAME}" \
   --project="${PROJECT_ID}" \
   --location="${SCHEDULER_LOCATION}" \
@@ -79,7 +79,7 @@ if gcloud scheduler jobs describe "${SCHEDULER_JOB_NAME}" \
   gcloud scheduler jobs update http "${SCHEDULER_JOB_NAME}" \
     --project="${PROJECT_ID}" \
     --location="${SCHEDULER_LOCATION}" \
-    --schedule="0 9 * * 1" \
+    --schedule="0 6 * * *" \
     --time-zone="Asia/Tokyo" \
     --uri="${SERVICE_URL}/api/update" \
     --http-method=POST \
@@ -90,7 +90,7 @@ else
   gcloud scheduler jobs create http "${SCHEDULER_JOB_NAME}" \
     --project="${PROJECT_ID}" \
     --location="${SCHEDULER_LOCATION}" \
-    --schedule="0 9 * * 1" \
+    --schedule="0 6 * * *" \
     --time-zone="Asia/Tokyo" \
     --uri="${SERVICE_URL}/api/update" \
     --http-method=POST \

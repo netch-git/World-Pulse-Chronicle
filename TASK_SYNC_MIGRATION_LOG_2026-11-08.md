@@ -85,52 +85,35 @@ export CLOUDFLARE_ACCOUNT_ID="<Your-CF-Account-ID>" # 任意: 同上
 pip install -r backend/requirements.txt
 ```
 
-### STEP 4: リモートでの定期オープンデータ収集実行方法 (3つの選択肢)
+### STEP 4: リモートでの定期オープンデータ収集実行方法 (1日1回 Daily Batch 構成)
 
-#### 【方式 A: 自律探索デーモン（常駐実行）】
-新テーマを継続的に発見・追加したい場合:
-```bash
-python autonomous_harvester.py --interval-minutes 60
-```
-*1時間ごとにオープンデータを巡回し、新テーマを発見して `latest_cache.json` に追記します。*
+ユーザー決定方針に基づき、定期実行は**「1日1回（Daily Batch: 毎日 06:00 JST）」**に統一・最適化されました。
+朝6時に実行することで、本日の和暦・旧暦・二十四節気・六曜、気象庁最新実況、NOAA太陽南中高度、瀬戸内・竹原港の潮位推移、およびe-Stat統計とマクロ因果分析データが一括で更新されます。
 
-#### 【方式 B: Cron / Antigravity スケジューラーによる定期バッチ実行】
-既存テーマの最新値を定期取得・更新したい場合:
+#### 【方式 A: 統合デイリーパイプライン (ローカル / Cron / リモート)】
 ```bash
-python -c "
-import asyncio
-from backend.main import update_all_themes_flow
-report = asyncio.run(update_all_themes_flow())
-print(f'Updated {len(report[\"themes\"])} themes successfully!')
-"
+python daily_pipeline.py
 ```
+*内部で竹原市・広島県のミクロデータ収集、マクロデータ同期、キャッシュ統合、フロントエンド静的生成、Gitコミット＆プッシュを1ステップで自動完遂します。*
+
+#### 【方式 B: GitHub Actions 定期自動実行 (完全サーバーレス・推奨)】
+`.github/workflows/daily_sync.yml` により、毎日 21:00 UTC（日本時間 06:00 JST）に GitHub 側で自動実行され、最新データが自動コミット＆プッシュされ Cloudflare Pages に即時反映されます。
 
 #### 【方式 C: Cloud Run + Cloud Scheduler (GCP 常時無料枠構成)】
-完全サーバーレスで定期実行したい場合:
 ```bash
 bash deploy.sh
 ```
-*Cloud Scheduler が毎週月曜 09:00 JST に Cloud Run の `POST /api/update` を自動呼出します。*
-
-### STEP 5: 収集データの自動同期 & デプロイフロー
-新テーマが追加された場合の同期コマンド:
-```bash
-python -c "import shutil; shutil.copy('latest_cache.json', 'frontend/latest.json')"
-git add latest_cache.json frontend/latest.json harvest_progress.json
-git commit -m "chore(data): auto-update open data chronicle [skip ci]"
-git push origin main
-npx wrangler pages deploy frontend --project-name world-pulse-chronicle --branch main
-```
+*Cloud Scheduler が毎日 06:00 JST (`schedule: "0 6 * * *"`) に Cloud Run の `POST /api/update` を自動呼出します。*
 
 ---
 
 ## 5. リモートエージェントが引き継ぐべきネクストアクション (Next Actions)
 
-1. **[高優先度] リモート環境における定期実行スケジュールの稼働確認**
-   - 収集頻度の決定（例: 毎週月曜 09:00 JST の定期更新、または1日1回の新テーマ自律探索）
-2. **[高優先度] データ更新時の GitHub 自動コミット & Cloudflare Pages デプロイ連携**
-   - 収集スクリプトの末尾に Git Push または Cloudflare Deploy Hook の呼出を組み込む
-3. **[中優先度] オープンデータ接続先のさらなる拡張**
-   - IMF API (国際通貨基金), US EIA (エネルギー情報局), Copernicus (欧州気象データ)
+1. **[完了] リモート環境における定期実行スケジュールの方針決定**
+   - **「1日1回 (毎日 06:00 JST)」** でパイプライン (`daily_pipeline.py`) および GitHub Actions (`.github/workflows/daily_sync.yml`)、Cloud Scheduler 設定を完了。
+2. **[完了] データ更新時の GitHub 自動コミット & Cloudflare Pages デプロイ連携**
+   - `daily_pipeline.py` の自動 Git Push および GitHub Actions の write パーミッション連携を確立。
+3. **[完了] オープンデータ接続先のさらなる拡張（マクロ ✕ ミクロ）**
+   - 総務省 e-Stat API（広島県・竹原市 9大分野 100+指標）、気象庁公式、Open-Meteo、NOAA天体力学、海上保安庁潮汐、竹原市議会スケジュールを網羅的に統合。
 4. **[中優先度] 言語切り替え機能 (日英バイリンガル表示)**
    - 国際機関データとしてのグローバル訴求力向上のための EN / JA トグル追加

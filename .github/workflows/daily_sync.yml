@@ -1,0 +1,43 @@
+name: Daily Open Data Sync (1 Day / 1 Run)
+
+on:
+  schedule:
+    # 毎日 日本時間 06:00 JST (21:00 UTC) に1日1回実行
+    - cron: '0 21 * * *'
+  workflow_dispatch: # 手動即時実行トリガー
+
+permissions:
+  contents: write
+
+jobs:
+  daily-sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: |
+          pip install -r backend/requirements.txt || pip install httpx pandas numpy
+
+      - name: Execute Daily Pipeline
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          AUTO_GIT_PUSH: "false"
+        run: |
+          python daily_pipeline.py
+
+      - name: Commit & Push changes
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add latest_cache.json frontend/latest.json frontend/index.html backend/hiroshima_takehara_opendata.json frontend/hiroshima_takehara_opendata.json
+          git diff-index --quiet HEAD || (git commit -m "chore(data): daily open data sync [skip ci]" && git push)
