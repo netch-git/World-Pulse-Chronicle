@@ -1552,6 +1552,386 @@
       line-height: 1.5;
     }
     
+
+    /* ==========================================================================
+       Section M-CSS: Dual Nexus & Micro Dashboard (Hiroshima & Takehara)
+       ========================================================================== */
+    .nexus-scope-bar {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      background-color: var(--surface-white);
+      border: var(--border-thick);
+      border-radius: 14px;
+      box-shadow: var(--shadow-card);
+      padding: 12px 20px;
+      margin-bottom: 20px;
+    }
+
+    .nexus-scope-title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .nexus-pill {
+      background-color: var(--ink-black);
+      color: #FFF;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 800;
+      padding: 3px 8px;
+      border-radius: 4px;
+      letter-spacing: 0.05em;
+    }
+
+    .nexus-label {
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--ink-black);
+    }
+
+    .nexus-scope-buttons {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .scope-btn {
+      appearance: none;
+      background-color: var(--surface-muted);
+      color: var(--ink-black);
+      border: var(--border-thin);
+      border-radius: 8px;
+      box-shadow: var(--shadow-btn);
+      padding: 8px 16px;
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      font-weight: 800;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.1s ease;
+    }
+
+    .scope-btn:hover {
+      background-color: var(--surface-white);
+    }
+
+    .scope-btn.active {
+      background-color: var(--accent-yellow);
+      transform: translateY(2px);
+      box-shadow: var(--shadow-btn-active);
+      border-width: 2px;
+    }
+
+    .scope-btn.scope-micro-btn.active {
+      background-color: #A3E635; /* Fresh Local Lime */
+    }
+
+    .scope-btn.scope-nexus-btn.active {
+      background-color: #38BDF8; /* Electric Cyan */
+    }
+
+    /* Micro Dashboard Grid & Cards */
+    .micro-dashboard-container {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      margin-bottom: 32px;
+    }
+
+    .micro-banner-header {
+      background-color: var(--surface-white);
+      border: var(--border-thick);
+      border-radius: 16px;
+      box-shadow: var(--shadow-card);
+      padding: 22px 26px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      border-left: 8px solid #A3E635;
+    }
+
+    .micro-badge-pulse {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background-color: #1E1E1E;
+      color: #A3E635;
+      font-family: var(--font-mono);
+      font-size: 0.74rem;
+      font-weight: 800;
+      padding: 3px 9px;
+      border-radius: 4px;
+    }
+
+    .micro-main-heading {
+      font-size: 1.45rem;
+      font-weight: 900;
+      color: var(--ink-black);
+      margin-top: 6px;
+    }
+
+    .micro-grid-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .micro-card {
+      background-color: var(--surface-white);
+      border: var(--border-thick);
+      border-radius: 14px;
+      box-shadow: var(--shadow-card);
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      position: relative;
+    }
+
+    .micro-card-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 800;
+      padding: 3px 8px;
+      border-radius: 4px;
+      border: var(--border-thin);
+      width: fit-content;
+    }
+
+    .badge-cal { background-color: #FEF08A; }
+    .badge-weather { background-color: #BAE6FD; }
+    .badge-astro { background-color: #FED7AA; }
+    .badge-tide { background-color: #A7F3D0; }
+    .badge-council { background-color: #DDD6FE; }
+
+    .micro-card-title {
+      font-size: 1.12rem;
+      font-weight: 800;
+      line-height: 1.35;
+    }
+
+    .micro-metric-big {
+      font-family: var(--font-mono);
+      font-size: 2.2rem;
+      font-weight: 900;
+      line-height: 1.1;
+      color: var(--ink-black);
+    }
+
+    .micro-metric-sub {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      color: var(--ink-gray);
+      margin-top: 3px;
+    }
+
+    .micro-details-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      font-size: 0.85rem;
+      border-top: var(--border-dashed);
+      padding-top: 12px;
+    }
+
+    .micro-details-list li {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 8px;
+    }
+
+    .micro-details-list li span:first-child {
+      color: var(--ink-gray);
+      font-weight: 600;
+      flex-shrink: 0;
+    }
+
+    .micro-details-list li span:last-child {
+      font-weight: 700;
+      text-align: right;
+    }
+
+    /* NOAA Solar Arc graphic */
+    .solar-dial-wrap {
+      background-color: var(--surface-muted);
+      border: var(--border-thin);
+      border-radius: 10px;
+      padding: 12px 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .solar-progress-bar {
+      position: relative;
+      height: 12px;
+      background: linear-gradient(90deg, #FDE68A 0%, #F59E0B 50%, #1E3A8A 100%);
+      border: 1.5px solid var(--ink-black);
+      border-radius: 6px;
+    }
+
+    .solar-needle {
+      position: absolute;
+      top: -4px;
+      width: 8px;
+      height: 20px;
+      background-color: #D93829;
+      border: 1.5px solid #1E1E1E;
+      border-radius: 3px;
+      transform: translateX(-50%);
+    }
+
+    /* Tide Chart Box */
+    .tide-chart-box {
+      width: 100%;
+      height: 140px;
+      position: relative;
+      margin-top: 6px;
+    }
+
+    /* e-Stat Interactive Inspector */
+    .estat-inspector-card {
+      background-color: var(--surface-white);
+      border: var(--border-thick);
+      border-radius: 16px;
+      box-shadow: var(--shadow-card);
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .estat-ctrl-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: var(--border-dashed);
+      padding-bottom: 16px;
+    }
+
+    .estat-cat-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .estat-cat-btn {
+      appearance: none;
+      background-color: var(--surface-muted);
+      border: var(--border-thin);
+      border-radius: 6px;
+      font-family: var(--font-mono);
+      font-size: 0.74rem;
+      font-weight: 700;
+      padding: 5px 10px;
+      cursor: pointer;
+      color: var(--ink-black);
+    }
+
+    .estat-cat-btn:hover {
+      background-color: var(--surface-white);
+    }
+
+    .estat-cat-btn.active {
+      background-color: var(--accent-yellow);
+      border-width: 2px;
+    }
+
+    .estat-select-group {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .estat-select {
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      padding: 6px 12px;
+      border: var(--border-thick);
+      border-radius: 6px;
+      background-color: var(--surface-white);
+      color: var(--ink-black);
+      font-weight: 700;
+      max-width: 320px;
+      cursor: pointer;
+    }
+
+    .estat-chart-wrapper {
+      width: 100%;
+      height: 320px;
+      position: relative;
+    }
+
+    /* Macro-Micro Nexus Link Card */
+    .nexus-bridge-card {
+      background-color: #FEF9C3;
+      border: var(--border-thick);
+      border-radius: 16px;
+      box-shadow: var(--shadow-card);
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .nexus-bridge-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .nexus-bridge-title {
+      font-size: 1.18rem;
+      font-weight: 900;
+      color: var(--ink-black);
+    }
+
+    .nexus-bridge-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+    }
+
+    .nexus-bridge-item {
+      background-color: var(--surface-white);
+      border: var(--border-thin);
+      border-radius: 10px;
+      padding: 14px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .nexus-bridge-item-title {
+      font-size: 0.92rem;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .nexus-bridge-item-desc {
+      font-size: 0.82rem;
+      color: #333;
+      line-height: 1.5;
+    }
+    
 </style>
 </head>
 <body>
@@ -1560,6 +1940,28 @@
     <!-- ======================================================================
          Section A: 手帳ヘッダー & グローバル総括バナー
          ====================================================================== -->
+    
+    <!-- ======================================================================
+         DUAL HORIZON: Macro / Micro Observation Scope Switcher
+         ====================================================================== -->
+    <div class="nexus-scope-bar">
+      <div class="nexus-scope-title">
+        <span class="nexus-pill">DUAL HORIZON</span>
+        <span class="nexus-label">OBSERVATION SCOPE // 観測地平切替:</span>
+      </div>
+      <div class="nexus-scope-buttons">
+        <button id="btn-scope-macro" class="scope-btn active" type="button" title="地球規模・42テーマ因果連鎖分析">
+          <span>🌍 マクロ事象 (世界42大因果)</span>
+        </button>
+        <button id="btn-scope-micro" class="scope-btn scope-micro-btn" type="button" title="広島県・竹原市 本日の実世界オープンデータ">
+          <span>📍 ミクロ事象 (広島県・竹原市)</span>
+        </button>
+        <button id="btn-scope-nexus" class="scope-btn scope-nexus-btn" type="button" title="マクロとミクロを同時俯瞰">
+          <span>⚡ NEXUS 統合並行ビュー</span>
+        </button>
+      </div>
+    </div>
+    
     <header class="notebook-header-card">
       <div class="header-top-bar">
         <div class="brand-block">

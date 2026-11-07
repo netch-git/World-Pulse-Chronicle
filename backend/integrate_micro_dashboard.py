@@ -425,7 +425,7 @@ def main():
     </div>
     """
 
-    if "nexus-scope-bar" not in html:
+    if '<div class="nexus-scope-bar">' not in html:
         html = html.replace('<header class="notebook-header-card">', f'{scope_bar_html}\n    <header class="notebook-header-card">')
 
     # Wrap Macro components inside <div id="view-macro-container">
