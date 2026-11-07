@@ -26,6 +26,7 @@ ENV/
 
 # Logs
 *.log
+!TASK_SYNC_MIGRATION_LOG_*.log
 harvester.log
 
 # Cloudflare & Node
