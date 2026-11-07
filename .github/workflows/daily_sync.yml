@@ -31,6 +31,7 @@ jobs:
       - name: Execute Daily Pipeline
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          ESTAT_API_KEY: ${{ secrets.ESTAT_API_KEY || secrets.ESTAT_APP_ID }}
           AUTO_GIT_PUSH: "false"
         run: |
           python daily_pipeline.py

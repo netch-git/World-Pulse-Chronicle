@@ -12,7 +12,7 @@ import math
 import datetime
 import os
 
-APP_ID = "34281099c0abfc74ba0ceab269dc433b620ebf67"
+APP_ID = os.getenv("ESTAT_API_KEY") or os.getenv("ESTAT_APP_ID") or "34281099c0abfc74ba0ceab269dc433b620ebf67"
 TAKEHARA_CD = "34206"
 HIROSHIMA_PREF_CD = "34000"
 
