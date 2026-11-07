@@ -1172,7 +1172,387 @@
         font-size: 0.72rem;
       }
     }
-  </style>
+  
+    /* ==========================================================================
+       Section M-CSS: Dual Nexus & Micro Dashboard (Hiroshima & Takehara)
+       ========================================================================== */
+    .nexus-scope-bar {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      background-color: var(--surface-white);
+      border: var(--border-thick);
+      border-radius: 14px;
+      box-shadow: var(--shadow-card);
+      padding: 12px 20px;
+      margin-bottom: 20px;
+    }
+
+    .nexus-scope-title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .nexus-pill {
+      background-color: var(--ink-black);
+      color: #FFF;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 800;
+      padding: 3px 8px;
+      border-radius: 4px;
+      letter-spacing: 0.05em;
+    }
+
+    .nexus-label {
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--ink-black);
+    }
+
+    .nexus-scope-buttons {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .scope-btn {
+      appearance: none;
+      background-color: var(--surface-muted);
+      color: var(--ink-black);
+      border: var(--border-thin);
+      border-radius: 8px;
+      box-shadow: var(--shadow-btn);
+      padding: 8px 16px;
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      font-weight: 800;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.1s ease;
+    }
+
+    .scope-btn:hover {
+      background-color: var(--surface-white);
+    }
+
+    .scope-btn.active {
+      background-color: var(--accent-yellow);
+      transform: translateY(2px);
+      box-shadow: var(--shadow-btn-active);
+      border-width: 2px;
+    }
+
+    .scope-btn.scope-micro-btn.active {
+      background-color: #A3E635; /* Fresh Local Lime */
+    }
+
+    .scope-btn.scope-nexus-btn.active {
+      background-color: #38BDF8; /* Electric Cyan */
+    }
+
+    /* Micro Dashboard Grid & Cards */
+    .micro-dashboard-container {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      margin-bottom: 32px;
+    }
+
+    .micro-banner-header {
+      background-color: var(--surface-white);
+      border: var(--border-thick);
+      border-radius: 16px;
+      box-shadow: var(--shadow-card);
+      padding: 22px 26px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      border-left: 8px solid #A3E635;
+    }
+
+    .micro-badge-pulse {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background-color: #1E1E1E;
+      color: #A3E635;
+      font-family: var(--font-mono);
+      font-size: 0.74rem;
+      font-weight: 800;
+      padding: 3px 9px;
+      border-radius: 4px;
+    }
+
+    .micro-main-heading {
+      font-size: 1.45rem;
+      font-weight: 900;
+      color: var(--ink-black);
+      margin-top: 6px;
+    }
+
+    .micro-grid-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .micro-card {
+      background-color: var(--surface-white);
+      border: var(--border-thick);
+      border-radius: 14px;
+      box-shadow: var(--shadow-card);
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      position: relative;
+    }
+
+    .micro-card-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 800;
+      padding: 3px 8px;
+      border-radius: 4px;
+      border: var(--border-thin);
+      width: fit-content;
+    }
+
+    .badge-cal { background-color: #FEF08A; }
+    .badge-weather { background-color: #BAE6FD; }
+    .badge-astro { background-color: #FED7AA; }
+    .badge-tide { background-color: #A7F3D0; }
+    .badge-council { background-color: #DDD6FE; }
+
+    .micro-card-title {
+      font-size: 1.12rem;
+      font-weight: 800;
+      line-height: 1.35;
+    }
+
+    .micro-metric-big {
+      font-family: var(--font-mono);
+      font-size: 2.2rem;
+      font-weight: 900;
+      line-height: 1.1;
+      color: var(--ink-black);
+    }
+
+    .micro-metric-sub {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      color: var(--ink-gray);
+      margin-top: 3px;
+    }
+
+    .micro-details-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      font-size: 0.85rem;
+      border-top: var(--border-dashed);
+      padding-top: 12px;
+    }
+
+    .micro-details-list li {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 8px;
+    }
+
+    .micro-details-list li span:first-child {
+      color: var(--ink-gray);
+      font-weight: 600;
+      flex-shrink: 0;
+    }
+
+    .micro-details-list li span:last-child {
+      font-weight: 700;
+      text-align: right;
+    }
+
+    /* NOAA Solar Arc graphic */
+    .solar-dial-wrap {
+      background-color: var(--surface-muted);
+      border: var(--border-thin);
+      border-radius: 10px;
+      padding: 12px 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .solar-progress-bar {
+      position: relative;
+      height: 12px;
+      background: linear-gradient(90deg, #FDE68A 0%, #F59E0B 50%, #1E3A8A 100%);
+      border: 1.5px solid var(--ink-black);
+      border-radius: 6px;
+    }
+
+    .solar-needle {
+      position: absolute;
+      top: -4px;
+      width: 8px;
+      height: 20px;
+      background-color: #D93829;
+      border: 1.5px solid #1E1E1E;
+      border-radius: 3px;
+      transform: translateX(-50%);
+    }
+
+    /* Tide Chart Box */
+    .tide-chart-box {
+      width: 100%;
+      height: 140px;
+      position: relative;
+      margin-top: 6px;
+    }
+
+    /* e-Stat Interactive Inspector */
+    .estat-inspector-card {
+      background-color: var(--surface-white);
+      border: var(--border-thick);
+      border-radius: 16px;
+      box-shadow: var(--shadow-card);
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .estat-ctrl-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: var(--border-dashed);
+      padding-bottom: 16px;
+    }
+
+    .estat-cat-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .estat-cat-btn {
+      appearance: none;
+      background-color: var(--surface-muted);
+      border: var(--border-thin);
+      border-radius: 6px;
+      font-family: var(--font-mono);
+      font-size: 0.74rem;
+      font-weight: 700;
+      padding: 5px 10px;
+      cursor: pointer;
+      color: var(--ink-black);
+    }
+
+    .estat-cat-btn:hover {
+      background-color: var(--surface-white);
+    }
+
+    .estat-cat-btn.active {
+      background-color: var(--accent-yellow);
+      border-width: 2px;
+    }
+
+    .estat-select-group {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .estat-select {
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      padding: 6px 12px;
+      border: var(--border-thick);
+      border-radius: 6px;
+      background-color: var(--surface-white);
+      color: var(--ink-black);
+      font-weight: 700;
+      max-width: 320px;
+      cursor: pointer;
+    }
+
+    .estat-chart-wrapper {
+      width: 100%;
+      height: 320px;
+      position: relative;
+    }
+
+    /* Macro-Micro Nexus Link Card */
+    .nexus-bridge-card {
+      background-color: #FEF9C3;
+      border: var(--border-thick);
+      border-radius: 16px;
+      box-shadow: var(--shadow-card);
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .nexus-bridge-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .nexus-bridge-title {
+      font-size: 1.18rem;
+      font-weight: 900;
+      color: var(--ink-black);
+    }
+
+    .nexus-bridge-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+    }
+
+    .nexus-bridge-item {
+      background-color: var(--surface-white);
+      border: var(--border-thin);
+      border-radius: 10px;
+      padding: 14px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .nexus-bridge-item-title {
+      font-size: 0.92rem;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .nexus-bridge-item-desc {
+      font-size: 0.82rem;
+      color: #333;
+      line-height: 1.5;
+    }
+    
+</style>
 </head>
 <body>
   <div class="chronicle-wrapper">
@@ -1222,7 +1602,8 @@
     <!-- ======================================================================
          Section B: 観測レンズ選択パネル（検索 & カテゴリ絞り込み）
          ====================================================================== -->
-    <nav class="lens-panel" aria-label="テーマ観測レンズ選択">
+    <div id="view-macro-container">
+      <nav class="lens-panel" aria-label="テーマ観測レンズ選択">
       <div class="lens-panel-header">
         <div class="lens-panel-title-group">
           <span class="lens-panel-title">OBSERVATION LENSES // 観測レンズ一覧</span>
@@ -1352,6 +1733,231 @@
         <div id="ui-metrics-grid" class="metrics-grid"></div>
       </section>
     </main>
+    </div>
+
+    <!-- ======================================================================
+         Section M: ミクロ観測ダッシュボード（広島県 & 竹原市 本日実世界オープンデータ）
+         ====================================================================== -->
+    <div id="view-micro-container" class="micro-dashboard-container" style="display: none;">
+      <!-- M-1. ミクロ総括バナー -->
+      <div class="micro-banner-header">
+        <div>
+          <span class="micro-badge-pulse">● LIVE LOCAL PULSE</span>
+          <h2 class="micro-main-heading">広島県竹原市 本日実世界オープンデータ・クロニクル</h2>
+          <div class="micro-metric-sub" style="margin-top: 6px;">
+            <span>気象庁・アメダス最新実況 ✕ 海上保安庁瀬戸内潮汐 ✕ NOAA太陽物理力学 ✕ 総務省e-Stat包括統計</span>
+          </div>
+        </div>
+        <div class="header-status-group">
+          <div class="sync-badge">
+            <span class="sync-dot"></span>
+            <span class="mono">TAKEHARA: 34.3417°N, 132.9108°E</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- M-2. 本日実況 4連マトリクスカード -->
+      <div class="micro-grid-cards">
+        <!-- Card 1: 暦法・和暦・二十四節気・六曜 -->
+        <div class="micro-card">
+          <div class="micro-card-badge badge-cal">📜 伝統暦法 & 天文暦</div>
+          <div id="micro-cal-wareki" class="micro-metric-big" style="font-size: 1.55rem;">令和8年11月8日</div>
+          <div id="micro-cal-rokuyo" class="micro-metric-sub" style="font-weight: 800; color: #D93829; font-size: 1rem;">六曜: 大安 (Taian)</div>
+          <ul class="micro-details-list">
+            <li><span>旧暦日付</span><span id="micro-cal-lunar">令和8年9月29日</span></li>
+            <li><span>二十四節気</span><span id="micro-cal-sekki" style="color: #1D63B8; font-weight: 800;">立冬 (Ritto)</span></li>
+            <li><span>七十二候</span><span id="micro-cal-ko">山茶始開 (つばきはじめてひらく)</span></li>
+            <li><span>干支 / 九星</span><span id="micro-cal-eto">丙午年 / 丙辰日 / 四緑木星</span></li>
+            <li><span>月齢</span><span id="micro-cal-moonage">28.4 (有明月・新月直前)</span></li>
+          </ul>
+        </div>
+
+        <!-- Card 2: 気象庁・アメダス 竹原市役所リアルタイム気象 -->
+        <div class="micro-card">
+          <div class="micro-card-badge badge-weather">🌦️ 気象実況 (気象庁 & Open-Meteo)</div>
+          <div style="display: flex; align-items: baseline; gap: 8px;">
+            <div id="micro-weather-temp" class="micro-metric-big">9.3<span style="font-size: 1.2rem;">℃</span></div>
+            <div id="micro-weather-cond" style="font-size: 0.95rem; font-weight: 800; color: #1D63B8;">晴れ (秋晴れ)</div>
+          </div>
+          <div id="micro-weather-feels" class="micro-metric-sub">体感温度 6.9℃ / 本日最高 16.1℃・最低 8.5℃</div>
+          <ul class="micro-details-list">
+            <li><span>湿度 / 気圧</span><span id="micro-weather-hum-press">77% / 1033.3 hPa</span></li>
+            <li><span>風向 / 風速</span><span id="micro-weather-wind">北北東 8.8 km/h</span></li>
+            <li><span>降水量 / UV</span><span id="micro-weather-rain-uv">0.0 mm / UV Index 4.35</span></li>
+            <li><span>広島地方気象台</span><span id="micro-weather-jma" style="font-size: 0.74rem; line-height: 1.35; max-width: 170px; text-align: right;">高気圧圏内・午後は次第に曇り</span></li>
+          </ul>
+        </div>
+
+        <!-- Card 3: 天体力学 NOAA太陽高度・南中高度・日の出日の入り -->
+        <div class="micro-card">
+          <div class="micro-card-badge badge-astro">☀️ 太陽天体力学 (NOAA計算)</div>
+          <div style="display: flex; align-items: baseline; gap: 8px;">
+            <div id="micro-astro-noon-alt" class="micro-metric-big">39.4<span style="font-size: 1.2rem;">°</span></div>
+            <div style="font-size: 0.9rem; font-weight: 800; color: #D97706;">本日 南中高度</div>
+          </div>
+          <div class="micro-metric-sub">太陽南中時刻: 11:52 JST / 赤緯: -16.3°</div>
+          
+          <div class="solar-dial-wrap">
+            <div style="display: flex; justify-content: space-between; font-size: 0.72rem; font-weight: 700; font-family: var(--font-mono);">
+              <span>日出 06:34</span>
+              <span>南中 11:52</span>
+              <span>日入 17:10</span>
+            </div>
+            <div class="solar-progress-bar">
+              <div id="solar-current-needle" class="solar-needle" style="left: 11%;"></div>
+            </div>
+            <div style="text-align: center; font-size: 0.72rem; font-weight: 700;">
+              現在太陽高度: <span id="micro-astro-cur-alt" class="mono">9.8°</span> (方位: 117.5° 東南東)
+            </div>
+          </div>
+
+          <ul class="micro-details-list">
+            <li><span>日照可能時間</span><span id="micro-astro-daylight">10時間36分</span></li>
+            <li><span>日出 / 日入</span><span id="micro-astro-sundata">06:34 / 17:10</span></li>
+          </ul>
+        </div>
+
+        <!-- Card 4: 瀬戸内・竹原港 潮汐ゲージ & 24h潮位カーブ -->
+        <div class="micro-card">
+          <div class="micro-card-badge badge-tide">🌊 瀬戸内海 竹原港 潮汐情報</div>
+          <div style="display: flex; align-items: baseline; gap: 8px;">
+            <div id="micro-tide-type" class="micro-metric-big" style="color: #0D9488;">中潮</div>
+            <div style="font-size: 0.88rem; font-weight: 700; color: var(--ink-gray);">(新月大潮直前)</div>
+          </div>
+          <div class="micro-metric-sub">最大干満差 約250cm (瀬戸内の潮流動態)</div>
+
+          <div class="tide-chart-box">
+            <canvas id="chart-tide-curve"></canvas>
+          </div>
+
+          <ul class="micro-details-list">
+            <li><span>満潮 (High)</span><span id="micro-tide-high">09:42 (305cm) / 22:15 (320cm)</span></li>
+            <li><span>干潮 (Low)</span><span id="micro-tide-low">03:25 (70cm) / 15:58 (80cm)</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- M-3. 竹原市議会 & 自治体政策カード -->
+      <div class="micro-card" style="border-left: 8px solid #7B3FE4;">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+          <div class="micro-card-badge badge-council">🏛️ 竹原市議会 & 自治体政策スケジュール</div>
+          <span class="mono" style="font-size: 0.78rem; font-weight: 700;">議員定数: 14名 (定数2減条例可決後)</span>
+        </div>
+        <h3 style="font-size: 1.15rem; font-weight: 900;">会期動向: 令和8年 第3回定例会（決算認定完了） / 次期：第4回定例会（12月予定）</h3>
+        <div class="micro-grid-cards" style="grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); margin-top: 4px;">
+          <div style="background-color: var(--surface-muted); padding: 12px; border-radius: 8px; border: var(--border-thin);">
+            <div style="font-size: 0.76rem; font-weight: 800; color: #7B3FE4;">【直近議決事項】</div>
+            <div style="font-size: 0.82rem; font-weight: 700; margin-top: 4px;">令和7年度 竹原市一般会計・特別会計歳入歳出決算認定</div>
+            <div style="font-size: 0.74rem; color: #555;">監査委員報告に基づき全会一致で原案認定。</div>
+          </div>
+          <div style="background-color: var(--surface-muted); padding: 12px; border-radius: 8px; border: var(--border-thin);">
+            <div style="font-size: 0.76rem; font-weight: 800; color: #129956;">【観光・地域ブランド推進】</div>
+            <div style="font-size: 0.82rem; font-weight: 700; margin-top: 4px;">（一社）竹原観光まちづくり機構連携・補正予算</div>
+            <div style="font-size: 0.74rem; color: #555;">重伝建保存地区・大久野島・広島空港連携によるインバウンド高付加価値化。</div>
+          </div>
+          <div style="background-color: var(--surface-muted); padding: 12px; border-radius: 8px; border: var(--border-thin);">
+            <div style="font-size: 0.76rem; font-weight: 800; color: #1D63B8;">【ゼロカーボン・産業構造】</div>
+            <div style="font-size: 0.82rem; font-weight: 700; margin-top: 4px;">ゼロカーボンシティ推進条例 & 防災減災事業</div>
+            <div style="font-size: 0.74rem; color: #555;">三井金属鉱業・今治造船等のものづくり産業と瀬戸内海洋環境保全の調和。</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- M-4. e-Stat 広島県 & 竹原市 9大分野包括統計インスペクター -->
+      <div class="estat-inspector-card">
+        <div class="estat-ctrl-bar">
+          <div>
+            <span class="micro-badge-pulse" style="background-color: #1D63B8; color: #FFF;">📊 e-Stat API 連携インスペクター</span>
+            <h3 style="font-size: 1.25rem; font-weight: 900; margin-top: 4px;">広島県 & 竹原市 社会・人口統計体系 (SSDS) 包括時系列ビュー</h3>
+            <p style="font-size: 0.78rem; color: var(--ink-gray);">取得済みの市区町村編 (34206) および都道府県編 (34000) の全指標を完全探索可能</p>
+          </div>
+          <div class="estat-select-group">
+            <label for="estat-indicator-dropdown" style="font-size: 0.76rem; font-weight: 800; font-family: var(--font-mono);">INDICATOR:</label>
+            <select id="estat-indicator-dropdown" class="estat-select"></select>
+          </div>
+        </div>
+
+        <!-- 9大分野切り替えタブ -->
+        <div class="estat-cat-tabs">
+          <button class="estat-cat-btn active" data-cat="人口・世帯" type="button">👥 A: 人口・世帯</button>
+          <button class="estat-cat-btn" data-cat="自然環境" type="button">🌲 B: 自然環境</button>
+          <button class="estat-cat-btn" data-cat="経済基盤" type="button">🏭 C: 経済基盤</button>
+          <button class="estat-cat-btn" data-cat="行政基盤・財政" type="button">🏛️ D: 行政・財政</button>
+          <button class="estat-cat-btn" data-cat="教育" type="button">🏫 E: 教育</button>
+          <button class="estat-cat-btn" data-cat="労働" type="button">💼 F: 労働力</button>
+          <button class="estat-cat-btn" data-cat="居住" type="button">🏡 H: 居住住宅</button>
+          <button class="estat-cat-btn" data-cat="健康・医療" type="button">🏥 I: 健康医療</button>
+          <button class="estat-cat-btn" data-cat="福祉・社会保障" type="button">🤝 J: 福祉保障</button>
+        </div>
+
+        <!-- Chart -->
+        <div class="estat-chart-wrapper">
+          <canvas id="chart-estat-timeseries"></canvas>
+        </div>
+
+        <!-- 統計サマリーメトリクス -->
+        <div id="estat-metrics-summary" style="display: flex; gap: 16px; flex-wrap: wrap; background-color: var(--surface-muted); padding: 12px 16px; border-radius: 8px; border: var(--border-thin); font-size: 0.82rem; font-family: var(--font-mono);">
+          <div>対象地域: <strong>広島県竹原市 (34206)</strong></div>
+          <div>時系列スパン: <strong id="estat-span-label">1980年〜最新</strong></div>
+          <div>ピーク値: <strong id="estat-peak-label">-</strong></div>
+          <div>最新値: <strong id="estat-latest-label">-</strong></div>
+        </div>
+      </div>
+
+      <!-- M-5. マクロ × ミクロ 因果連環ブリッジ (Nexus Insight) -->
+      <div class="nexus-bridge-card">
+        <div class="nexus-bridge-header">
+          <span style="font-size: 1.5rem;">⚡</span>
+          <div>
+            <div class="nexus-bridge-title">MACRO ✕ MICRO NEXUS // 地球規模因果と竹原市実世界の連環ノート</div>
+            <div style="font-size: 0.78rem; color: #4B5563;">国際オープンデータが捉えるマクロ潮流は、竹原市の日常・産業・環境にどのように投影されているか</div>
+          </div>
+        </div>
+
+        <div class="nexus-bridge-grid">
+          <div class="nexus-bridge-item">
+            <div class="nexus-bridge-item-title">
+              <span>🌾</span>
+              <span>食料・肥料インフレ ✕ 竹原の農業・柑橘栽培</span>
+            </div>
+            <div class="nexus-bridge-item-desc">
+              世界銀行・FAOSTATが警告するリン・窒素肥料高騰と穀物相場急騰は、竹原の特産である峠下牛（たおしたぎゅう）の飼料コストや、温暖な気候を活かした柑橘類（レモン・みかん）の生産現場にタイムラグを伴って波及。
+            </div>
+          </div>
+
+          <div class="nexus-bridge-item">
+            <div class="nexus-bridge-item-title">
+              <span>⚡</span>
+              <span>脱炭素サプライチェーン ✕ 三井金属・造船・竹原港</span>
+            </div>
+            <div class="nexus-bridge-item-desc">
+              OECDやIEAが分析する重要鉱物（銅・亜鉛）の争奪と再エネ送電網整備。三井金属鉱業竹原製煉所や今治造船広島工場を擁する竹原港は、グローバルな資源サプライチェーンの要所であり、重工業の脱炭素転換の最前線に位置する。
+            </div>
+          </div>
+
+          <div class="nexus-bridge-item">
+            <div class="nexus-bridge-item-title">
+              <span>👥</span>
+              <span>人口ボーナス終焉 ✕ 竹原市の少子高齢化・空き家再生</span>
+            </div>
+            <div class="nexus-bridge-item-desc">
+              マクロテーマ#06・#09が示す東アジア全体の人口急減。竹原市でも総人口が1980年の3.8万人から現在約2.2万人台へ推移し高齢化率は40%超。これに対し「重伝建・塩田の町並み」の古民家ホテル化やデジタルノマド誘致による関係人口創出が試みられている。
+            </div>
+          </div>
+
+          <div class="nexus-bridge-item">
+            <div class="nexus-bridge-item-title">
+              <span>🌊</span>
+              <span>海洋温暖化・酸性化 ✕ 瀬戸内海の生態系・カキ養殖</span>
+            </div>
+            <div class="nexus-bridge-item-desc">
+              Copernicus等の海水温上昇データが示す瀬戸内海の夏季高水温化と貧栄養化。竹原港の潮位・干満リズムと連動しながら、沿岸漁業や藻場（アマモ場）再生、ブルーカーボン創出に向けた地域循環型プロジェクトが進行中。
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
   </div>
 
   <!-- 手動更新トリガー用モーダル -->
@@ -6533,6 +7139,315 @@
     }
 
     // ==========================================================================
+    
+    // ==========================================================================
+    // Section M-JS: Micro Dashboard Controller & Charts
+    // ==========================================================================
+    const EMBEDDED_MICRO_PULSE = {"metadata": {"harvest_timestamp": "2026-11-08 07:30:00 JST", "target_city": "広島県竹原市 (Takehara City, Hiroshima)", "target_pref": "広島県 (Hiroshima Prefecture)", "coordinates": {"lat": 34.3417, "lon": 132.9108}, "estat_app_id": "34281099c0abfc74ba0ceab269dc433b620ebf67"}, "realtime_micro": {"calendar": {"date_iso": "2026-11-08", "wareki": "令和8年11月8日 (日曜日)", "lunar_calendar": "旧暦 令和8年9月29日", "rokuyo": "大安 (Taian)", "rokuyo_desc": "大いに安し。万事進んで吉。旅行・移転・開業・婚姻など万事に良し。", "sekki_24": "立冬 (Ritto)", "sekki_desc": "冬の気配が立ち始める日。秋が極まり、朝夕の冷え込みが深まる季節の節目。", "ko_72": "山茶始開 (つばきはじめてひらく)", "ko_desc": "ツバキやサザンカの花が咲き始め、初冬の訪れを告げる候。", "eto_year": "丙午 (ひのえうま)", "eto_day": "丙辰 (ひのえたつ)", "kyusei": "四緑木星"}, "weather": {"source": "Open-Meteo & 広島地方気象台 JMA", "station": "竹原市役所 (北緯34.34° 東経132.91°)", "observed_time": "2026-11-08T07:30", "temperature": 9.3, "apparent_temperature": 6.9, "humidity": 77, "pressure_hpa": 1033.3, "wind_speed_kmh": 8.8, "wind_direction_deg": 9, "wind_cardinal": "北北東", "precipitation_mm": 0.0, "condition": "晴れ（秋晴れ・高気圧圏内、午後次第に曇り）", "today_max_temp": 16.1, "today_min_temp": 8.5, "uv_index_max": 4.35, "jma_overview": "中国地方は高気圧に覆われておおむね晴れています。８日の広島県は高気圧に覆われて晴れますが、気圧の谷や湿った空気の影響で午後は次第に曇るでしょう。９日は雨が降る見込みです。"}, "astronomy": {"solar_noon_time": "11:52", "solar_noon_altitude_deg": 39.36, "solar_declination_deg": -16.3, "sunrise_time": "06:34", "sunset_time": "17:10", "daylight_hours": 10.61, "current_elevation_deg": 9.76, "current_azimuth_deg": 117.54}, "tide": {"port": "竹原港 (広島県竹原市)", "tide_type": "若潮", "tide_desc": "長潮を経て再び潮の干満差が大きくなり始める再生の潮。", "moon_age": 28.4, "events": [{"type": "干潮", "time": "03:25", "level_cm": 100}, {"type": "満潮", "time": "09:42", "level_cm": 265}, {"type": "干潮", "time": "15:58", "level_cm": 110}, {"type": "満潮", "time": "22:15", "level_cm": 280}], "hourly_curve": [{"hour": "00:00", "tide_cm": 207.4}, {"hour": "01:00", "tide_cm": 162.4}, {"hour": "02:00", "tide_cm": 124.4}, {"hour": "03:00", "tide_cm": 102.8}, {"hour": "04:00", "tide_cm": 103.0}, {"hour": "05:00", "tide_cm": 125.0}, {"hour": "06:00", "tide_cm": 163.3}, {"hour": "07:00", "tide_cm": 208.3}, {"hour": "08:00", "tide_cm": 248.7}, {"hour": "09:00", "tide_cm": 274.4}, {"hour": "10:00", "tide_cm": 279.0}, {"hour": "11:00", "tide_cm": 261.2}, {"hour": "12:00", "tide_cm": 225.6}, {"hour": "13:00", "tide_cm": 181.1}, {"hour": "14:00", "tide_cm": 138.8}, {"hour": "15:00", "tide_cm": 109.4}, {"hour": "16:00", "tide_cm": 100.1}, {"hour": "17:00", "tide_cm": 113.3}, {"hour": "18:00", "tide_cm": 145.8}, {"hour": "19:00", "tide_cm": 189.3}, {"hour": "20:00", "tide_cm": 233.0}, {"hour": "21:00", "tide_cm": 265.9}, {"hour": "22:00", "tide_cm": 279.8}, {"hour": "23:00", "tide_cm": 271.2}]}, "city_council": {"council_name": "広島県竹原市議会", "seats_total": 14, "current_session": "令和8年 第3回定例会（閉会・審議完了） / 次期：第4回定例会（12月開会予定）", "latest_agenda": [{"date": "2026年10月", "title": "令和7年度 竹原市一般会計・特別会計歳入歳出決算認定", "status": "原案可決・認定"}, {"date": "2026年10月", "title": "竹原観光まちづくり機構および地域ブランド高付加価値化推進に関する補正予算", "status": "可決"}, {"date": "2026年10月", "title": "ゼロカーボンシティ推進条例および防災減災インフラ整備事業", "status": "可決"}], "key_issues": ["急速な少子高齢化への対応と持続可能なコンパクトシティ形成", "重要伝統的建造物群保存地区と大久野島（ウサギ島）の観光インバウンド・ブランド戦略", "三井金属鉱業・今治造船等のものづくり産業と脱炭素エネルギー転換"]}}, "takehara_city_stats": {"人口・世帯": {"A1101_総人口": {"indicator_code": "A1101", "indicator_name": "A1101_総人口", "unit": "人", "time_series": [{"time": "1980100000", "year": "1980", "value": 38579.0}, {"time": "1985100000", "year": "1985", "value": 37239.0}, {"time": "1990100000", "year": "1990", "value": 32640.0}, {"time": "1995100000", "year": "1995", "value": 30300.0}, {"time": "2000100000", "year": "2000", "value": 28187.0}, {"time": "2005100000", "year": "2005", "value": 26677.0}]}, "A110101_総人口（男）": {"indicator_code": "A110101", "indicator_name": "A110101_総人口（男）", "unit": "人", "time_series": [{"time": "2000100000", "year": "2000", "value": 13394.0}, {"time": "2005100000", "year": "2005", "value": 12783.0}]}, "A110102_総人口（女）": {"indicator_code": "A110102", "indicator_name": "A110102_総人口（女）", "unit": "人", "time_series": [{"time": "2000100000", "year": "2000", "value": 14793.0}, {"time": "2005100000", "year": "2005", "value": 13894.0}]}, "A1102_日本人人口": {"indicator_code": "A1102", "indicator_name": "A1102_日本人人口", "unit": "人", "time_series": [{"time": "2000100000", "year": "2000", "value": 28055.0}, {"time": "2005100000", "year": "2005", "value": 26335.0}]}, "A110201_日本人人口（男）": {"indicator_code": "A110201", "indicator_name": "A110201_日本人人口（男）", "unit": "人", "time_series": [{"time": "2000100000", "year": "2000", "value": 13300.0}, {"time": "2005100000", "year": "2005", "value": 12534.0}]}, "A110202_日本人人口（女）": {"indicator_code": "A110202", "indicator_name": "A110202_日本人人口（女）", "unit": "人", "time_series": [{"time": "2000100000", "year": "2000", "value": 14755.0}, {"time": "2005100000", "year": "2005", "value": 13801.0}]}, "A1301_15歳未満人口": {"indicator_code": "A1301", "indicator_name": "A1301_15歳未満人口", "unit": "人", "time_series": [{"time": "1980100000", "year": "1980", "value": 8913.0}, {"time": "1985100000", "year": "1985", "value": 7975.0}, {"time": "1990100000", "year": "1990", "value": 5600.0}, {"time": "1995100000", "year": "1995", "value": 4282.0}, {"time": "2000100000", "year": "2000", "value": 3207.0}, {"time": "2005100000", "year": "2005", "value": 2704.0}]}, "A130101_15歳未満人口（男）": {"indicator_code": "A130101", "indicator_name": "A130101_15歳未満人口（男）", "unit": "人", "time_series": [{"time": "2000100000", "year": "2000", "value": 1695.0}, {"time": "2005100000", "year": "2005", "value": 1392.0}]}, "A130102_15歳未満人口（女）": {"indicator_code": "A130102", "indicator_name": "A130102_15歳未満人口（女）", "unit": "人", "time_series": [{"time": "2000100000", "year": "2000", "value": 1512.0}, {"time": "2005100000", "year": "2005", "value": 1312.0}]}, "A1302_15～64歳人口": {"indicator_code": "A1302", "indicator_name": "A1302_15～64歳人口", "unit": "人", "time_series": [{"time": "1980100000", "year": "1980", "value": 24926.0}, {"time": "1985100000", "year": "1985", "value": 23861.0}, {"time": "1990100000", "year": "1990", "value": 20751.0}, {"time": "1995100000", "year": "1995", "value": 18824.0}, {"time": "2000100000", "year": "2000", "value": 17102.0}, {"time": "2005100000", "year": "2005", "value": 15546.0}]}, "A130201_15～64歳人口（男）": {"indicator_code": "A130201", "indicator_name": "A130201_15～64歳人口（男）", "unit": "人", "time_series": [{"time": "2000100000", "year": "2000", "value": 8470.0}, {"time": "2005100000", "year": "2005", "value": 7923.0}]}, "A130202_15～64歳人口（女）": {"indicator_code": "A130202", "indicator_name": "A130202_15～64歳人口（女）", "unit": "人", "time_series": [{"time": "2000100000", "year": "2000", "value": 8632.0}, {"time": "2005100000", "year": "2005", "value": 7623.0}]}, "A1303_65歳以上人口": {"indicator_code": "A1303", "indicator_name": "A1303_65歳以上人口", "unit": "人", "time_series": [{"time": "1980100000", "year": "1980", "value": 4740.0}, {"time": "1985100000", "year": "1985", "value": 5403.0}, {"time": "1990100000", "year": "1990", "value": 6289.0}, {"time": "1995100000", "year": "1995", "value": 7194.0}, {"time": "2000100000", "year": "2000", "value": 7878.0}, {"time": "2005100000", "year": "2005", "value": 8374.0}]}, "A130301_65歳以上人口（男）": {"indicator_code": "A130301", "indicator_name": "A130301_65歳以上人口（男）", "unit": "人", "time_series": [{"time": "2000100000", "year": "2000", "value": 3229.0}, {"time": "2005100000", "year": "2005", "value": 3434.0}]}, "A130302_65歳以上人口（女）": {"indicator_code": "A130302", "indicator_name": "A130302_65歳以上人口（女）", "unit": "人", "time_series": [{"time": "2000100000", "year": "2000", "value": 4649.0}, {"time": "2005100000", "year": "2005", "value": 4940.0}]}, "A1401_3歳人口": {"indicator_code": "A1401", "indicator_name": "A1401_3歳人口", "unit": "人", "time_series": [{"time": "2000100000", "year": "2000", "value": 183.0}, {"time": "2005100000", "year": "2005", "value": 156.0}]}, "A140101_3歳人口（男）": {"indicator_code": "A140101", "indicator_name": "A140101_3歳人口（男）", "unit": "人", "time_series": [{"time": "2000100000", "year": "2000", "value": 89.0}, {"time": "2005100000", "year": "2005", "value": 75.0}]}, "A140102_3歳人口（女）": {"indicator_code": "A140102", "indicator_name": "A140102_3歳人口（女）", "unit": "人", "time_series": [{"time": "2000100000", "year": "2000", "value": 94.0}, {"time": "2005100000", "year": "2005", "value": 81.0}]}, "A1402_4歳人口": {"indicator_code": "A1402", "indicator_name": "A1402_4歳人口", "unit": "人", "time_series": [{"time": "2000100000", "year": "2000", "value": 180.0}, {"time": "2005100000", "year": "2005", "value": 168.0}]}, "A140201_4歳人口（男）": {"indicator_code": "A140201", "indicator_name": "A140201_4歳人口（男）", "unit": "人", "time_series": [{"time": "2000100000", "year": "2000", "value": 94.0}, {"time": "2005100000", "year": "2005", "value": 93.0}]}, "A140202_4歳人口（女）": {"indicator_code": "A140202", "indicator_name": "A140202_4歳人口（女）", "unit": "人", "time_series": [{"time": "2000100000", "year": "2000", "value": 86.0}, {"time": "2005100000", "year": "2005", "value": 75.0}]}, "A1403_5歳人口": {"indicator_code": "A1403", "indicator_name": "A1403_5歳人口", "unit": "人", "time_series": [{"time": "2000100000", "year": "2000", "value": 198.0}, {"time": "2005100000", "year": "2005", "value": 165.0}]}}, "自然環境": {"B1101_総面積（北方地域及び竹島を除く）": {"indicator_code": "B1101", "indicator_name": "B1101_総面積（北方地域及び竹島を除く）", "unit": "ｈａ", "time_series": [{"time": "1981100000", "year": "1981", "value": 3939.0}, {"time": "1982100000", "year": "1982", "value": 3955.0}, {"time": "1983100000", "year": "1983", "value": 3955.0}, {"time": "1984100000", "year": "1984", "value": 3957.0}, {"time": "1985100000", "year": "1985", "value": 3957.0}, {"time": "1986100000", "year": "1986", "value": 3957.0}, {"time": "1987100000", "year": "1987", "value": 3959.0}, {"time": "1988100000", "year": "1988", "value": 3975.0}, {"time": "1989100000", "year": "1989", "value": 3975.0}, {"time": "1990100000", "year": "1990", "value": 3975.0}, {"time": "1991100000", "year": "1991", "value": 3975.0}, {"time": "1992100000", "year": "1992", "value": 3975.0}, {"time": "1993100000", "year": "1993", "value": 3976.0}, {"time": "1994100000", "year": "1994", "value": 3976.0}, {"time": "1995100000", "year": "1995", "value": 3976.0}, {"time": "1996100000", "year": "1996", "value": 3976.0}, {"time": "1997100000", "year": "1997", "value": 3976.0}, {"time": "1998100000", "year": "1998", "value": 3976.0}, {"time": "1999100000", "year": "1999", "value": 3976.0}, {"time": "2000100000", "year": "2000", "value": 3976.0}, {"time": "2001100000", "year": "2001", "value": 3976.0}, {"time": "2002100000", "year": "2002", "value": 3976.0}, {"time": "2003100000", "year": "2003", "value": 3976.0}, {"time": "2004100000", "year": "2004", "value": 3976.0}, {"time": "2005100000", "year": "2005", "value": 3976.0}]}, "B1102_総面積（北方地域及び竹島を含む）": {"indicator_code": "B1102", "indicator_name": "B1102_総面積（北方地域及び竹島を含む）", "unit": "ｈａ", "time_series": [{"time": "2000100000", "year": "2000", "value": 3976.0}, {"time": "2001100000", "year": "2001", "value": 3976.0}, {"time": "2002100000", "year": "2002", "value": 3976.0}, {"time": "2003100000", "year": "2003", "value": 3976.0}, {"time": "2004100000", "year": "2004", "value": 3976.0}, {"time": "2005100000", "year": "2005", "value": 3976.0}]}, "B1103_可住地面積": {"indicator_code": "B1103", "indicator_name": "B1103_可住地面積", "unit": "ｈａ", "time_series": [{"time": "1981100000", "year": "1981", "value": 2640.0}, {"time": "1982100000", "year": "1982", "value": 2656.0}, {"time": "1983100000", "year": "1983", "value": 2678.0}, {"time": "1984100000", "year": "1984", "value": 2680.0}, {"time": "1985100000", "year": "1985", "value": 2680.0}, {"time": "1986100000", "year": "1986", "value": 2680.0}, {"time": "1987100000", "year": "1987", "value": 2682.0}, {"time": "1988100000", "year": "1988", "value": 2698.0}, {"time": "1989100000", "year": "1989", "value": 2698.0}, {"time": "1990100000", "year": "1990", "value": 2654.0}, {"time": "1991100000", "year": "1991", "value": 2654.0}, {"time": "1992100000", "year": "1992", "value": 2654.0}, {"time": "1993100000", "year": "1993", "value": 2655.0}, {"time": "1994100000", "year": "1994", "value": 2655.0}, {"time": "1995100000", "year": "1995", "value": 2655.0}, {"time": "1996100000", "year": "1996", "value": 2655.0}, {"time": "1997100000", "year": "1997", "value": 2655.0}, {"time": "1998100000", "year": "1998", "value": 2655.0}, {"time": "1999100000", "year": "1999", "value": 2655.0}, {"time": "2000100000", "year": "2000", "value": 2614.0}, {"time": "2001100000", "year": "2001", "value": 2614.0}, {"time": "2002100000", "year": "2002", "value": 2614.0}, {"time": "2003100000", "year": "2003", "value": 2614.0}, {"time": "2004100000", "year": "2004", "value": 2614.0}, {"time": "2005100000", "year": "2005", "value": 2614.0}]}, "B1104_主要湖沼面積": {"indicator_code": "B1104", "indicator_name": "B1104_主要湖沼面積", "unit": "ｈａ", "time_series": [{"time": "1990100000", "year": "1990", "value": 0.0}, {"time": "1991100000", "year": "1991", "value": 0.0}, {"time": "1992100000", "year": "1992", "value": 0.0}, {"time": "1993100000", "year": "1993", "value": 0.0}]}}, "経済基盤": {"C120110_課税対象所得": {"indicator_code": "C120110", "indicator_name": "C120110_課税対象所得", "unit": "千円", "time_series": [{"time": "1985100000", "year": "1985", "value": 27064018.0}, {"time": "1986100000", "year": "1986", "value": 26622928.0}, {"time": "1987100000", "year": "1987", "value": 22911523.0}, {"time": "1988100000", "year": "1988", "value": 19361377.0}, {"time": "1989100000", "year": "1989", "value": 21575132.0}, {"time": "1990100000", "year": "1990", "value": 24333437.0}, {"time": "1991100000", "year": "1991", "value": 29513259.0}, {"time": "1992100000", "year": "1992", "value": 32194222.0}, {"time": "1993100000", "year": "1993", "value": 33325800.0}, {"time": "1994100000", "year": "1994", "value": 33874000.0}, {"time": "1995100000", "year": "1995", "value": 33427912.0}, {"time": "1996100000", "year": "1996", "value": 33893565.0}, {"time": "1997100000", "year": "1997", "value": 34653390.0}, {"time": "1998100000", "year": "1998", "value": 35352635.0}, {"time": "1999100000", "year": "1999", "value": 34265796.0}, {"time": "2000100000", "year": "2000", "value": 32396718.0}, {"time": "2001100000", "year": "2001", "value": 30844142.0}, {"time": "2002100000", "year": "2002", "value": 30698379.0}, {"time": "2003100000", "year": "2003", "value": 29680396.0}, {"time": "2004100000", "year": "2004", "value": 28923629.0}, {"time": "2005100000", "year": "2005", "value": 29396890.0}]}, "C120120_納税義務者数（所得割）": {"indicator_code": "C120120", "indicator_name": "C120120_納税義務者数（所得割）", "unit": "人", "time_series": [{"time": "1985100000", "year": "1985", "value": 11908.0}, {"time": "1986100000", "year": "1986", "value": 11606.0}, {"time": "1987100000", "year": "1987", "value": 10384.0}, {"time": "1988100000", "year": "1988", "value": 8844.0}, {"time": "1989100000", "year": "1989", "value": 9619.0}, {"time": "1990100000", "year": "1990", "value": 9682.0}, {"time": "1991100000", "year": "1991", "value": 10460.0}, {"time": "1992100000", "year": "1992", "value": 10781.0}, {"time": "1993100000", "year": "1993", "value": 11134.0}, {"time": "1994100000", "year": "1994", "value": 11105.0}, {"time": "1995100000", "year": "1995", "value": 10947.0}, {"time": "1996100000", "year": "1996", "value": 11122.0}, {"time": "1997100000", "year": "1997", "value": 11229.0}, {"time": "1998100000", "year": "1998", "value": 11182.0}, {"time": "1999100000", "year": "1999", "value": 11013.0}, {"time": "2000100000", "year": "2000", "value": 10636.0}, {"time": "2001100000", "year": "2001", "value": 10298.0}, {"time": "2002100000", "year": "2002", "value": 10191.0}, {"time": "2003100000", "year": "2003", "value": 9924.0}, {"time": "2004100000", "year": "2004", "value": 9795.0}, {"time": "2005100000", "year": "2005", "value": 10183.0}]}, "C2101_事業所数（事業所・企業統計調査結果）": {"indicator_code": "C2101", "indicator_name": "C2101_事業所数（事業所・企業統計調査結果）", "unit": "所", "time_series": [{"time": "1981100000", "year": "1981", "value": 2210.0}, {"time": "1986100000", "year": "1986", "value": 2185.0}, {"time": "1991100000", "year": "1991", "value": 2120.0}, {"time": "1996100000", "year": "1996", "value": 2024.0}, {"time": "2001100000", "year": "2001", "value": 1802.0}]}, "C2104_第2次産業事業所数（事業所・企業統計調査結果）": {"indicator_code": "C2104", "indicator_name": "C2104_第2次産業事業所数（事業所・企業統計調査結果）", "unit": "所", "time_series": [{"time": "1981100000", "year": "1981", "value": 348.0}, {"time": "1986100000", "year": "1986", "value": 354.0}, {"time": "1991100000", "year": "1991", "value": 380.0}, {"time": "1996100000", "year": "1996", "value": 363.0}, {"time": "2001100000", "year": "2001", "value": 318.0}]}, "C2105_第3次産業事業所数（事業所・企業統計調査結果）": {"indicator_code": "C2105", "indicator_name": "C2105_第3次産業事業所数（事業所・企業統計調査結果）", "unit": "所", "time_series": [{"time": "1981100000", "year": "1981", "value": 1859.0}, {"time": "1986100000", "year": "1986", "value": 1826.0}, {"time": "1991100000", "year": "1991", "value": 1736.0}, {"time": "1996100000", "year": "1996", "value": 1658.0}, {"time": "2001100000", "year": "2001", "value": 1482.0}]}, "C2201_従業者数（事業所・企業統計調査結果）": {"indicator_code": "C2201", "indicator_name": "C2201_従業者数（事業所・企業統計調査結果）", "unit": "人", "time_series": [{"time": "1981100000", "year": "1981", "value": 17346.0}, {"time": "1986100000", "year": "1986", "value": 14162.0}, {"time": "1991100000", "year": "1991", "value": 13648.0}]}}, "行政基盤・財政": {"D1202_一般行政部門職員数（市区町村）": {"indicator_code": "D1202", "indicator_name": "D1202_一般行政部門職員数（市区町村）", "unit": "人", "time_series": [{"time": "2000100000", "year": "2000", "value": 268.0}, {"time": "2001100000", "year": "2001", "value": 255.0}, {"time": "2002100000", "year": "2002", "value": 255.0}, {"time": "2003100000", "year": "2003", "value": 245.0}, {"time": "2004100000", "year": "2004", "value": 231.0}, {"time": "2005100000", "year": "2005", "value": 214.0}]}, "D2201_財政力指数（市町村財政）": {"indicator_code": "D2201", "indicator_name": "D2201_財政力指数（市町村財政）", "unit": "‐", "time_series": [{"time": "1980100000", "year": "1980", "value": 0.51}, {"time": "1981100000", "year": "1981", "value": 0.49}, {"time": "1982100000", "year": "1982", "value": 0.51}, {"time": "1983100000", "year": "1983", "value": 0.57}, {"time": "1984100000", "year": "1984", "value": 0.61}, {"time": "1985100000", "year": "1985", "value": 0.62}, {"time": "1986100000", "year": "1986", "value": 0.59}, {"time": "1987100000", "year": "1987", "value": 0.55}, {"time": "1988100000", "year": "1988", "value": 0.5}, {"time": "1989100000", "year": "1989", "value": 0.45}, {"time": "1990100000", "year": "1990", "value": 0.42}, {"time": "1991100000", "year": "1991", "value": 0.42}, {"time": "1992100000", "year": "1992", "value": 0.44}, {"time": "1993100000", "year": "1993", "value": 0.46}, {"time": "1994100000", "year": "1994", "value": 0.48}, {"time": "1995100000", "year": "1995", "value": 0.49}, {"time": "1996100000", "year": "1996", "value": 0.48}, {"time": "1997100000", "year": "1997", "value": 0.47}, {"time": "1998100000", "year": "1998", "value": 0.46}, {"time": "1999100000", "year": "1999", "value": 0.45}, {"time": "2000100000", "year": "2000", "value": 0.44}, {"time": "2001100000", "year": "2001", "value": 0.43}, {"time": "2002100000", "year": "2002", "value": 0.44}, {"time": "2003100000", "year": "2003", "value": 0.45}, {"time": "2004100000", "year": "2004", "value": 0.46}]}, "D2202_実質収支比率（市町村財政）": {"indicator_code": "D2202", "indicator_name": "D2202_実質収支比率（市町村財政）", "unit": "％", "time_series": [{"time": "1980100000", "year": "1980", "value": 2.8}, {"time": "1981100000", "year": "1981", "value": 3.6}, {"time": "1982100000", "year": "1982", "value": 0.6}, {"time": "1983100000", "year": "1983", "value": 1.5}, {"time": "1984100000", "year": "1984", "value": -1.1}, {"time": "1985100000", "year": "1985", "value": 4.2}, {"time": "1986100000", "year": "1986", "value": 2.8}, {"time": "1987100000", "year": "1987", "value": 5.2}, {"time": "1988100000", "year": "1988", "value": 4.0}, {"time": "1989100000", "year": "1989", "value": 3.3}, {"time": "1990100000", "year": "1990", "value": 3.3}, {"time": "1991100000", "year": "1991", "value": 2.9}, {"time": "1992100000", "year": "1992", "value": 2.6}, {"time": "1993100000", "year": "1993", "value": 2.5}, {"time": "1994100000", "year": "1994", "value": 2.4}, {"time": "1995100000", "year": "1995", "value": 2.3}, {"time": "1996100000", "year": "1996", "value": 2.2}, {"time": "1997100000", "year": "1997", "value": 2.1}, {"time": "1998100000", "year": "1998", "value": 2.0}, {"time": "1999100000", "year": "1999", "value": 1.9}, {"time": "2000100000", "year": "2000", "value": 3.4}, {"time": "2001100000", "year": "2001", "value": 3.2}, {"time": "2002100000", "year": "2002", "value": 2.4}, {"time": "2003100000", "year": "2003", "value": 6.8}, {"time": "2004100000", "year": "2004", "value": 5.4}]}, "D2203_経常収支比率（市町村財政）": {"indicator_code": "D2203", "indicator_name": "D2203_経常収支比率（市町村財政）", "unit": "％", "time_series": [{"time": "2000100000", "year": "2000", "value": 93.3}, {"time": "2001100000", "year": "2001", "value": 97.1}, {"time": "2002100000", "year": "2002", "value": 95.6}, {"time": "2003100000", "year": "2003", "value": 94.4}]}}, "教育": {"E1101_幼稚園数": {"indicator_code": "E1101", "indicator_name": "E1101_幼稚園数", "unit": "園", "time_series": [{"time": "1980100000", "year": "1980", "value": 8.0}, {"time": "1981100000", "year": "1981", "value": 8.0}, {"time": "1982100000", "year": "1982", "value": 8.0}, {"time": "1983100000", "year": "1983", "value": 8.0}, {"time": "1984100000", "year": "1984", "value": 8.0}, {"time": "1985100000", "year": "1985", "value": 8.0}, {"time": "1986100000", "year": "1986", "value": 8.0}, {"time": "1987100000", "year": "1987", "value": 8.0}, {"time": "1988100000", "year": "1988", "value": 8.0}, {"time": "1989100000", "year": "1989", "value": 8.0}, {"time": "1990100000", "year": "1990", "value": 8.0}, {"time": "1991100000", "year": "1991", "value": 8.0}, {"time": "1992100000", "year": "1992", "value": 8.0}, {"time": "1993100000", "year": "1993", "value": 8.0}, {"time": "1994100000", "year": "1994", "value": 8.0}, {"time": "1995100000", "year": "1995", "value": 8.0}, {"time": "1996100000", "year": "1996", "value": 8.0}, {"time": "1997100000", "year": "1997", "value": 8.0}, {"time": "1998100000", "year": "1998", "value": 7.0}, {"time": "1999100000", "year": "1999", "value": 7.0}, {"time": "2000100000", "year": "2000", "value": 7.0}, {"time": "2001100000", "year": "2001", "value": 7.0}, {"time": "2002100000", "year": "2002", "value": 7.0}, {"time": "2003100000", "year": "2003", "value": 7.0}, {"time": "2004100000", "year": "2004", "value": 7.0}, {"time": "2005100000", "year": "2005", "value": 7.0}]}, "E1501_幼稚園在園者数": {"indicator_code": "E1501", "indicator_name": "E1501_幼稚園在園者数", "unit": "人", "time_series": [{"time": "1980100000", "year": "1980", "value": 1016.0}, {"time": "1981100000", "year": "1981", "value": 836.0}, {"time": "1982100000", "year": "1982", "value": 814.0}, {"time": "1983100000", "year": "1983", "value": 836.0}, {"time": "1984100000", "year": "1984", "value": 768.0}, {"time": "1985100000", "year": "1985", "value": 699.0}, {"time": "1986100000", "year": "1986", "value": 702.0}, {"time": "1987100000", "year": "1987", "value": 658.0}, {"time": "1988100000", "year": "1988", "value": 573.0}, {"time": "1989100000", "year": "1989", "value": 543.0}, {"time": "1990100000", "year": "1990", "value": 499.0}, {"time": "1991100000", "year": "1991", "value": 421.0}, {"time": "1992100000", "year": "1992", "value": 341.0}, {"time": "1993100000", "year": "1993", "value": 316.0}, {"time": "1994100000", "year": "1994", "value": 302.0}, {"time": "1995100000", "year": "1995", "value": 279.0}, {"time": "1996100000", "year": "1996", "value": 250.0}, {"time": "1997100000", "year": "1997", "value": 242.0}, {"time": "1998100000", "year": "1998", "value": 222.0}, {"time": "1999100000", "year": "1999", "value": 192.0}, {"time": "2000100000", "year": "2000", "value": 188.0}, {"time": "2001100000", "year": "2001", "value": 173.0}, {"time": "2002100000", "year": "2002", "value": 151.0}, {"time": "2003100000", "year": "2003", "value": 143.0}, {"time": "2004100000", "year": "2004", "value": 122.0}, {"time": "2005100000", "year": "2005", "value": 132.0}]}, "E2101_小学校数": {"indicator_code": "E2101", "indicator_name": "E2101_小学校数", "unit": "校", "time_series": [{"time": "1980100000", "year": "1980", "value": 8.0}, {"time": "1981100000", "year": "1981", "value": 8.0}, {"time": "1982100000", "year": "1982", "value": 8.0}, {"time": "1983100000", "year": "1983", "value": 8.0}, {"time": "1984100000", "year": "1984", "value": 8.0}, {"time": "1985100000", "year": "1985", "value": 8.0}, {"time": "1986100000", "year": "1986", "value": 8.0}, {"time": "1987100000", "year": "1987", "value": 8.0}]}}, "労働": {"F1101_労働力人口": {"indicator_code": "F1101", "indicator_name": "F1101_労働力人口", "unit": "人", "time_series": [{"time": "1980100000", "year": "1980", "value": 17849.0}, {"time": "1985100000", "year": "1985", "value": 17196.0}, {"time": "1990100000", "year": "1990", "value": 14878.0}, {"time": "1995100000", "year": "1995", "value": 14541.0}, {"time": "2000100000", "year": "2000", "value": 13525.0}, {"time": "2005100000", "year": "2005", "value": 13121.0}]}, "F110101_労働力人口（男）": {"indicator_code": "F110101", "indicator_name": "F110101_労働力人口（男）", "unit": "人", "time_series": [{"time": "2000100000", "year": "2000", "value": 7920.0}, {"time": "2005100000", "year": "2005", "value": 7813.0}]}, "F110102_労働力人口（女）": {"indicator_code": "F110102", "indicator_name": "F110102_労働力人口（女）", "unit": "人", "time_series": [{"time": "2000100000", "year": "2000", "value": 5605.0}, {"time": "2005100000", "year": "2005", "value": 5308.0}]}, "F1102_就業者数": {"indicator_code": "F1102", "indicator_name": "F1102_就業者数", "unit": "人", "time_series": [{"time": "1980100000", "year": "1980", "value": 17300.0}, {"time": "1985100000", "year": "1985", "value": 16381.0}, {"time": "1990100000", "year": "1990", "value": 14310.0}, {"time": "1995100000", "year": "1995", "value": 13789.0}, {"time": "2000100000", "year": "2000", "value": 12823.0}, {"time": "2005100000", "year": "2005", "value": 12424.0}]}, "F110201_就業者数（男）": {"indicator_code": "F110201", "indicator_name": "F110201_就業者数（男）", "unit": "人", "time_series": [{"time": "2000100000", "year": "2000", "value": 7398.0}, {"time": "2005100000", "year": "2005", "value": 7317.0}]}, "F110202_就業者数（女）": {"indicator_code": "F110202", "indicator_name": "F110202_就業者数（女）", "unit": "人", "time_series": [{"time": "2000100000", "year": "2000", "value": 5425.0}, {"time": "2005100000", "year": "2005", "value": 5107.0}]}, "F1103_就業者数・主に仕事": {"indicator_code": "F1103", "indicator_name": "F1103_就業者数・主に仕事", "unit": "人", "time_series": [{"time": "2000100000", "year": "2000", "value": 10550.0}, {"time": "2005100000", "year": "2005", "value": 10064.0}]}, "F1104_就業者数・家事のほか仕事": {"indicator_code": "F1104", "indicator_name": "F1104_就業者数・家事のほか仕事", "unit": "人", "time_series": [{"time": "2000100000", "year": "2000", "value": 2015.0}, {"time": "2005100000", "year": "2005", "value": 2074.0}]}, "F1105_就業者数・通学のかたわら仕事": {"indicator_code": "F1105", "indicator_name": "F1105_就業者数・通学のかたわら仕事", "unit": "人", "time_series": [{"time": "2000100000", "year": "2000", "value": 55.0}, {"time": "2005100000", "year": "2005", "value": 70.0}]}, "F1106_就業者数・休業者": {"indicator_code": "F1106", "indicator_name": "F1106_就業者数・休業者", "unit": "人", "time_series": [{"time": "2000100000", "year": "2000", "value": 203.0}, {"time": "2005100000", "year": "2005", "value": 216.0}]}, "F1107_完全失業者数": {"indicator_code": "F1107", "indicator_name": "F1107_完全失業者数", "unit": "人", "time_series": [{"time": "1980100000", "year": "1980", "value": 549.0}, {"time": "1985100000", "year": "1985", "value": 815.0}, {"time": "1990100000", "year": "1990", "value": 568.0}, {"time": "1995100000", "year": "1995", "value": 752.0}, {"time": "2000100000", "year": "2000", "value": 702.0}, {"time": "2005100000", "year": "2005", "value": 697.0}]}, "F110701_完全失業者数（男）": {"indicator_code": "F110701", "indicator_name": "F110701_完全失業者数（男）", "unit": "人", "time_series": [{"time": "2000100000", "year": "2000", "value": 522.0}, {"time": "2005100000", "year": "2005", "value": 496.0}]}, "F110702_完全失業者数（女）": {"indicator_code": "F110702", "indicator_name": "F110702_完全失業者数（女）", "unit": "人", "time_series": [{"time": "2000100000", "year": "2000", "value": 180.0}, {"time": "2005100000", "year": "2005", "value": 201.0}]}, "F1108_非労働力人口": {"indicator_code": "F1108", "indicator_name": "F1108_非労働力人口", "unit": "人", "time_series": [{"time": "2000100000", "year": "2000", "value": 11442.0}, {"time": "2005100000", "year": "2005", "value": 10779.0}]}, "F110801_非労働力人口（男）": {"indicator_code": "F110801", "indicator_name": "F110801_非労働力人口（男）", "unit": "人", "time_series": [{"time": "2000100000", "year": "2000", "value": 3774.0}, {"time": "2005100000", "year": "2005", "value": 3533.0}]}, "F110802_非労働力人口（女）": {"indicator_code": "F110802", "indicator_name": "F110802_非労働力人口（女）", "unit": "人", "time_series": [{"time": "2000100000", "year": "2000", "value": 7668.0}, {"time": "2005100000", "year": "2005", "value": 7246.0}]}, "F1109_非労働力人口・家事": {"indicator_code": "F1109", "indicator_name": "F1109_非労働力人口・家事", "unit": "人", "time_series": [{"time": "2000100000", "year": "2000", "value": 5845.0}, {"time": "2005100000", "year": "2005", "value": 4799.0}]}, "F1110_非労働力人口・通学": {"indicator_code": "F1110", "indicator_name": "F1110_非労働力人口・通学", "unit": "人", "time_series": [{"time": "2000100000", "year": "2000", "value": 1305.0}, {"time": "2005100000", "year": "2005", "value": 936.0}]}, "F1111_非労働力人口・その他": {"indicator_code": "F1111", "indicator_name": "F1111_非労働力人口・その他", "unit": "人", "time_series": [{"time": "2000100000", "year": "2000", "value": 4292.0}, {"time": "2005100000", "year": "2005", "value": 5044.0}]}, "F1301_農林漁業者": {"indicator_code": "F1301", "indicator_name": "F1301_農林漁業者", "unit": "人", "time_series": [{"time": "2000100000", "year": "2000", "value": 1170.0}, {"time": "2005100000", "year": "2005", "value": 1040.0}]}, "F1302_農林漁業雇用者": {"indicator_code": "F1302", "indicator_name": "F1302_農林漁業雇用者", "unit": "人", "time_series": [{"time": "2000100000", "year": "2000", "value": 50.0}, {"time": "2005100000", "year": "2005", "value": 55.0}]}, "F1303_会社団体役員": {"indicator_code": "F1303", "indicator_name": "F1303_会社団体役員", "unit": "人", "time_series": [{"time": "2000100000", "year": "2000", "value": 256.0}, {"time": "2005100000", "year": "2005", "value": 220.0}]}, "F1304_商店主": {"indicator_code": "F1304", "indicator_name": "F1304_商店主", "unit": "人", "time_series": [{"time": "2000100000", "year": "2000", "value": 370.0}, {"time": "2005100000", "year": "2005", "value": 310.0}]}, "F1305_工場主": {"indicator_code": "F1305", "indicator_name": "F1305_工場主", "unit": "人", "time_series": [{"time": "2000100000", "year": "2000", "value": 140.0}, {"time": "2005100000", "year": "2005", "value": 180.0}]}}, "居住": {"H1100_総住宅数": {"indicator_code": "H1100", "indicator_name": "H1100_総住宅数", "unit": "戸", "time_series": [{"time": "2003100000", "year": "2003", "value": 12780.0}]}, "H1101_居住世帯あり住宅数": {"indicator_code": "H1101", "indicator_name": "H1101_居住世帯あり住宅数", "unit": "戸", "time_series": [{"time": "1983100000", "year": "1983", "value": 11140.0}, {"time": "1988100000", "year": "1988", "value": 11040.0}, {"time": "1993100000", "year": "1993", "value": 10860.0}, {"time": "1998100000", "year": "1998", "value": 10740.0}, {"time": "2003100000", "year": "2003", "value": 10790.0}]}, "H1102_居住世帯なし住宅数": {"indicator_code": "H1102", "indicator_name": "H1102_居住世帯なし住宅数", "unit": "戸", "time_series": [{"time": "2003100000", "year": "2003", "value": 1990.0}]}, "H110201_一時現在者のみ住宅数": {"indicator_code": "H110201", "indicator_name": "H110201_一時現在者のみ住宅数", "unit": "戸", "time_series": [{"time": "2003100000", "year": "2003", "value": 30.0}]}, "H110202_空き家数": {"indicator_code": "H110202", "indicator_name": "H110202_空き家数", "unit": "戸", "time_series": [{"time": "2003100000", "year": "2003", "value": 1940.0}]}, "H110203_建築中住宅数": {"indicator_code": "H110203", "indicator_name": "H110203_建築中住宅数", "unit": "戸", "time_series": [{"time": "2003100000", "year": "2003", "value": 10.0}]}, "H1201_専用住宅数": {"indicator_code": "H1201", "indicator_name": "H1201_専用住宅数", "unit": "戸", "time_series": [{"time": "2003100000", "year": "2003", "value": 9960.0}]}, "H1203_店舗その他の併用住宅数": {"indicator_code": "H1203", "indicator_name": "H1203_店舗その他の併用住宅数", "unit": "戸", "time_series": [{"time": "2003100000", "year": "2003", "value": 830.0}]}, "H1310_持ち家数": {"indicator_code": "H1310", "indicator_name": "H1310_持ち家数", "unit": "戸", "time_series": [{"time": "1983100000", "year": "1983", "value": 7660.0}, {"time": "1988100000", "year": "1988", "value": 7860.0}, {"time": "1993100000", "year": "1993", "value": 7850.0}, {"time": "1998100000", "year": "1998", "value": 7990.0}, {"time": "2003100000", "year": "2003", "value": 8180.0}]}, "H1320_借家数": {"indicator_code": "H1320", "indicator_name": "H1320_借家数", "unit": "戸", "time_series": [{"time": "1983100000", "year": "1983", "value": 3490.0}, {"time": "1988100000", "year": "1988", "value": 3190.0}, {"time": "1993100000", "year": "1993", "value": 3010.0}, {"time": "1998100000", "year": "1998", "value": 2720.0}, {"time": "2003100000", "year": "2003", "value": 2600.0}]}, "H1321_公営・都市再生機構（ＵＲ）・公社の借家数": {"indicator_code": "H1321", "indicator_name": "H1321_公営・都市再生機構（ＵＲ）・公社の借家数", "unit": "戸", "time_series": [{"time": "2003100000", "year": "2003", "value": 540.0}]}, "H132101_公営の借家数": {"indicator_code": "H132101", "indicator_name": "H132101_公営の借家数", "unit": "戸", "time_series": [{"time": "2003100000", "year": "2003", "value": 400.0}]}, "H132102_都市再生機構（ＵＲ）・公社の借家数": {"indicator_code": "H132102", "indicator_name": "H132102_都市再生機構（ＵＲ）・公社の借家数", "unit": "戸", "time_series": [{"time": "2003100000", "year": "2003", "value": 140.0}]}, "H1322_民営借家数": {"indicator_code": "H1322", "indicator_name": "H1322_民営借家数", "unit": "戸", "time_series": [{"time": "2003100000", "year": "2003", "value": 1760.0}]}, "H1323_給与住宅数": {"indicator_code": "H1323", "indicator_name": "H1323_給与住宅数", "unit": "戸", "time_series": [{"time": "2003100000", "year": "2003", "value": 290.0}]}, "H1401_一戸建住宅数": {"indicator_code": "H1401", "indicator_name": "H1401_一戸建住宅数", "unit": "戸", "time_series": [{"time": "2003100000", "year": "2003", "value": 8500.0}]}, "H140101_一戸建住宅数（木造）": {"indicator_code": "H140101", "indicator_name": "H140101_一戸建住宅数（木造）", "unit": "戸", "time_series": [{"time": "2003100000", "year": "2003", "value": 8200.0}]}, "H140102_一戸建住宅数（非木造）": {"indicator_code": "H140102", "indicator_name": "H140102_一戸建住宅数（非木造）", "unit": "戸", "time_series": [{"time": "2003100000", "year": "2003", "value": 300.0}]}, "H1402_長屋建住宅数": {"indicator_code": "H1402", "indicator_name": "H1402_長屋建住宅数", "unit": "戸", "time_series": [{"time": "2003100000", "year": "2003", "value": 1110.0}]}, "H140201_長屋建住宅数（木造）": {"indicator_code": "H140201", "indicator_name": "H140201_長屋建住宅数（木造）", "unit": "戸", "time_series": [{"time": "2003100000", "year": "2003", "value": 1050.0}]}, "H140202_長屋建住宅数（非木造）": {"indicator_code": "H140202", "indicator_name": "H140202_長屋建住宅数（非木造）", "unit": "戸", "time_series": [{"time": "2003100000", "year": "2003", "value": 60.0}]}, "H1403_共同住宅数": {"indicator_code": "H1403", "indicator_name": "H1403_共同住宅数", "unit": "戸", "time_series": [{"time": "2003100000", "year": "2003", "value": 1150.0}]}, "H140301_共同住宅数（木造）": {"indicator_code": "H140301", "indicator_name": "H140301_共同住宅数（木造）", "unit": "戸", "time_series": [{"time": "2003100000", "year": "2003", "value": 210.0}]}, "H140302_共同住宅数（非木造）": {"indicator_code": "H140302", "indicator_name": "H140302_共同住宅数（非木造）", "unit": "戸", "time_series": [{"time": "2003100000", "year": "2003", "value": 940.0}]}, "H1404_その他の建て方住宅数": {"indicator_code": "H1404", "indicator_name": "H1404_その他の建て方住宅数", "unit": "戸", "time_series": [{"time": "2003100000", "year": "2003", "value": 30.0}]}, "H1501_木造住宅数": {"indicator_code": "H1501", "indicator_name": "H1501_木造住宅数", "unit": "戸", "time_series": [{"time": "2003100000", "year": "2003", "value": 9480.0}]}, "H150101_木造（防火木造を除く）住宅数": {"indicator_code": "H150101", "indicator_name": "H150101_木造（防火木造を除く）住宅数", "unit": "戸", "time_series": [{"time": "2003100000", "year": "2003", "value": 7710.0}]}, "H150102_防火木造住宅数": {"indicator_code": "H150102", "indicator_name": "H150102_防火木造住宅数", "unit": "戸", "time_series": [{"time": "2003100000", "year": "2003", "value": 1770.0}]}, "H1502_非木造住宅数": {"indicator_code": "H1502", "indicator_name": "H1502_非木造住宅数", "unit": "戸", "time_series": [{"time": "2003100000", "year": "2003", "value": 1310.0}]}, "H1504_鉄筋・鉄骨コンクリート造住宅数": {"indicator_code": "H1504", "indicator_name": "H1504_鉄筋・鉄骨コンクリート造住宅数", "unit": "戸", "time_series": [{"time": "2003100000", "year": "2003", "value": 1180.0}]}, "H1506_鉄骨造住宅数": {"indicator_code": "H1506", "indicator_name": "H1506_鉄骨造住宅数", "unit": "戸", "time_series": [{"time": "2003100000", "year": "2003", "value": 100.0}]}, "H1604_1951～1960年建築住宅数": {"indicator_code": "H1604", "indicator_name": "H1604_1951～1960年建築住宅数", "unit": "住宅", "time_series": [{"time": "2003100000", "year": "2003", "value": 870.0}]}, "H1605_1961～1970年建築住宅数": {"indicator_code": "H1605", "indicator_name": "H1605_1961～1970年建築住宅数", "unit": "住宅", "time_series": [{"time": "2003100000", "year": "2003", "value": 2180.0}]}, "H1612_1971～1980年建築住宅数": {"indicator_code": "H1612", "indicator_name": "H1612_1971～1980年建築住宅数", "unit": "戸", "time_series": [{"time": "2003100000", "year": "2003", "value": 2380.0}]}, "H1613_1981～1990年建築住宅数": {"indicator_code": "H1613", "indicator_name": "H1613_1981～1990年建築住宅数", "unit": "戸", "time_series": [{"time": "2003100000", "year": "2003", "value": 1510.0}]}, "H1615_1960年以前建築住宅数": {"indicator_code": "H1615", "indicator_name": "H1615_1960年以前建築住宅数", "unit": "住宅", "time_series": [{"time": "2003100000", "year": "2003", "value": 2890.0}]}, "H1616_1970年以前建築住宅数": {"indicator_code": "H1616", "indicator_name": "H1616_1970年以前建築住宅数", "unit": "戸", "time_series": [{"time": "2003100000", "year": "2003", "value": 5070.0}]}, "H1800_着工新設住宅戸数": {"indicator_code": "H1800", "indicator_name": "H1800_着工新設住宅戸数", "unit": "戸・件", "time_series": [{"time": "2000100000", "year": "2000", "value": 128.0}, {"time": "2001100000", "year": "2001", "value": 94.0}, {"time": "2002100000", "year": "2002", "value": 148.0}, {"time": "2003100000", "year": "2003", "value": 112.0}, {"time": "2004100000", "year": "2004", "value": 97.0}, {"time": "2005100000", "year": "2005", "value": 97.0}]}, "H1801_着工新設持家数": {"indicator_code": "H1801", "indicator_name": "H1801_着工新設持家数", "unit": "戸・件", "time_series": [{"time": "2000100000", "year": "2000", "value": 81.0}, {"time": "2001100000", "year": "2001", "value": 73.0}, {"time": "2002100000", "year": "2002", "value": 95.0}, {"time": "2003100000", "year": "2003", "value": 77.0}, {"time": "2004100000", "year": "2004", "value": 63.0}]}}, "健康・医療": {"I5101_病院数": {"indicator_code": "I5101", "indicator_name": "I5101_病院数", "unit": "施設", "time_series": [{"time": "1997100000", "year": "1997", "value": 2.0}, {"time": "1998100000", "year": "1998", "value": 2.0}, {"time": "1999100000", "year": "1999", "value": 2.0}, {"time": "2000100000", "year": "2000", "value": 2.0}, {"time": "2001100000", "year": "2001", "value": 2.0}, {"time": "2002100000", "year": "2002", "value": 2.0}, {"time": "2003100000", "year": "2003", "value": 2.0}, {"time": "2004100000", "year": "2004", "value": 2.0}, {"time": "2005100000", "year": "2005", "value": 2.0}]}, "I510110_精神科病院数": {"indicator_code": "I510110", "indicator_name": "I510110_精神科病院数", "unit": "施設", "time_series": [{"time": "1997100000", "year": "1997", "value": 0.0}, {"time": "1998100000", "year": "1998", "value": 0.0}, {"time": "1999100000", "year": "1999", "value": 0.0}, {"time": "2000100000", "year": "2000", "value": 0.0}, {"time": "2001100000", "year": "2001", "value": 0.0}, {"time": "2002100000", "year": "2002", "value": 0.0}, {"time": "2003100000", "year": "2003", "value": 0.0}, {"time": "2004100000", "year": "2004", "value": 0.0}, {"time": "2005100000", "year": "2005", "value": 0.0}]}, "I510120_一般病院数": {"indicator_code": "I510120", "indicator_name": "I510120_一般病院数", "unit": "施設", "time_series": [{"time": "1980100000", "year": "1980", "value": 1.0}, {"time": "1981100000", "year": "1981", "value": 1.0}, {"time": "1982100000", "year": "1982", "value": 2.0}, {"time": "1983100000", "year": "1983", "value": "-"}, {"time": "1984100000", "year": "1984", "value": "-"}, {"time": "1985100000", "year": "1985", "value": "-"}, {"time": "1986100000", "year": "1986", "value": "-"}, {"time": "1987100000", "year": "1987", "value": 2.0}, {"time": "1988100000", "year": "1988", "value": 2.0}, {"time": "1989100000", "year": "1989", "value": 2.0}, {"time": "1990100000", "year": "1990", "value": 2.0}, {"time": "1991100000", "year": "1991", "value": "-"}, {"time": "1992100000", "year": "1992", "value": 2.0}, {"time": "1993100000", "year": "1993", "value": "-"}, {"time": "1994100000", "year": "1994", "value": 2.0}, {"time": "1995100000", "year": "1995", "value": 2.0}, {"time": "1996100000", "year": "1996", "value": 2.0}, {"time": "1997100000", "year": "1997", "value": 2.0}, {"time": "1998100000", "year": "1998", "value": 2.0}, {"time": "1999100000", "year": "1999", "value": 2.0}, {"time": "2000100000", "year": "2000", "value": 2.0}, {"time": "2001100000", "year": "2001", "value": 2.0}, {"time": "2002100000", "year": "2002", "value": 2.0}, {"time": "2003100000", "year": "2003", "value": 2.0}, {"time": "2004100000", "year": "2004", "value": 2.0}, {"time": "2005100000", "year": "2005", "value": 2.0}]}, "I510150_療養病床を有する病院数": {"indicator_code": "I510150", "indicator_name": "I510150_療養病床を有する病院数", "unit": "施設", "time_series": [{"time": "1996100000", "year": "1996", "value": 0.0}, {"time": "1997100000", "year": "1997", "value": 0.0}, {"time": "1998100000", "year": "1998", "value": 0.0}, {"time": "1999100000", "year": "1999", "value": 0.0}, {"time": "2000100000", "year": "2000", "value": 1.0}, {"time": "2001100000", "year": "2001", "value": 1.0}, {"time": "2002100000", "year": "2002", "value": 1.0}, {"time": "2003100000", "year": "2003", "value": 1.0}, {"time": "2004100000", "year": "2004", "value": 1.0}, {"time": "2005100000", "year": "2005", "value": 1.0}]}, "I5102_一般診療所数": {"indicator_code": "I5102", "indicator_name": "I5102_一般診療所数", "unit": "施設", "time_series": [{"time": "1980100000", "year": "1980", "value": 24.0}, {"time": "1981100000", "year": "1981", "value": 24.0}, {"time": "1982100000", "year": "1982", "value": 23.0}, {"time": "1983100000", "year": "1983", "value": "-"}, {"time": "1984100000", "year": "1984", "value": "-"}, {"time": "1985100000", "year": "1985", "value": "-"}]}}, "福祉・社会保障": {"J2201_保護施設数（詳細票）（医療保護施設を除く）": {"indicator_code": "J2201", "indicator_name": "J2201_保護施設数（詳細票）（医療保護施設を除く）", "unit": "所", "time_series": [{"time": "2000100000", "year": "2000", "value": 0.0}, {"time": "2001100000", "year": "2001", "value": 0.0}, {"time": "2002100000", "year": "2002", "value": 0.0}, {"time": "2003100000", "year": "2003", "value": 0.0}, {"time": "2004100000", "year": "2004", "value": 0.0}, {"time": "2005100000", "year": "2005", "value": 0.0}]}, "J2301_老人福祉施設数（詳細票）": {"indicator_code": "J2301", "indicator_name": "J2301_老人福祉施設数（詳細票）", "unit": "所", "time_series": [{"time": "2000100000", "year": "2000", "value": 5.0}, {"time": "2001100000", "year": "2001", "value": 9.0}, {"time": "2002100000", "year": "2002", "value": 10.0}, {"time": "2003100000", "year": "2003", "value": 11.0}, {"time": "2004100000", "year": "2004", "value": 13.0}, {"time": "2005100000", "year": "2005", "value": 13.0}]}, "J230111_養護老人ホーム数（詳細票）": {"indicator_code": "J230111", "indicator_name": "J230111_養護老人ホーム数（詳細票）", "unit": "所", "time_series": [{"time": "2000100000", "year": "2000", "value": 1.0}, {"time": "2001100000", "year": "2001", "value": 1.0}, {"time": "2002100000", "year": "2002", "value": 1.0}, {"time": "2003100000", "year": "2003", "value": 1.0}, {"time": "2004100000", "year": "2004", "value": 1.0}, {"time": "2005100000", "year": "2005", "value": 1.0}]}, "J230112_養護老人ホーム定員数（詳細票）": {"indicator_code": "J230112", "indicator_name": "J230112_養護老人ホーム定員数（詳細票）", "unit": "人", "time_series": [{"time": "2000100000", "year": "2000", "value": 50.0}, {"time": "2001100000", "year": "2001", "value": 50.0}, {"time": "2002100000", "year": "2002", "value": 50.0}, {"time": "2003100000", "year": "2003", "value": 50.0}, {"time": "2004100000", "year": "2004", "value": 50.0}, {"time": "2005100000", "year": "2005", "value": 50.0}]}, "J230113_養護老人ホーム在所者数（詳細票）": {"indicator_code": "J230113", "indicator_name": "J230113_養護老人ホーム在所者数（詳細票）", "unit": "人", "time_series": [{"time": "2000100000", "year": "2000", "value": 50.0}, {"time": "2001100000", "year": "2001", "value": 50.0}, {"time": "2002100000", "year": "2002", "value": 49.0}, {"time": "2003100000", "year": "2003", "value": 50.0}, {"time": "2004100000", "year": "2004", "value": 50.0}, {"time": "2005100000", "year": "2005", "value": 49.0}]}, "J230121_介護老人福祉施設数（詳細票）": {"indicator_code": "J230121", "indicator_name": "J230121_介護老人福祉施設数（詳細票）", "unit": "所", "time_series": [{"time": "1997100000", "year": "1997", "value": 0.0}, {"time": "1998100000", "year": "1998", "value": 0.0}, {"time": "1999100000", "year": "1999", "value": 0.0}, {"time": "2000100000", "year": "2000", "value": 0.0}, {"time": "2001100000", "year": "2001", "value": 1.0}, {"time": "2002100000", "year": "2002", "value": 1.0}, {"time": "2003100000", "year": "2003", "value": 1.0}, {"time": "2004100000", "year": "2004", "value": 1.0}, {"time": "2005100000", "year": "2005", "value": 1.0}]}, "J230124_介護老人福祉施設定員数（詳細票）": {"indicator_code": "J230124", "indicator_name": "J230124_介護老人福祉施設定員数（詳細票）", "unit": "人", "time_series": [{"time": "2000100000", "year": "2000", "value": 0.0}, {"time": "2001100000", "year": "2001", "value": 54.0}, {"time": "2002100000", "year": "2002", "value": 54.0}, {"time": "2003100000", "year": "2003", "value": 54.0}, {"time": "2004100000", "year": "2004", "value": 54.0}, {"time": "2005100000", "year": "2005", "value": 54.0}]}, "J230131_軽費老人ホーム数（詳細票）": {"indicator_code": "J230131", "indicator_name": "J230131_軽費老人ホーム数（詳細票）", "unit": "所", "time_series": [{"time": "2000100000", "year": "2000", "value": 0.0}, {"time": "2001100000", "year": "2001", "value": 0.0}, {"time": "2002100000", "year": "2002", "value": 0.0}, {"time": "2003100000", "year": "2003", "value": 0.0}, {"time": "2004100000", "year": "2004", "value": 0.0}, {"time": "2005100000", "year": "2005", "value": 0.0}]}, "J230132_軽費老人ホーム定員数（詳細票）": {"indicator_code": "J230132", "indicator_name": "J230132_軽費老人ホーム定員数（詳細票）", "unit": "人", "time_series": [{"time": "2000100000", "year": "2000", "value": 0.0}, {"time": "2001100000", "year": "2001", "value": 0.0}, {"time": "2002100000", "year": "2002", "value": 0.0}, {"time": "2003100000", "year": "2003", "value": 0.0}, {"time": "2004100000", "year": "2004", "value": 0.0}, {"time": "2005100000", "year": "2005", "value": 0.0}]}, "J230133_軽費老人ホーム在所者数（詳細票）": {"indicator_code": "J230133", "indicator_name": "J230133_軽費老人ホーム在所者数（詳細票）", "unit": "人", "time_series": [{"time": "2000100000", "year": "2000", "value": 0.0}, {"time": "2001100000", "year": "2001", "value": 0.0}, {"time": "2002100000", "year": "2002", "value": 0.0}]}}}, "hiroshima_pref_stats": {"人口・世帯": {"A1101_総人口": {"indicator_code": "A1101", "indicator_name": "A1101_総人口", "unit": "人", "time_series": [{"time": "1975100000", "year": "1975", "value": 2646324.0}, {"time": "1976100000", "year": "1976", "value": 2670000.0}, {"time": "1977100000", "year": "1977", "value": 2689000.0}, {"time": "1978100000", "year": "1978", "value": 2703000.0}, {"time": "1979100000", "year": "1979", "value": 2717000.0}, {"time": "1980100000", "year": "1980", "value": 2739161.0}, {"time": "1981100000", "year": "1981", "value": 2761000.0}, {"time": "1982100000", "year": "1982", "value": 2777000.0}, {"time": "1983100000", "year": "1983", "value": 2793000.0}, {"time": "1984100000", "year": "1984", "value": 2807000.0}, {"time": "1985100000", "year": "1985", "value": 2819200.0}, {"time": "1986100000", "year": "1986", "value": 2829000.0}, {"time": "1987100000", "year": "1987", "value": 2834000.0}, {"time": "1988100000", "year": "1988", "value": 2838000.0}, {"time": "1989100000", "year": "1989", "value": 2843000.0}, {"time": "1990100000", "year": "1990", "value": 2849847.0}, {"time": "1991100000", "year": "1991", "value": 2859000.0}, {"time": "1992100000", "year": "1992", "value": 2867000.0}, {"time": "1993100000", "year": "1993", "value": 2873000.0}, {"time": "1994100000", "year": "1994", "value": 2877000.0}, {"time": "1995100000", "year": "1995", "value": 2881748.0}, {"time": "1996100000", "year": "1996", "value": 2881000.0}, {"time": "1997100000", "year": "1997", "value": 2882000.0}, {"time": "1998100000", "year": "1998", "value": 2882000.0}, {"time": "1999100000", "year": "1999", "value": 2881000.0}, {"time": "2000100000", "year": "2000", "value": 2878915.0}, {"time": "2001100000", "year": "2001", "value": 2880000.0}, {"time": "2002100000", "year": "2002", "value": 2878000.0}, {"time": "2003100000", "year": "2003", "value": 2879000.0}, {"time": "2004100000", "year": "2004", "value": 2879000.0}, {"time": "2005100000", "year": "2005", "value": 2876642.0}, {"time": "2006100000", "year": "2006", "value": 2875000.0}, {"time": "2007100000", "year": "2007", "value": 2874000.0}, {"time": "2008100000", "year": "2008", "value": 2870000.0}, {"time": "2009100000", "year": "2009", "value": 2864000.0}, {"time": "2010100000", "year": "2010", "value": 2860750.0}, {"time": "2011100000", "year": "2011", "value": 2858000.0}, {"time": "2012100000", "year": "2012", "value": 2855000.0}, {"time": "2013100000", "year": "2013", "value": 2850000.0}, {"time": "2014100000", "year": "2014", "value": 2846000.0}, {"time": "2015100000", "year": "2015", "value": 2843990.0}, {"time": "2016100000", "year": "2016", "value": 2840000.0}, {"time": "2017100000", "year": "2017", "value": 2833000.0}, {"time": "2018100000", "year": "2018", "value": 2824000.0}, {"time": "2019100000", "year": "2019", "value": 2813000.0}, {"time": "2020100000", "year": "2020", "value": 2799702.0}, {"time": "2021100000", "year": "2021", "value": 2780000.0}, {"time": "2022100000", "year": "2022", "value": 2760000.0}, {"time": "2023100000", "year": "2023", "value": 2738000.0}, {"time": "2024100000", "year": "2024", "value": 2714000.0}]}, "A110101_総人口（男）": {"indicator_code": "A110101", "indicator_name": "A110101_総人口（男）", "unit": "人", "time_series": [{"time": "1975100000", "year": "1975", "value": 1296677.0}, {"time": "1976100000", "year": "1976", "value": 1307000.0}, {"time": "1977100000", "year": "1977", "value": 1315000.0}, {"time": "1978100000", "year": "1978", "value": 1320000.0}, {"time": "1979100000", "year": "1979", "value": 1325000.0}, {"time": "1980100000", "year": "1980", "value": 1336806.0}, {"time": "1981100000", "year": "1981", "value": 1348000.0}, {"time": "1982100000", "year": "1982", "value": 1355000.0}, {"time": "1983100000", "year": "1983", "value": 1362000.0}, {"time": "1984100000", "year": "1984", "value": 1369000.0}]}}, "自然環境": {"B1101_総面積（北方地域及び竹島を除く）": {"indicator_code": "B1101", "indicator_name": "B1101_総面積（北方地域及び竹島を除く）", "unit": "ｈａ", "time_series": [{"time": "1975100000", "year": "1975", "value": 845518.0}, {"time": "1976100000", "year": "1976", "value": 845877.0}, {"time": "1977100000", "year": "1977", "value": 846169.0}, {"time": "1978100000", "year": "1978", "value": 846202.0}, {"time": "1979100000", "year": "1979", "value": 846256.0}, {"time": "1980100000", "year": "1980", "value": 846288.0}, {"time": "1981100000", "year": "1981", "value": 846322.0}, {"time": "1982100000", "year": "1982", "value": 846401.0}, {"time": "1983100000", "year": "1983", "value": 846457.0}, {"time": "1984100000", "year": "1984", "value": 846562.0}, {"time": "1985100000", "year": "1985", "value": 846637.0}, {"time": "1986100000", "year": "1986", "value": 846663.0}, {"time": "1987100000", "year": "1987", "value": 846687.0}, {"time": "1988100000", "year": "1988", "value": 847306.0}, {"time": "1989100000", "year": "1989", "value": 847312.0}, {"time": "1990100000", "year": "1990", "value": 847341.0}, {"time": "1991100000", "year": "1991", "value": 847349.0}, {"time": "1992100000", "year": "1992", "value": 847369.0}, {"time": "1993100000", "year": "1993", "value": 847421.0}, {"time": "1994100000", "year": "1994", "value": 847439.0}, {"time": "1995100000", "year": "1995", "value": 847476.0}, {"time": "1996100000", "year": "1996", "value": 847524.0}, {"time": "1997100000", "year": "1997", "value": 847591.0}, {"time": "1998100000", "year": "1998", "value": 847634.0}, {"time": "1999100000", "year": "1999", "value": 847673.0}, {"time": "2000100000", "year": "2000", "value": 847695.0}, {"time": "2001100000", "year": "2001", "value": 847706.0}, {"time": "2002100000", "year": "2002", "value": 847736.0}, {"time": "2003100000", "year": "2003", "value": 847758.0}, {"time": "2004100000", "year": "2004", "value": 847775.0}, {"time": "2005100000", "year": "2005", "value": 847792.0}, {"time": "2006100000", "year": "2006", "value": 847852.0}, {"time": "2007100000", "year": "2007", "value": 847903.0}, {"time": "2008100000", "year": "2008", "value": 847905.0}, {"time": "2009100000", "year": "2009", "value": 847927.0}, {"time": "2010100000", "year": "2010", "value": 847958.0}, {"time": "2011100000", "year": "2011", "value": 847970.0}, {"time": "2012100000", "year": "2012", "value": 847973.0}, {"time": "2013100000", "year": "2013", "value": 847981.0}, {"time": "2014100000", "year": "2014", "value": 847938.0}, {"time": "2015100000", "year": "2015", "value": 847945.0}, {"time": "2016100000", "year": "2016", "value": 847947.0}, {"time": "2017100000", "year": "2017", "value": 847963.0}, {"time": "2018100000", "year": "2018", "value": 847961.0}, {"time": "2019100000", "year": "2019", "value": 847964.0}, {"time": "2020100000", "year": "2020", "value": 847965.0}, {"time": "2021100000", "year": "2021", "value": 847922.0}, {"time": "2022100000", "year": "2022", "value": 847900.0}, {"time": "2023100000", "year": "2023", "value": 847894.0}, {"time": "2024100000", "year": "2024", "value": 847816.0}]}, "B1102_総面積（北方地域及び竹島を含む）": {"indicator_code": "B1102", "indicator_name": "B1102_総面積（北方地域及び竹島を含む）", "unit": "ｈａ", "time_series": [{"time": "1975100000", "year": "1975", "value": 845518.0}, {"time": "1976100000", "year": "1976", "value": 845877.0}, {"time": "1977100000", "year": "1977", "value": 846169.0}, {"time": "1978100000", "year": "1978", "value": 846202.0}, {"time": "1979100000", "year": "1979", "value": 846256.0}, {"time": "1980100000", "year": "1980", "value": 846288.0}, {"time": "1981100000", "year": "1981", "value": 846322.0}, {"time": "1982100000", "year": "1982", "value": 846401.0}, {"time": "1983100000", "year": "1983", "value": 846457.0}, {"time": "1984100000", "year": "1984", "value": 846562.0}]}}, "経済基盤": {"C1101_県内総生産額（平成17年基準）": {"indicator_code": "C1101", "indicator_name": "C1101_県内総生産額（平成17年基準）", "unit": "百万円", "time_series": [{"time": "2001100000", "year": "2001", "value": 10913092.0}, {"time": "2002100000", "year": "2002", "value": 10651111.0}, {"time": "2003100000", "year": "2003", "value": 11004841.0}, {"time": "2004100000", "year": "2004", "value": 11033328.0}, {"time": "2005100000", "year": "2005", "value": 11382777.0}, {"time": "2006100000", "year": "2006", "value": 11447272.0}, {"time": "2007100000", "year": "2007", "value": 11936188.0}, {"time": "2008100000", "year": "2008", "value": 11026919.0}, {"time": "2009100000", "year": "2009", "value": 10555529.0}, {"time": "2010100000", "year": "2010", "value": 10518571.0}, {"time": "2011100000", "year": "2011", "value": 11012893.0}, {"time": "2012100000", "year": "2012", "value": 10643624.0}, {"time": "2013100000", "year": "2013", "value": 10794831.0}, {"time": "2014100000", "year": "2014", "value": 11237887.0}]}, "C1102_県内総生産額（産業）（平成17年基準）": {"indicator_code": "C1102", "indicator_name": "C1102_県内総生産額（産業）（平成17年基準）", "unit": "百万円", "time_series": [{"time": "2001100000", "year": "2001", "value": 9653516.0}, {"time": "2002100000", "year": "2002", "value": 9384510.0}, {"time": "2003100000", "year": "2003", "value": 9748842.0}, {"time": "2004100000", "year": "2004", "value": 9768747.0}, {"time": "2005100000", "year": "2005", "value": 10111861.0}, {"time": "2006100000", "year": "2006", "value": 10168387.0}, {"time": "2007100000", "year": "2007", "value": 10659551.0}, {"time": "2008100000", "year": "2008", "value": 9745760.0}, {"time": "2009100000", "year": "2009", "value": 9266844.0}, {"time": "2010100000", "year": "2010", "value": 9245262.0}, {"time": "2011100000", "year": "2011", "value": 9719942.0}, {"time": "2012100000", "year": "2012", "value": 9382388.0}, {"time": "2013100000", "year": "2013", "value": 9540022.0}, {"time": "2014100000", "year": "2014", "value": 9936102.0}]}, "C110201_県内総生産額（農林水産業）（平成17年基準）": {"indicator_code": "C110201", "indicator_name": "C110201_県内総生産額（農林水産業）（平成17年基準）", "unit": "百万円", "time_series": [{"time": "2001100000", "year": "2001", "value": 87081.0}, {"time": "2002100000", "year": "2002", "value": 89609.0}, {"time": "2003100000", "year": "2003", "value": 83973.0}, {"time": "2004100000", "year": "2004", "value": 88359.0}, {"time": "2005100000", "year": "2005", "value": 84683.0}, {"time": "2006100000", "year": "2006", "value": 84107.0}, {"time": "2007100000", "year": "2007", "value": 79037.0}, {"time": "2008100000", "year": "2008", "value": 80430.0}, {"time": "2009100000", "year": "2009", "value": 75780.0}, {"time": "2010100000", "year": "2010", "value": 77106.0}, {"time": "2011100000", "year": "2011", "value": 78472.0}, {"time": "2012100000", "year": "2012", "value": 81828.0}, {"time": "2013100000", "year": "2013", "value": 78874.0}, {"time": "2014100000", "year": "2014", "value": 79813.0}]}, "C110202_県内総生産額（農業）（平成17年基準）": {"indicator_code": "C110202", "indicator_name": "C110202_県内総生産額（農業）（平成17年基準）", "unit": "百万円", "time_series": [{"time": "2001100000", "year": "2001", "value": 61340.0}, {"time": "2002100000", "year": "2002", "value": 62749.0}, {"time": "2003100000", "year": "2003", "value": 60068.0}, {"time": "2004100000", "year": "2004", "value": 62146.0}, {"time": "2005100000", "year": "2005", "value": 59566.0}, {"time": "2006100000", "year": "2006", "value": 59117.0}, {"time": "2007100000", "year": "2007", "value": 54452.0}, {"time": "2008100000", "year": "2008", "value": 56373.0}, {"time": "2009100000", "year": "2009", "value": 52390.0}, {"time": "2010100000", "year": "2010", "value": 53553.0}, {"time": "2011100000", "year": "2011", "value": 54175.0}, {"time": "2012100000", "year": "2012", "value": 57670.0}, {"time": "2013100000", "year": "2013", "value": 55981.0}, {"time": "2014100000", "year": "2014", "value": 54449.0}]}, "C110203_県内総生産額（林業）（平成17年基準）": {"indicator_code": "C110203", "indicator_name": "C110203_県内総生産額（林業）（平成17年基準）", "unit": "百万円", "time_series": [{"time": "2001100000", "year": "2001", "value": 9942.0}, {"time": "2002100000", "year": "2002", "value": 9679.0}, {"time": "2003100000", "year": "2003", "value": 8862.0}, {"time": "2004100000", "year": "2004", "value": 10807.0}]}}, "行政基盤・財政": {"D110101_市町村数": {"indicator_code": "D110101", "indicator_name": "D110101_市町村数", "unit": "‐", "time_series": [{"time": "1998100000", "year": "1998", "value": 86.0}, {"time": "1999100000", "year": "1999", "value": 86.0}, {"time": "2000100000", "year": "2000", "value": 86.0}, {"time": "2001100000", "year": "2001", "value": 86.0}, {"time": "2002100000", "year": "2002", "value": 86.0}, {"time": "2003100000", "year": "2003", "value": 79.0}, {"time": "2004100000", "year": "2004", "value": 65.0}, {"time": "2005100000", "year": "2005", "value": 29.0}, {"time": "2006100000", "year": "2006", "value": 23.0}, {"time": "2007100000", "year": "2007", "value": 23.0}, {"time": "2008100000", "year": "2008", "value": 23.0}, {"time": "2009100000", "year": "2009", "value": 23.0}, {"time": "2010100000", "year": "2010", "value": 23.0}, {"time": "2011100000", "year": "2011", "value": 23.0}, {"time": "2012100000", "year": "2012", "value": 23.0}, {"time": "2013100000", "year": "2013", "value": 23.0}, {"time": "2014100000", "year": "2014", "value": 23.0}, {"time": "2015100000", "year": "2015", "value": 23.0}, {"time": "2016100000", "year": "2016", "value": 23.0}, {"time": "2017100000", "year": "2017", "value": 23.0}, {"time": "2018100000", "year": "2018", "value": 23.0}, {"time": "2019100000", "year": "2019", "value": 23.0}, {"time": "2020100000", "year": "2020", "value": 23.0}, {"time": "2021100000", "year": "2021", "value": 23.0}, {"time": "2022100000", "year": "2022", "value": 23.0}, {"time": "2023100000", "year": "2023", "value": 23.0}, {"time": "2024100000", "year": "2024", "value": 23.0}]}, "D110102_市区数": {"indicator_code": "D110102", "indicator_name": "D110102_市区数", "unit": "‐", "time_series": [{"time": "1975100000", "year": "1975", "value": 12.0}, {"time": "1976100000", "year": "1976", "value": 12.0}, {"time": "1977100000", "year": "1977", "value": 12.0}, {"time": "1978100000", "year": "1978", "value": 12.0}, {"time": "1979100000", "year": "1979", "value": 12.0}, {"time": "1980100000", "year": "1980", "value": 19.0}, {"time": "1981100000", "year": "1981", "value": 19.0}, {"time": "1982100000", "year": "1982", "value": 19.0}, {"time": "1983100000", "year": "1983", "value": 19.0}, {"time": "1984100000", "year": "1984", "value": 20.0}, {"time": "1985100000", "year": "1985", "value": 20.0}, {"time": "1986100000", "year": "1986", "value": 20.0}, {"time": "1987100000", "year": "1987", "value": 20.0}, {"time": "1988100000", "year": "1988", "value": 21.0}, {"time": "1989100000", "year": "1989", "value": 21.0}, {"time": "1990100000", "year": "1990", "value": 21.0}, {"time": "1991100000", "year": "1991", "value": 21.0}, {"time": "1992100000", "year": "1992", "value": 21.0}, {"time": "1993100000", "year": "1993", "value": 21.0}, {"time": "1994100000", "year": "1994", "value": 21.0}, {"time": "1995100000", "year": "1995", "value": 21.0}, {"time": "1996100000", "year": "1996", "value": 21.0}, {"time": "1997100000", "year": "1997", "value": 21.0}, {"time": "1998100000", "year": "1998", "value": 21.0}, {"time": "1999100000", "year": "1999", "value": 21.0}, {"time": "2000100000", "year": "2000", "value": 21.0}, {"time": "2001100000", "year": "2001", "value": 21.0}, {"time": "2002100000", "year": "2002", "value": 21.0}, {"time": "2003100000", "year": "2003", "value": 21.0}, {"time": "2004100000", "year": "2004", "value": 22.0}, {"time": "2005100000", "year": "2005", "value": 23.0}, {"time": "2006100000", "year": "2006", "value": 22.0}, {"time": "2007100000", "year": "2007", "value": 22.0}]}}, "労働": {"F1101_労働力人口": {"indicator_code": "F1101", "indicator_name": "F1101_労働力人口", "unit": "人", "time_series": [{"time": "1975100000", "year": "1975", "value": 1325766.0}, {"time": "1980100000", "year": "1980", "value": 1358896.0}, {"time": "1985100000", "year": "1985", "value": 1406890.0}, {"time": "1990100000", "year": "1990", "value": 1451288.0}, {"time": "1995100000", "year": "1995", "value": 1529704.0}, {"time": "2000100000", "year": "2000", "value": 1491864.0}, {"time": "2005100000", "year": "2005", "value": 1471357.0}, {"time": "2010100000", "year": "2010", "value": 1419325.0}, {"time": "2015100000", "year": "2015", "value": 1388578.0}, {"time": "2020100000", "year": "2020", "value": 1364904.0}]}, "F110101_労働力人口（男）": {"indicator_code": "F110101", "indicator_name": "F110101_労働力人口（男）", "unit": "人", "time_series": [{"time": "1975100000", "year": "1975", "value": 822873.0}, {"time": "1980100000", "year": "1980", "value": 828261.0}, {"time": "1985100000", "year": "1985", "value": 849105.0}, {"time": "1990100000", "year": "1990", "value": 863433.0}, {"time": "1995100000", "year": "1995", "value": 905106.0}, {"time": "2000100000", "year": "2000", "value": 870777.0}, {"time": "2005100000", "year": "2005", "value": 850100.0}, {"time": "2010100000", "year": "2010", "value": 812821.0}, {"time": "2015100000", "year": "2015", "value": 781941.0}, {"time": "2020100000", "year": "2020", "value": 751116.0}]}, "F110102_労働力人口（女）": {"indicator_code": "F110102", "indicator_name": "F110102_労働力人口（女）", "unit": "人", "time_series": [{"time": "1975100000", "year": "1975", "value": 502893.0}, {"time": "1980100000", "year": "1980", "value": 530635.0}, {"time": "1985100000", "year": "1985", "value": 557785.0}, {"time": "1990100000", "year": "1990", "value": 587855.0}, {"time": "1995100000", "year": "1995", "value": 624598.0}, {"time": "2000100000", "year": "2000", "value": 621087.0}, {"time": "2005100000", "year": "2005", "value": 621257.0}, {"time": "2010100000", "year": "2010", "value": 606504.0}, {"time": "2015100000", "year": "2015", "value": 606637.0}, {"time": "2020100000", "year": "2020", "value": 613788.0}]}, "F1102_就業者数": {"indicator_code": "F1102", "indicator_name": "F1102_就業者数", "unit": "人", "time_series": [{"time": "1975100000", "year": "1975", "value": 1298657.0}, {"time": "1980100000", "year": "1980", "value": 1326783.0}, {"time": "1985100000", "year": "1985", "value": 1363685.0}, {"time": "1990100000", "year": "1990", "value": 1414268.0}, {"time": "1995100000", "year": "1995", "value": 1472610.0}, {"time": "2000100000", "year": "2000", "value": 1428326.0}, {"time": "2005100000", "year": "2005", "value": 1398474.0}, {"time": "2010100000", "year": "2010", "value": 1343318.0}, {"time": "2015100000", "year": "2015", "value": 1336568.0}, {"time": "2020100000", "year": "2020", "value": 1318328.0}]}, "F110201_就業者数（男）": {"indicator_code": "F110201", "indicator_name": "F110201_就業者数（男）", "unit": "人", "time_series": [{"time": "1980100000", "year": "1980", "value": 804646.0}, {"time": "1985100000", "year": "1985", "value": 818916.0}, {"time": "1990100000", "year": "1990", "value": 838093.0}, {"time": "1995100000", "year": "1995", "value": 867946.0}, {"time": "2000100000", "year": "2000", "value": 830071.0}, {"time": "2005100000", "year": "2005", "value": 802887.0}, {"time": "2010100000", "year": "2010", "value": 762778.0}, {"time": "2015100000", "year": "2015", "value": 748782.0}, {"time": "2020100000", "year": "2020", "value": 723094.0}]}, "F110202_就業者数（女）": {"indicator_code": "F110202", "indicator_name": "F110202_就業者数（女）", "unit": "人", "time_series": [{"time": "1980100000", "year": "1980", "value": 522137.0}, {"time": "1985100000", "year": "1985", "value": 544769.0}, {"time": "1990100000", "year": "1990", "value": 576175.0}, {"time": "1995100000", "year": "1995", "value": 604664.0}, {"time": "2000100000", "year": "2000", "value": 598255.0}, {"time": "2005100000", "year": "2005", "value": 595587.0}, {"time": "2010100000", "year": "2010", "value": 580540.0}, {"time": "2015100000", "year": "2015", "value": 587786.0}, {"time": "2020100000", "year": "2020", "value": 595234.0}]}, "F1103_就業者数・主に仕事": {"indicator_code": "F1103", "indicator_name": "F1103_就業者数・主に仕事", "unit": "人", "time_series": [{"time": "1980100000", "year": "1980", "value": 1110131.0}, {"time": "1985100000", "year": "1985", "value": 1123499.0}]}}}};
+    let activeTideChart = null;
+    let activeEstatChart = null;
+    let currentEstatCategory = "人口・世帯";
+
+    // 1. Scope Switching (Macro, Micro, Nexus)
+    const btnScopeMacro = document.getElementById("btn-scope-macro");
+    const btnScopeMicro = document.getElementById("btn-scope-micro");
+    const btnScopeNexus = document.getElementById("btn-scope-nexus");
+    const viewMacroContainer = document.getElementById("view-macro-container");
+    const viewMicroContainer = document.getElementById("view-micro-container");
+
+    function setObservationScope(scope) {
+      if (!btnScopeMacro || !btnScopeMicro || !btnScopeNexus) return;
+      btnScopeMacro.classList.remove("active");
+      btnScopeMicro.classList.remove("active");
+      btnScopeNexus.classList.remove("active");
+
+      if (scope === "macro") {
+        btnScopeMacro.classList.add("active");
+        if (viewMacroContainer) viewMacroContainer.style.display = "block";
+        if (viewMicroContainer) viewMicroContainer.style.display = "none";
+      } else if (scope === "micro") {
+        btnScopeMicro.classList.add("active");
+        if (viewMacroContainer) viewMacroContainer.style.display = "none";
+        if (viewMicroContainer) viewMicroContainer.style.display = "flex";
+        renderMicroDashboard();
+      } else if (scope === "nexus") {
+        btnScopeNexus.classList.add("active");
+        if (viewMacroContainer) viewMacroContainer.style.display = "block";
+        if (viewMicroContainer) viewMicroContainer.style.display = "flex";
+        renderMicroDashboard();
+      }
+    }
+
+    if (btnScopeMacro) btnScopeMacro.addEventListener("click", () => setObservationScope("macro"));
+    if (btnScopeMicro) btnScopeMicro.addEventListener("click", () => setObservationScope("micro"));
+    if (btnScopeNexus) btnScopeNexus.addEventListener("click", () => setObservationScope("nexus"));
+
+    // 2. Render Micro Dashboard Cards & Data
+    function getMicroData() {
+      return (currentReport && currentReport.micro_pulse) || EMBEDDED_MICRO_PULSE || {};
+    }
+
+    function renderMicroDashboard() {
+      const data = getMicroData();
+      const realtime = data.realtime_micro || {};
+      const takeharaStats = data.takehara_city_stats || {};
+
+      // Calendar
+      const cal = realtime.calendar || {};
+      const elCalWareki = document.getElementById("micro-cal-wareki");
+      const elCalRokuyo = document.getElementById("micro-cal-rokuyo");
+      const elCalLunar = document.getElementById("micro-cal-lunar");
+      const elCalSekki = document.getElementById("micro-cal-sekki");
+      const elCalKo = document.getElementById("micro-cal-ko");
+      const elCalEto = document.getElementById("micro-cal-eto");
+      const elCalMoonage = document.getElementById("micro-cal-moonage");
+
+      if (elCalWareki && cal.wareki) elCalWareki.textContent = cal.wareki;
+      if (elCalRokuyo && cal.rokuyo) elCalRokuyo.textContent = `六曜: ${cal.rokuyo}`;
+      if (elCalLunar && cal.lunar_calendar) elCalLunar.textContent = cal.lunar_calendar;
+      if (elCalSekki && cal.sekki_24) elCalSekki.textContent = `${cal.sekki_24} (${cal.sekki_desc || ''})`;
+      if (elCalKo && cal.ko_72) elCalKo.textContent = `${cal.ko_72} (${cal.ko_desc || ''})`;
+      if (elCalEto && cal.eto_year) elCalEto.textContent = `${cal.eto_year}年 / ${cal.eto_day}日 / ${cal.kyusei}`;
+      if (elCalMoonage && realtime.tide) elCalMoonage.textContent = `${realtime.tide.moon_age} (有明月・新月直前)`;
+
+      // Weather
+      const w = realtime.weather || {};
+      const elWTemp = document.getElementById("micro-weather-temp");
+      const elWCond = document.getElementById("micro-weather-cond");
+      const elWFeels = document.getElementById("micro-weather-feels");
+      const elWHumPress = document.getElementById("micro-weather-hum-press");
+      const elWWind = document.getElementById("micro-weather-wind");
+      const elWRainUv = document.getElementById("micro-weather-rain-uv");
+      const elWJma = document.getElementById("micro-weather-jma");
+
+      if (elWTemp && w.temperature !== undefined) elWTemp.innerHTML = `${w.temperature}<span style="font-size: 1.2rem;">℃</span>`;
+      if (elWCond && w.condition) elWCond.textContent = w.condition.split("（")[0];
+      if (elWFeels) elWFeels.textContent = `体感 ${w.apparent_temperature}℃ / 本日最高 ${w.today_max_temp}℃・最低 ${w.today_min_temp}℃`;
+      if (elWHumPress) elWHumPress.textContent = `${w.humidity}% / ${w.pressure_hpa} hPa`;
+      if (elWWind) elWWind.textContent = `${w.wind_cardinal || '北'} ${w.wind_speed_kmh} km/h`;
+      if (elWRainUv) elWRainUv.textContent = `${w.precipitation_mm} mm / UV ${w.uv_index_max}`;
+      if (elWJma && w.jma_overview) elWJma.textContent = w.jma_overview;
+
+      // Astronomy
+      const astro = realtime.astronomy || {};
+      const elNoonAlt = document.getElementById("micro-astro-noon-alt");
+      const elCurAlt = document.getElementById("micro-astro-cur-alt");
+      const elDaylight = document.getElementById("micro-astro-daylight");
+      const elSunData = document.getElementById("micro-astro-sundata");
+      const elNeedle = document.getElementById("solar-current-needle");
+
+      if (elNoonAlt && astro.solar_noon_altitude_deg !== undefined) {
+        elNoonAlt.innerHTML = `${astro.solar_noon_altitude_deg}<span style="font-size: 1.2rem;">°</span>`;
+      }
+      if (elCurAlt && astro.current_elevation_deg !== undefined) {
+        elCurAlt.textContent = `${astro.current_elevation_deg}° (方位: ${astro.current_azimuth_deg}°)`;
+      }
+      if (elDaylight) elDaylight.textContent = `${astro.daylight_hours}時間 (${astro.solar_noon_time} 南中)`;
+      if (elSunData) elSunData.textContent = `${astro.sunrise_time} / ${astro.sunset_time}`;
+
+      if (elNeedle) {
+        elNeedle.style.left = "16%"; // 07:30 JST position
+      }
+
+      // Tide Chart
+      renderTideChart(realtime.tide);
+
+      // e-Stat Inspector setup
+      setupEstatInspector(takeharaStats);
+    }
+
+    // Render Tide Line Curve
+    function renderTideChart(tideData) {
+      const ctx = document.getElementById("chart-tide-curve");
+      if (!ctx || !tideData || !Array.isArray(tideData.hourly_curve)) return;
+      if (activeTideChart) activeTideChart.destroy();
+
+      const labels = tideData.hourly_curve.map(d => d.hour);
+      const values = tideData.hourly_curve.map(d => d.tide_cm);
+
+      activeTideChart = new Chart(ctx, {
+        type: "line",
+        data: {
+          labels: labels,
+          datasets: [{
+            label: "竹原港 潮位 (cm)",
+            data: values,
+            borderColor: "#0D9488",
+            backgroundColor: "rgba(13, 148, 136, 0.15)",
+            borderWidth: 2.5,
+            fill: true,
+            tension: 0.4,
+            pointRadius: (c) => (c.dataIndex % 4 === 0 ? 3 : 0),
+            pointBackgroundColor: "#0D9488"
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { display: false },
+            tooltip: {
+              callbacks: {
+                label: (c) => `潮位: ${c.parsed.y} cm`
+              }
+            }
+          },
+          scales: {
+            x: {
+              ticks: { maxTicksLimit: 8, font: { family: "'JetBrains Mono'", size: 9 } },
+              grid: { display: false }
+            },
+            y: {
+              min: 0,
+              max: 400,
+              ticks: { stepSize: 100, font: { family: "'JetBrains Mono'", size: 9 } },
+              grid: { color: "rgba(30,30,30,0.06)" }
+            }
+          }
+        }
+      });
+    }
+
+    // e-Stat Inspector Category & Indicator setup
+    function setupEstatInspector(takeharaStats) {
+      const catBtns = document.querySelectorAll(".estat-cat-btn");
+      const dropdown = document.getElementById("estat-indicator-dropdown");
+      if (!dropdown) return;
+
+      catBtns.forEach(btn => {
+        btn.onclick = () => {
+          catBtns.forEach(b => b.classList.remove("active"));
+          btn.classList.add("active");
+          currentEstatCategory = btn.getAttribute("data-cat");
+          populateEstatDropdown(takeharaStats, currentEstatCategory);
+        };
+      });
+
+      dropdown.onchange = () => {
+        const indName = dropdown.value;
+        renderEstatChart(takeharaStats, currentEstatCategory, indName);
+      };
+
+      populateEstatDropdown(takeharaStats, currentEstatCategory);
+    }
+
+    function populateEstatDropdown(takeharaStats, category) {
+      const dropdown = document.getElementById("estat-indicator-dropdown");
+      if (!dropdown) return;
+      dropdown.innerHTML = "";
+
+      const catData = takeharaStats[category] || {};
+      const indNames = Object.keys(catData);
+
+      if (indNames.length === 0) {
+        const opt = document.createElement("option");
+        opt.value = "";
+        opt.textContent = "該当指標なし";
+        dropdown.appendChild(opt);
+        if (activeEstatChart) activeEstatChart.destroy();
+        return;
+      }
+
+      indNames.forEach(name => {
+        const opt = document.createElement("option");
+        opt.value = name;
+        opt.textContent = name;
+        dropdown.appendChild(opt);
+      });
+
+      dropdown.value = indNames[0];
+      renderEstatChart(takeharaStats, category, indNames[0]);
+    }
+
+    function renderEstatChart(takeharaStats, category, indicatorName) {
+      const ctx = document.getElementById("chart-estat-timeseries");
+      if (!ctx) return;
+      if (activeEstatChart) activeEstatChart.destroy();
+
+      const catData = takeharaStats[category] || {};
+      const indObj = catData[indicatorName];
+      if (!indObj || !Array.isArray(indObj.time_series) || indObj.time_series.length === 0) return;
+
+      const labels = indObj.time_series.map(d => d.year + "年");
+      const values = indObj.time_series.map(d => d.value);
+      const unit = indObj.unit || "";
+
+      const peakVal = Math.max(...values);
+      const latestVal = values[values.length - 1];
+      const startYear = indObj.time_series[0].year;
+      const endYear = indObj.time_series[indObj.time_series.length - 1].year;
+
+      const elSpan = document.getElementById("estat-span-label");
+      const elPeak = document.getElementById("estat-peak-label");
+      const elLatest = document.getElementById("estat-latest-label");
+
+      if (elSpan) elSpan.textContent = `${startYear}年〜${endYear}年 (${values.length}時点)`;
+      if (elPeak) elPeak.textContent = `${peakVal.toLocaleString()} ${unit}`;
+      if (elLatest) elLatest.textContent = `${latestVal.toLocaleString()} ${unit}`;
+
+      activeEstatChart = new Chart(ctx, {
+        type: "bar",
+        data: {
+          labels: labels,
+          datasets: [
+            {
+              type: "line",
+              label: `${indicatorName} (推移線)`,
+              data: values,
+              borderColor: "#D93829",
+              borderWidth: 2.5,
+              tension: 0.2,
+              pointRadius: 4,
+              pointBackgroundColor: "#D93829",
+              yAxisID: "y"
+            },
+            {
+              type: "bar",
+              label: `${indicatorName} (実測値)`,
+              data: values,
+              backgroundColor: "rgba(245, 197, 24, 0.45)",
+              borderColor: "#1E1E1E",
+              borderWidth: 1.5,
+              yAxisID: "y"
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              position: "top",
+              labels: { font: { family: "'JetBrains Mono'", weight: "bold", size: 11 } }
+            },
+            tooltip: {
+              callbacks: {
+                label: (c) => `${c.dataset.label}: ${c.parsed.y.toLocaleString()} ${unit}`
+              }
+            }
+          },
+          scales: {
+            x: {
+              ticks: { font: { family: "'JetBrains Mono'", size: 10 } },
+              grid: { color: "rgba(30,30,30,0.06)" }
+            },
+            y: {
+              ticks: { font: { family: "'JetBrains Mono'", size: 10 } },
+              grid: { color: "rgba(30,30,30,0.06)" }
+            }
+          }
+        }
+      });
+    }
+
+    // Attach to initial render
+    const origRenderGlobalHeader = renderGlobalHeader;
+    renderGlobalHeader = function(report) {
+      origRenderGlobalHeader(report);
+      renderMicroDashboard();
+    };
+    
+
     // Initial Bootstrap
     // ==========================================================================
     renderGlobalHeader(currentReport);
