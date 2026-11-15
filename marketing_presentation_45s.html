@@ -3,33 +3,53 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Google AI Challenge: Autonomous Open Data Marketing Pipeline (45s Showcase)</title>
+  <title>WORLD PULSE CHRONICLE | 45-Second Showcase (Google AI Challenge)</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700;800&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400..800;1,400..800&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet" />
+
   <style>
     /* ==========================================================================
-       Design System: Modern Clean Tech (16:9 Presentation Viewport)
-       Strict Constraint: NO EMOJI. Pure SVG & Geometric glyphs only.
+       Design System: Grid-Note Neo-Brutalism (Fully Unified with Production Site)
+       Strict Constraints:
+       1. Exactly matched with World Pulse Chronicle (frontend/index.html)
+       2. NO EMOJIS anywhere (Pure geometric glyphs & inline SVG only)
+       3. 16:9 Presentation Canvas for High-Impact Capture
        ========================================================================== */
     :root {
-      --bg-dark: #0A0D14;
-      --bg-card: rgba(18, 24, 38, 0.85);
-      --bg-card-sub: rgba(28, 36, 56, 0.6);
-      --border-card: rgba(255, 255, 255, 0.1);
-      --border-accent: rgba(56, 189, 248, 0.35);
+      /* 背景・方眼 */
+      --bg-paper: #FAF8F0;
+      --grid-line: rgba(30, 30, 30, 0.06);
 
-      --text-main: #F8FAFC;
-      --text-muted: #94A3B8;
-      --text-dim: #64748B;
+      /* サーフェス */
+      --surface-white: #FFFFFF;
+      --surface-muted: #F7F5EE;
 
-      --accent-blue: #38BDF8;
-      --accent-indigo: #818CF8;
-      --accent-teal: #2DD4BF;
-      --accent-amber: #FBBF24;
-      --accent-rose: #FB7185;
+      /* インク */
+      --ink-black: #1E1E1E;
+      --ink-gray: #666666;
+      --ink-light: #8C8C8C;
 
-      --font-sans: 'Inter', 'Noto Sans JP', -apple-system, BlinkMacSystemFont, sans-serif;
+      /* アクセントカラー */
+      --accent-yellow: #F5C518;  /* アクティブタブ・最重要バッジ */
+      --accent-red: #D93829;     /* 警告・急変・注目指標 */
+      --accent-blue: #1D63B8;    /* セクション見出し・因果構造 */
+      --accent-green: #129956;   /* 正常・成長・ローカル */
+      --accent-purple: #7B3FE4;  /* 自律発見・AIフロンティア */
+      --accent-lime: #A3E635;    /* ミクロ実世界パルス */
+
+      /* ボーダー & ソリッドシャドウ（ぼかし影は一切禁止） */
+      --border-thin: 1.5px solid #1E1E1E;
+      --border-thick: 2.5px solid #1E1E1E;
+      --border-heavy: 3.5px solid #1E1E1E;
+      --border-dashed: 2px dashed #1E1E1E;
+      --shadow-card: 0px 6px 0px #1E1E1E;
+      --shadow-sheet: 0px 10px 0px #1E1E1E;
+      --shadow-btn: 0px 3px 0px #1E1E1E;
+      --shadow-btn-active: 0px 0px 0px #1E1E1E;
+
+      /* タイポグラフィ */
+      --font-sans: 'Noto Sans JP', -apple-system, BlinkMacSystemFont, sans-serif;
       --font-mono: 'JetBrains Mono', monospace;
     }
 
@@ -42,8 +62,8 @@
     html, body {
       width: 100%;
       height: 100%;
-      background-color: var(--bg-dark);
-      color: var(--text-main);
+      background-color: #EFECE3;
+      color: var(--ink-black);
       font-family: var(--font-sans);
       overflow: hidden;
       display: flex;
@@ -55,659 +75,776 @@
     /* 16:9 Fixed Presentation Canvas for screen recording */
     .deck-viewport {
       width: 100vw;
-      height: 56.25vw; /* 16:9 aspect ratio */
+      height: 56.25vw; /* 16:9 */
       max-height: 100vh;
-      max-width: 177.78vh; /* 16:9 aspect ratio */
+      max-width: 177.78vh; /* 16:9 */
       position: relative;
-      background: radial-gradient(circle at 15% 15%, rgba(56, 189, 248, 0.12) 0%, transparent 45%),
-                  radial-gradient(circle at 85% 85%, rgba(129, 140, 248, 0.1) 0%, transparent 45%),
-                  #070A0F;
-      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      overflow: hidden;
+      background-color: var(--bg-paper);
+      background-image:
+        linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+        linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
+      background-size: 20px 20px;
+      border: var(--border-heavy);
+      box-shadow: var(--shadow-sheet);
       display: flex;
       flex-direction: column;
+      overflow: hidden;
     }
 
-    /* Grid overlay for subtle tech texture */
-    .deck-grid-overlay {
-      position: absolute;
-      inset: 0;
-      background-image:
-        linear-gradient(to right, rgba(255, 255, 255, 0.025) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
-      background-size: 40px 40px;
-      pointer-events: none;
-      z-index: 1;
-    }
-
-    /* Master Top Timeline Header */
-    .master-header {
-      position: relative;
-      z-index: 20;
-      padding: 18px 36px 12px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background: rgba(7, 10, 15, 0.6);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-    }
-
-    .project-brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .brand-mark {
-      width: 28px;
-      height: 28px;
-      border-radius: 6px;
-      background: linear-gradient(135deg, var(--accent-blue), var(--accent-indigo));
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: var(--font-mono);
-      font-size: 14px;
-      font-weight: 800;
-      color: #000;
-    }
-
-    .brand-title {
-      font-size: 15px;
-      font-weight: 800;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--text-main);
-    }
-
-    .brand-tag {
-      font-family: var(--font-mono);
-      font-size: 11px;
-      color: var(--accent-blue);
-      border: 1px solid rgba(56, 189, 248, 0.3);
-      padding: 2px 7px;
-      border-radius: 4px;
-      font-weight: 700;
-    }
-
-    .time-indicator {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      font-family: var(--font-mono);
-      font-size: 13px;
-      color: var(--text-muted);
-    }
-
-    .live-dot {
-      width: 8px;
-      height: 8px;
-      background-color: var(--accent-teal);
-      border-radius: 50%;
-      box-shadow: 0 0 10px var(--accent-teal);
-      animation: pulseGlow 1.8s infinite;
-    }
-
-    @keyframes pulseGlow {
-      0%, 100% { transform: scale(1); opacity: 1; }
-      50% { transform: scale(1.3); opacity: 0.6; }
-    }
-
-    /* Overall 45-Second Progress Line */
+    /* 45s Global Timeline Progress Bar (Solid Yellow & Black) */
     .timeline-bar-wrap {
       position: absolute;
       top: 0;
       left: 0;
       right: 0;
-      height: 4px;
-      background: rgba(255, 255, 255, 0.08);
-      z-index: 30;
+      height: 6px;
+      background: var(--surface-muted);
+      border-bottom: var(--border-thin);
+      z-index: 40;
     }
 
     .timeline-progress {
       width: 0%;
       height: 100%;
-      background: linear-gradient(90deg, var(--accent-blue), var(--accent-indigo), var(--accent-teal));
-      transition: width 0.1s linear;
+      background: var(--accent-yellow);
+      border-right: 2px solid var(--ink-black);
+      transition: width 0.05s linear;
     }
 
-    /* Main Slide Stage Area */
+    /* Notebook Header Card */
+    .notebook-header {
+      position: relative;
+      z-index: 20;
+      background: var(--surface-white);
+      border-bottom: var(--border-thick);
+      padding: 14px 28px 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .header-branding {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand-stamp {
+      background: var(--ink-black);
+      color: #FFF;
+      font-family: var(--font-mono);
+      font-size: 13px;
+      font-weight: 900;
+      padding: 4px 9px;
+      border-radius: 4px;
+      letter-spacing: 0.05em;
+    }
+
+    .brand-title {
+      font-size: 16px;
+      font-weight: 900;
+      letter-spacing: 0.04em;
+      color: var(--ink-black);
+      text-transform: uppercase;
+    }
+
+    .brand-sub {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--ink-gray);
+      margin-left: 6px;
+    }
+
+    .header-status-pill {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--surface-muted);
+      border: var(--border-thin);
+      padding: 4px 12px;
+      border-radius: 6px;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .sync-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background-color: var(--accent-green);
+      border: 1.5px solid var(--ink-black);
+      display: inline-block;
+      animation: pulseDot 1.2s infinite;
+    }
+
+    @keyframes pulseDot {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.3); opacity: 0.6; }
+    }
+
+    /* Index Tabs Bar (Production Notebook Style) */
+    .index-tabs-bar {
+      display: flex;
+      align-items: flex-end;
+      gap: 6px;
+      padding: 10px 28px 0;
+      background: transparent;
+      border-bottom: var(--border-thick);
+      position: relative;
+      z-index: 15;
+    }
+
+    .notebook-tab {
+      appearance: none;
+      background-color: var(--surface-muted);
+      color: var(--ink-gray);
+      border: var(--border-thick);
+      border-bottom: none;
+      border-radius: 8px 8px 0 0;
+      padding: 7px 16px;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 800;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.15s ease;
+      transform: translateY(2px);
+    }
+
+    .notebook-tab.active {
+      background-color: var(--accent-yellow);
+      color: var(--ink-black);
+      transform: translateY(0);
+      padding-top: 10px;
+      padding-bottom: 7px;
+      border-bottom: 3px solid var(--accent-yellow);
+      z-index: 2;
+    }
+
+    /* Observation Sheet Canvas (The Main Slide Stage) */
     .slide-stage {
       flex: 1;
       position: relative;
       z-index: 10;
-      padding: 32px 54px 40px;
+      padding: 24px 28px 24px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .observation-sheet {
+      flex: 1;
+      background-color: var(--surface-white);
+      border: var(--border-thick);
+      border-radius: 16px;
+      box-shadow: var(--shadow-card);
+      padding: 28px 34px;
+      position: relative;
       display: flex;
       flex-direction: column;
       justify-content: center;
     }
 
-    .slide {
+    .slide-page {
       position: absolute;
-      inset: 32px 54px 40px;
+      inset: 28px 34px;
       display: flex;
       flex-direction: column;
       justify-content: center;
       opacity: 0;
       visibility: hidden;
-      transform: translateY(16px);
-      transition: opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1),
-                  transform 0.45s cubic-bezier(0.16, 1, 0.3, 1),
-                  visibility 0.45s;
+      transform: translateY(12px);
+      transition: opacity 0.35s ease, transform 0.35s ease, visibility 0.35s;
       pointer-events: none;
     }
 
-    .slide.active {
+    .slide-page.active {
       opacity: 1;
       visibility: visible;
       transform: translateY(0);
       pointer-events: auto;
     }
 
-    /* Common Typography within Slides */
-    .slide-meta-label {
-      font-family: var(--font-mono);
-      font-size: 12px;
-      font-weight: 800;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--accent-blue);
-      display: inline-flex;
+    /* Slide Content Elements */
+    .sheet-meta-bar {
+      display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 12px;
       margin-bottom: 12px;
     }
 
-    .slide-meta-label::before {
-      content: "";
-      width: 6px;
-      height: 6px;
-      background: var(--accent-blue);
-      border-radius: 1px;
-    }
-
-    .slide-headline {
-      font-size: 42px;
+    .index-badge {
+      font-family: var(--font-mono);
+      font-size: 26px;
       font-weight: 900;
-      line-height: 1.18;
+      color: var(--ink-black);
+      line-height: 1;
+    }
+
+    .category-pill {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 800;
+      padding: 4px 10px;
+      border-radius: 4px;
+      border: var(--border-thin);
+      background-color: var(--ink-black);
+      color: #FFF;
+      letter-spacing: 0.05em;
+    }
+
+    .category-pill.yellow { background-color: var(--accent-yellow); color: var(--ink-black); }
+    .category-pill.blue { background-color: var(--accent-blue); color: #FFF; }
+    .category-pill.purple { background-color: var(--accent-purple); color: #FFF; }
+    .category-pill.lime { background-color: var(--accent-lime); color: var(--ink-black); }
+
+    .sheet-headline {
+      font-size: 36px;
+      font-weight: 900;
+      line-height: 1.25;
       letter-spacing: -0.02em;
-      color: #FFFFFF;
-      margin-bottom: 16px;
+      color: var(--ink-black);
+      margin-bottom: 12px;
     }
 
-    .slide-headline .highlight-blue {
-      color: var(--accent-blue);
-    }
-    .slide-headline .highlight-teal {
-      color: var(--accent-teal);
-    }
-    .slide-headline .highlight-amber {
-      color: var(--accent-amber);
-    }
-
-    .slide-subheading {
-      font-size: 18px;
-      color: var(--text-muted);
+    .sheet-subheadline {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--ink-gray);
       line-height: 1.6;
-      max-width: 900px;
-      margin-bottom: 28px;
+      margin-bottom: 24px;
+      max-width: 980px;
     }
 
-    /* Card Layout Grids */
-    .grid-3col {
+    /* Ruled Story Notebook Card */
+    .ruled-note-block {
+      background-color: var(--surface-muted);
+      border: var(--border-thin);
+      border-left: 6px solid var(--accent-blue);
+      border-radius: 8px;
+      padding: 16px 20px;
+      background-image: repeating-linear-gradient(
+        to bottom,
+        transparent,
+        transparent 27px,
+        rgba(29, 99, 184, 0.1) 27px,
+        rgba(29, 99, 184, 0.1) 28px
+      );
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 28px;
+      color: var(--ink-black);
+      margin-bottom: 20px;
+    }
+
+    /* Neo-Brutalist Card Grids */
+    .grid-3cards {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      width: 100%;
+    }
+
+    .grid-2cards {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
       gap: 20px;
       width: 100%;
     }
 
-    .grid-2col {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 24px;
-      width: 100%;
-    }
-
-    .info-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border-card);
-      border-radius: 14px;
-      padding: 22px 24px;
+    .neo-card {
+      background-color: var(--surface-white);
+      border: var(--border-thick);
+      border-radius: 12px;
+      box-shadow: var(--shadow-card);
+      padding: 18px 20px;
       display: flex;
       flex-direction: column;
-      gap: 12px;
-      backdrop-filter: blur(8px);
+      gap: 10px;
       position: relative;
-      overflow: hidden;
     }
 
-    .info-card::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 2px;
-      background: linear-gradient(90deg, transparent, rgba(56, 189, 248, 0.4), transparent);
-    }
-
-    .card-badge {
-      display: inline-flex;
+    .card-label-row {
+      display: flex;
+      justify-content: space-between;
       align-items: center;
+    }
+
+    .card-tag {
       font-family: var(--font-mono);
       font-size: 11px;
       font-weight: 800;
-      padding: 3px 8px;
+      padding: 2px 7px;
       border-radius: 4px;
-      width: fit-content;
-      background: rgba(255, 255, 255, 0.06);
-      color: var(--text-muted);
-      border: 1px solid rgba(255, 255, 255, 0.08);
+      border: var(--border-thin);
+      background: var(--surface-muted);
     }
 
-    .badge-accent {
-      background: rgba(56, 189, 248, 0.12);
-      color: var(--accent-blue);
-      border-color: rgba(56, 189, 248, 0.3);
-    }
-
-    .badge-teal {
-      background: rgba(45, 212, 191, 0.12);
-      color: var(--accent-teal);
-      border-color: rgba(45, 212, 191, 0.3);
-    }
-
-    .card-title {
-      font-size: 17px;
-      font-weight: 800;
-      color: #FFF;
+    .neo-card-title {
+      font-size: 16px;
+      font-weight: 900;
       line-height: 1.35;
+      color: var(--ink-black);
     }
 
-    .card-desc {
-      font-size: 13.5px;
-      color: var(--text-muted);
-      line-height: 1.6;
+    .neo-card-desc {
+      font-size: 13px;
+      color: var(--ink-gray);
+      line-height: 1.55;
+      font-weight: 500;
     }
 
-    .metric-value {
+    .big-stat {
       font-family: var(--font-mono);
       font-size: 32px;
       font-weight: 900;
-      color: #FFF;
+      color: var(--ink-black);
       line-height: 1;
-      margin-top: 4px;
+      margin-top: 2px;
     }
 
-    .metric-sub {
-      font-family: var(--font-mono);
-      font-size: 11px;
-      color: var(--text-dim);
-    }
-
-    /* Vector Diagrams & Visual Connectors (Pure SVG / Geometric) */
-    .flow-connector {
+    /* 4-Step Causal Chain Container (Direct from Production Site) */
+    .causal-flow-row {
       display: flex;
       align-items: center;
-      justify-content: space-between;
       gap: 12px;
-      margin-top: 6px;
+      width: 100%;
     }
 
-    .flow-step-box {
+    .causal-node {
       flex: 1;
-      background: var(--bg-card);
-      border: 1px solid var(--border-card);
-      border-radius: 12px;
-      padding: 16px 18px;
+      background: var(--surface-white);
+      border: var(--border-thick);
+      border-radius: 10px;
+      box-shadow: var(--shadow-card);
+      padding: 14px 16px;
       display: flex;
       flex-direction: column;
       gap: 6px;
-      position: relative;
     }
 
-    .flow-step-num {
+    .causal-step-num {
       font-family: var(--font-mono);
-      font-size: 10px;
+      font-size: 11px;
+      font-weight: 900;
+      color: var(--accent-blue);
+    }
+
+    .causal-step-title {
+      font-size: 14px;
       font-weight: 800;
-      color: var(--accent-blue);
+      color: var(--ink-black);
+      line-height: 1.3;
     }
 
-    .flow-step-name {
-      font-size: 15px;
-      font-weight: 700;
-      color: #FFF;
+    .causal-step-sub {
+      font-size: 12px;
+      color: var(--ink-gray);
+      line-height: 1.4;
     }
 
-    .flow-arrow-svg {
-      width: 20px;
-      height: 20px;
-      color: var(--accent-blue);
-      flex-shrink: 0;
+    .causal-arrow-block {
+      font-family: var(--font-mono);
+      font-size: 18px;
+      font-weight: 900;
+      color: var(--ink-black);
+      padding: 0 4px;
     }
 
-    /* Bottom Controller Strip (Clean / Hidden in Clean Mode) */
-    .bottom-controls {
+    /* Bottom Controller Strip */
+    .bottom-bar {
       position: relative;
       z-index: 20;
-      padding: 12px 36px 16px;
+      background: var(--surface-white);
+      border-top: var(--border-thick);
+      padding: 10px 28px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background: rgba(7, 10, 15, 0.6);
-      backdrop-filter: blur(12px);
-      border-top: 1px solid rgba(255, 255, 255, 0.06);
-      transition: opacity 0.25s ease;
+      transition: opacity 0.2s ease;
     }
 
-    .bottom-controls.clean-mode {
+    .bottom-bar.clean-mode {
       opacity: 0;
       pointer-events: none;
     }
 
-    .slide-stepper-dots {
+    .stepper-dots {
       display: flex;
       gap: 8px;
       align-items: center;
     }
 
-    .step-pill {
-      height: 6px;
-      border-radius: 3px;
-      background: rgba(255, 255, 255, 0.15);
+    .stepper-pill {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 800;
+      padding: 3px 10px;
+      border-radius: 4px;
+      background: var(--surface-muted);
+      border: var(--border-thin);
       cursor: pointer;
-      transition: all 0.3s ease;
-      width: 24px;
+      color: var(--ink-gray);
     }
 
-    .step-pill.active {
-      width: 48px;
-      background: var(--accent-blue);
+    .stepper-pill.active {
+      background: var(--accent-yellow);
+      color: var(--ink-black);
+      border: var(--border-thick);
     }
 
-    .action-btn-group {
+    .btn-group {
       display: flex;
-      gap: 10px;
+      gap: 8px;
       align-items: center;
     }
 
-    .tech-btn {
+    .neo-btn {
       appearance: none;
-      background: rgba(255, 255, 255, 0.06);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      color: var(--text-main);
-      padding: 6px 14px;
+      background-color: var(--accent-yellow);
+      color: var(--ink-black);
+      border: var(--border-thin);
       border-radius: 6px;
+      box-shadow: var(--shadow-btn);
+      padding: 6px 14px;
       font-family: var(--font-mono);
-      font-size: 11.5px;
-      font-weight: 700;
+      font-size: 11px;
+      font-weight: 800;
       cursor: pointer;
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      transition: all 0.15s ease;
+      transition: all 0.08s ease;
     }
 
-    .tech-btn:hover {
-      background: rgba(255, 255, 255, 0.12);
-      border-color: rgba(255, 255, 255, 0.25);
+    .neo-btn:hover {
+      transform: translateY(2px);
+      box-shadow: var(--shadow-btn-active);
     }
 
-    .tech-btn.primary {
-      background: var(--accent-blue);
-      color: #000;
-      border-color: transparent;
+    .neo-btn-white {
+      background-color: var(--surface-white);
     }
   </style>
 </head>
 <body>
 
   <div class="deck-viewport" id="deck-viewport">
-    <div class="deck-grid-overlay"></div>
 
     <!-- 45s Global Timeline Progress -->
     <div class="timeline-bar-wrap">
       <div id="timeline-progress" class="timeline-progress"></div>
     </div>
 
-    <!-- Header Bar -->
-    <header class="master-header">
-      <div class="project-brand">
-        <div class="brand-mark">AI</div>
+    <!-- Notebook Header -->
+    <header class="notebook-header">
+      <div class="header-branding">
+        <span class="brand-stamp">FIELD NOTE</span>
         <div>
-          <span class="brand-title">Antigravity Autonomous Pipeline</span>
-          <span class="brand-tag">GOOGLE AI CHALLENGE</span>
+          <span class="brand-title">WORLD PULSE CHRONICLE</span>
+          <span class="brand-sub">// 国際オープンデータ自律因果分析フィールドノート</span>
         </div>
       </div>
-      <div class="time-indicator">
-        <span class="live-dot"></span>
-        <span id="display-timer" class="mono">00:00 / 00:45</span>
+      <div class="header-status-pill">
+        <span class="sync-dot"></span>
+        <span id="display-timer" class="mono">00:00.0 / 00:45.0</span>
+        <span style="color: var(--ink-light); margin: 0 4px;">|</span>
+        <span class="mono" style="color: var(--accent-purple);">GOOGLE AI CHALLENGE</span>
       </div>
     </header>
 
-    <!-- Slide Stage Container -->
+    <!-- Index Tabs Bar -->
+    <nav class="index-tabs-bar">
+      <button class="notebook-tab active" id="tab-0" onclick="goToSlide(0)">[01] OVERVIEW</button>
+      <button class="notebook-tab" id="tab-1" onclick="goToSlide(1)">[02] PROBLEM</button>
+      <button class="notebook-tab" id="tab-2" onclick="goToSlide(2)">[03] SOLUTION</button>
+      <button class="notebook-tab" id="tab-3" onclick="goToSlide(3)">[04] DUAL HORIZON</button>
+      <button class="notebook-tab" id="tab-4" onclick="goToSlide(4)">[05] IMPACT</button>
+    </nav>
+
+    <!-- Observation Sheet Canvas -->
     <main class="slide-stage">
+      <div class="observation-sheet">
 
-      <!-- ====================================================================
-           SLIDE 1 (0s - 7s / 7s): Opening & Core Value
-           ==================================================================== -->
-      <section class="slide active" id="slide-1" data-duration="7">
-        <div class="slide-meta-label">CHALLENGE SUBMISSION / EXECUTIVE SUMMARY</div>
-        <h1 class="slide-headline">
-          自律AIエージェントによる<br />
-          <span class="highlight-blue">オープンデータ可視化とマーケティング分析基盤の自動構築</span>
-        </h1>
-        <p class="slide-subheading">
-          Antigravityを活用し、地球規模の国際指標から自治体のミクロ統計までを完全自律収集。<br />
-          最小の運用コストで、企業の意思決定とマーケティング調査を革新するアプローチ。
-        </p>
+        <!-- ==================================================================
+             SLIDE 1 (0s - 7s / 7s): Overview & Core Value
+             ================================================================== -->
+        <section class="slide-page active" id="slide-1">
+          <div class="sheet-meta-bar">
+            <span class="index-badge">#01</span>
+            <span class="category-pill yellow">AUTONOMOUS MARKETING PIPELINE</span>
+            <span class="category-pill">CHALLENGE SUBMISSION</span>
+          </div>
+          <h1 class="sheet-headline">
+            世界と地域のオープンデータを、<br />
+            自律AIエージェントが直結・因果分析
+          </h1>
+          <div class="sheet-subheadline">
+            Antigravityを活用し、地球規模の国際指標から自治体のミクロ統計までを完全自律収集。<br />
+            最小の運用コストで、企業の市場調査と意思決定を刷新するオープンデータ分析基盤。
+          </div>
 
-        <div class="grid-3col">
-          <div class="info-card">
-            <span class="card-badge badge-accent">PIPELINE 01</span>
-            <div class="card-title">自律型オープンデータ収集</div>
-            <div class="card-desc">世界銀行・FAO・総務省e-Stat・気象庁など異種APIをAIが直接テスト・統合。</div>
-          </div>
-          <div class="info-card">
-            <span class="card-badge badge-accent">ANALYSIS 02</span>
-            <div class="card-title">Gemini因果推論エンジン</div>
-            <div class="card-desc">相関係数、先行ラグ、構造転換点を自動同定し、データ背景の文脈を言語化。</div>
-          </div>
-          <div class="info-card">
-            <span class="card-badge badge-accent">DEPLOY 03</span>
-            <div class="card-title">1日1回の自律更新・本番配信</div>
-            <div class="card-desc">完全サーバーレスで継続稼働。分析ダッシュボードを即時公開・運用。</div>
-          </div>
-        </div>
-      </section>
-
-      <!-- ====================================================================
-           SLIDE 2 (7s - 15s / 8s): The Problem / Market Bottleneck
-           ==================================================================== -->
-      <section class="slide" id="slide-2" data-duration="8">
-        <div class="slide-meta-label">MARKET BOTTLENECK / TRADITIONAL FRICTION</div>
-        <h2 class="slide-headline">
-          膨大な公的オープンデータと、<br />
-          <span class="highlight-amber">高額な市場調査・BI構築コストの壁</span>
-        </h2>
-        <p class="slide-subheading">
-          オープンデータは世界中に公開されているものの、実務マーケティングに活かすには大きな障壁が存在していました。
-        </p>
-
-        <div class="grid-3col">
-          <div class="info-card">
-            <span class="card-badge">BARRIER 01</span>
-            <div class="card-title">仕様とフォーマットの分断</div>
-            <div class="card-desc">国際機関・政府統計・気象・自治体ごとにAPI構造や地域コードが異なり、結合工数が膨大。</div>
-          </div>
-          <div class="info-card">
-            <span class="card-badge">BARRIER 02</span>
-            <div class="card-title">分析と因果特定の専門性</div>
-            <div class="card-desc">単なるグラフ化ではなく「何が原因で何が起きているか」を紐解く専門人材の不足。</div>
-          </div>
-          <div class="info-card">
-            <span class="card-badge">BARRIER 03</span>
-            <div class="card-title">高額な導入・保守費用</div>
-            <div class="card-desc">外注調査やエンタープライズBIの導入には数百万円規模の予算と長期の開発期間が必要。</div>
-          </div>
-        </div>
-      </section>
-
-      <!-- ====================================================================
-           SLIDE 3 (15s - 25s / 10s): The Antigravity Solution
-           ==================================================================== -->
-      <section class="slide" id="slide-3" data-duration="10">
-        <div class="slide-meta-label">ANTIGRAVITY AUTONOMOUS WORKFLOW</div>
-        <h2 class="slide-headline">
-          対話指示から本番公開まで、<br />
-          <span class="highlight-teal">エージェントが一気通貫で自律実行</span>
-        </h2>
-        <p class="slide-subheading">
-          エンジニアリング作業の全工程をAntigravityが代行。指示を与えるだけで検証からデプロイまで完遂。
-        </p>
-
-        <div class="flow-connector">
-          <div class="flow-step-box">
-            <span class="flow-step-num">STEP 01</span>
-            <div class="flow-step-name">APIテスト・収集</div>
-            <div class="card-desc">e-Statや気象APIの疎通確認から9分野100以上の指標取得を自律プログラミング。</div>
-          </div>
-          <svg class="flow-arrow-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          
-          <div class="flow-step-box">
-            <span class="flow-step-num">STEP 02</span>
-            <div class="flow-step-name">データサイエンス推論</div>
-            <div class="card-desc">相関係数や時間差の先行ラグを計算。Geminiが市場影響ストーリーを構造化。</div>
-          </div>
-          <svg class="flow-arrow-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-
-          <div class="flow-step-box">
-            <span class="flow-step-num">STEP 03</span>
-            <div class="flow-step-name">Web可視化・本番反映</div>
-            <div class="card-desc">方眼ネオブルータリズムSPAを自動生成し、Cloudflare Pagesへ直接デプロイ。</div>
-          </div>
-        </div>
-      </section>
-
-      <!-- ====================================================================
-           SLIDE 4 (25s - 37s / 12s): Showcase / Macro x Micro
-           ==================================================================== -->
-      <section class="slide" id="slide-4" data-duration="12">
-        <div class="slide-meta-label">SOLUTION ARCHITECTURE: DUAL HORIZON</div>
-        <h2 class="slide-headline">
-          マクロ（地球規模）✕ ミクロ（地域実況）<br />
-          <span class="highlight-blue">2つの地平を1つのコックピットに統合</span>
-        </h2>
-        <p class="slide-subheading">
-          国際動向の波及効果をローカル現場のデータと直結させ、実効性の高いマーケティング判断を実現。
-        </p>
-
-        <div class="grid-2col">
-          <div class="info-card">
-            <div style="display: flex; justify-content: space-between; align-items: center;">
-              <span class="card-badge badge-accent">MACRO CHRONICLE</span>
-              <span class="metric-sub">世界銀行 / FAO / OECD</span>
+          <div class="grid-3cards">
+            <div class="neo-card" style="border-top: 5px solid var(--accent-blue);">
+              <div class="card-label-row">
+                <span class="card-tag">PIPELINE 01</span>
+                <span class="mono" style="font-size: 11px; font-weight: 700;">HARVEST</span>
+              </div>
+              <div class="neo-card-title">異種APIの完全自動収集</div>
+              <div class="neo-card-desc">世界銀行、FAO、総務省e-Stat、気象庁APIをAIが直接テスト・取得。</div>
             </div>
-            <div class="card-title">世界42大因果分析テーマ</div>
-            <div class="card-desc">
-              食糧インフレ、脱炭素サプライチェーン、重要鉱物争奪、人口ボーナス終焉など、地球規模の構造変化を先行指標として定点観測。
+
+            <div class="neo-card" style="border-top: 5px solid var(--accent-purple);">
+              <div class="card-label-row">
+                <span class="card-tag">PIPELINE 02</span>
+                <span class="mono" style="font-size: 11px; font-weight: 700;">REASONING</span>
+              </div>
+              <div class="neo-card-title">Gemini因果推論エンジン</div>
+              <div class="neo-card-desc">ピアソン相関、先行ラグ、構造転換点を同定し、市場波及の因果を言語化。</div>
             </div>
-            <div class="metric-value">42 <span style="font-size: 14px; font-weight: 600; color: var(--text-muted);">THEMES</span></div>
-          </div>
 
-          <div class="info-card">
-            <div style="display: flex; justify-content: space-between; align-items: center;">
-              <span class="card-badge badge-teal">LOCAL MICRO PULSE</span>
-              <span class="metric-sub">e-Stat / 気象庁 / 天文力学</span>
+            <div class="neo-card" style="border-top: 5px solid var(--accent-green);">
+              <div class="card-label-row">
+                <span class="card-tag">PIPELINE 03</span>
+                <span class="mono" style="font-size: 11px; font-weight: 700;">DELIVERY</span>
+              </div>
+              <div class="neo-card-title">1日1回の自律更新・本番配信</div>
+              <div class="neo-card-desc">Cloudflare PagesとGitHub Actionsで、常時無料枠のまま自律継続稼働。</div>
             </div>
-            <div class="card-title">広島県・竹原市 本日実況ノート</div>
-            <div class="card-desc">
-              気象実況、太陽南中高度、瀬戸内潮汐、伝統暦、市議会動向、および9大分野の自治体統計データをリアルタイム同期。
+          </div>
+        </section>
+
+        <!-- ==================================================================
+             SLIDE 2 (7s - 15s / 8s): Problem & Market Bottleneck
+             ================================================================== -->
+        <section class="slide-page" id="slide-2">
+          <div class="sheet-meta-bar">
+            <span class="index-badge">#02</span>
+            <span class="category-pill" style="background-color: var(--accent-red); color: #FFF;">MARKET BOTTLENECK</span>
+            <span class="category-pill">TRADITIONAL FRICTION</span>
+          </div>
+          <h2 class="sheet-headline">
+            散在する公的オープンデータと、<br />
+            高額な市場調査・BI構築コストの壁
+          </h2>
+          <div class="sheet-subheadline">
+            公的データは無料で公開されているものの、実務マーケティングに活かすには3つの大きな障壁が存在しました。
+          </div>
+
+          <div class="grid-3cards">
+            <div class="neo-card" style="background-color: #FFF5F5;">
+              <div class="card-label-row">
+                <span class="card-tag" style="color: var(--accent-red);">BARRIER 01</span>
+              </div>
+              <div class="neo-card-title">データ仕様と形式の分断</div>
+              <div class="neo-card-desc">国際機関・政府統計・気象・自治体ごとに規格や地域コードが異なり、結合工数が膨大。</div>
             </div>
-            <div class="metric-value">100+ <span style="font-size: 14px; font-weight: 600; color: var(--text-muted);">INDICATORS</span></div>
-          </div>
-        </div>
-      </section>
 
-      <!-- ====================================================================
-           SLIDE 5 (37s - 45s / 8s): Impact & Future
-           ==================================================================== -->
-      <section class="slide" id="slide-5" data-duration="8">
-        <div class="slide-meta-label">IMPACT & CONCLUSION / GOOGLE AI CHALLENGE</div>
-        <h2 class="slide-headline">
-          開発コストゼロ、運用ゼロ。<br />
-          <span class="highlight-teal">AIがデータドリブンマーケティングを民主化する</span>
-        </h2>
-        <p class="slide-subheading">
-          AntigravityとGeminiの連携により、これまで大企業に限られていた高度な市場因果分析が、誰でも低コストで手に入る時代へ。
-        </p>
+            <div class="neo-card" style="background-color: #FFF5F5;">
+              <div class="card-label-row">
+                <span class="card-tag" style="color: var(--accent-red);">BARRIER 02</span>
+              </div>
+              <div class="neo-card-title">因果特定の専門性不足</div>
+              <div class="neo-card-desc">単なるグラフ化ではなく「何が原因で何が起きているか」を分析できる専門人材が希少。</div>
+            </div>
 
-        <div class="grid-3col">
-          <div class="info-card">
-            <span class="card-badge">METRIC 01</span>
-            <div class="card-title">圧倒的な構築スピード</div>
-            <div class="metric-value">数日</div>
-            <div class="metric-sub">要件定義から本番公開までAIが完遂</div>
+            <div class="neo-card" style="background-color: #FFF5F5;">
+              <div class="card-label-row">
+                <span class="card-tag" style="color: var(--accent-red);">BARRIER 03</span>
+              </div>
+              <div class="neo-card-title">莫大な外注費と納期</div>
+              <div class="neo-card-desc">従来の外注市場調査やエンタープライズBI構築には数百万円の費用と数ヶ月の期間が必要。</div>
+            </div>
           </div>
-          <div class="info-card">
-            <span class="card-badge">METRIC 02</span>
-            <div class="card-title">完全自動デイリー更新</div>
-            <div class="metric-value">1回 / 日</div>
-            <div class="metric-sub">毎日06:00 JSTに最新値を自律同期</div>
-          </div>
-          <div class="info-card">
-            <span class="card-badge">METRIC 03</span>
-            <div class="card-title">運用インフラコスト</div>
-            <div class="metric-value">常時無料枠</div>
-            <div class="metric-sub">Cloudflare Pages & GitHub Actions</div>
-          </div>
-        </div>
-      </section>
+        </section>
 
+        <!-- ==================================================================
+             SLIDE 3 (15s - 25s / 10s): The Antigravity Solution
+             ================================================================== -->
+        <section class="slide-page" id="slide-3">
+          <div class="sheet-meta-bar">
+            <span class="index-badge">#03</span>
+            <span class="category-pill blue">ANTIGRAVITY WORKFLOW</span>
+            <span class="category-pill">END-TO-END AUTONOMY</span>
+          </div>
+          <h2 class="sheet-headline">
+            自然言語の対話指示から、<br />
+            AIエージェントが一気通貫で自律構築
+          </h2>
+          <div class="sheet-subheadline">
+            APIの疎通検証から、因果推論ロジック、ネオブルータリズムWebツールの生成までAIが代行。
+          </div>
+
+          <!-- 4-Step Causal Chain Container -->
+          <div class="causal-flow-row">
+            <div class="causal-node">
+              <span class="causal-step-num">STEP 01</span>
+              <div class="causal-step-title">API直接テスト・取得</div>
+              <div class="causal-step-sub">e-Statや気象APIへ直接接続し9分野100指標を自動収集。</div>
+            </div>
+            <div class="causal-arrow-block">→</div>
+
+            <div class="causal-node">
+              <span class="causal-step-num">STEP 02</span>
+              <div class="causal-step-title">因果連鎖の自動同定</div>
+              <div class="causal-step-sub">Geminiが相関・先行ラグを算出、市場背景を解剖。</div>
+            </div>
+            <div class="causal-arrow-block">→</div>
+
+            <div class="causal-node">
+              <span class="causal-step-num">STEP 03</span>
+              <div class="causal-step-title">方眼SPAの自動生成</div>
+              <div class="causal-step-sub">Chart.js統合の完全レスポンシブWebをAIがコーディング。</div>
+            </div>
+            <div class="causal-arrow-block">→</div>
+
+            <div class="causal-node">
+              <span class="causal-step-num">STEP 04</span>
+              <div class="causal-step-title">Cloudflare即時公開</div>
+              <div class="causal-step-sub">GitHub Actionsと連携し、世界中へ即座に本番配信。</div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==================================================================
+             SLIDE 4 (25s - 37s / 12s): Showcase / Dual Horizon Nexus
+             ================================================================== -->
+        <section class="slide-page" id="slide-4">
+          <div class="sheet-meta-bar">
+            <span class="index-badge">#04</span>
+            <span class="category-pill yellow">DUAL HORIZON NEXUS</span>
+            <span class="category-pill lime">MACRO ✕ MICRO</span>
+          </div>
+          <h2 class="sheet-headline">
+            マクロ（地球規模）✕ ミクロ（地域実況）<br />
+            2つの地平を1つのコックピットに統合
+          </h2>
+          <div class="sheet-subheadline">
+            国際相場の変動が、地域産業や生活の現場にどうタイムラグを伴って波及するかを即座に洞察。
+          </div>
+
+          <div class="grid-2cards">
+            <!-- Macro Card -->
+            <div class="neo-card" style="border-left: 8px solid var(--accent-blue);">
+              <div class="card-label-row">
+                <span class="category-pill blue">MACRO CHRONICLE</span>
+                <span class="mono" style="font-size: 12px; font-weight: 800;">42 THEMES</span>
+              </div>
+              <div class="neo-card-title">世界42大因果分析テーマ</div>
+              <div class="neo-card-desc">
+                食糧インフレ、脱炭素サプライチェーン、重要鉱物争奪、人口ボーナス終焉など、地球規模の構造変化を先行指標として定点観測。
+              </div>
+              <div class="ruled-note-block" style="margin-bottom: 0; padding: 10px 14px; font-size: 13px; line-height: 22px;">
+                世界銀行・FAOSTAT・OECD ✕ ピアソン相関 (r) ✕ 先行ラグ (τ)
+              </div>
+            </div>
+
+            <!-- Micro Card -->
+            <div class="neo-card" style="border-left: 8px solid var(--accent-lime); background-color: #F8FAF2;">
+              <div class="card-label-row">
+                <span class="category-pill lime">LOCAL MICRO PULSE</span>
+                <span class="mono" style="font-size: 12px; font-weight: 800;">100+ INDICATORS</span>
+              </div>
+              <div class="neo-card-title">広島県・竹原市 本日実況ノート</div>
+              <div class="neo-card-desc">
+                気象実況（気温9.3℃・晴れ）、太陽南中高度（39.4°）、瀬戸内竹原港潮汐、伝統暦（立冬・大安）、e-Stat 9大分野の自治体統計。
+              </div>
+              <div class="ruled-note-block" style="margin-bottom: 0; padding: 10px 14px; font-size: 13px; line-height: 22px; border-left-color: var(--accent-green);">
+                気象庁・NOAA太陽力学・e-Stat API ✕ リアルタイム実況同期
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==================================================================
+             SLIDE 5 (37s - 45s / 8s): Impact & Conclusion
+             ================================================================== -->
+        <section class="slide-page" id="slide-5">
+          <div class="sheet-meta-bar">
+            <span class="index-badge">#05</span>
+            <span class="category-pill purple">FUTURE OF MARKETING</span>
+            <span class="category-pill">CONCLUSION</span>
+          </div>
+          <h2 class="sheet-headline">
+            開発コストゼロ、運用工数ゼロ。<br />
+            AIがデータドリブンマーケティングを民主化する
+          </h2>
+          <div class="sheet-subheadline">
+            これまで大企業や専門機関に限られていた高度な市場因果分析が、誰でも低コストで手に入る時代へ。
+          </div>
+
+          <div class="grid-3cards">
+            <div class="neo-card" style="text-align: center; align-items: center; justify-content: center; padding: 22px;">
+              <span class="card-tag">METRIC 01</span>
+              <div class="neo-card-title" style="margin-top: 4px;">圧倒的な構築速度</div>
+              <div class="big-stat" style="color: var(--accent-blue);">数日</div>
+              <div class="neo-card-desc">要件定義から本番公開までAIが完遂</div>
+            </div>
+
+            <div class="neo-card" style="text-align: center; align-items: center; justify-content: center; padding: 22px;">
+              <span class="card-tag">METRIC 02</span>
+              <div class="neo-card-title" style="margin-top: 4px;">完全自動自律更新</div>
+              <div class="big-stat" style="color: var(--accent-purple);">1回 / 日</div>
+              <div class="neo-card-desc">毎日 06:00 JST に最新値を自動同期</div>
+            </div>
+
+            <div class="neo-card" style="text-align: center; align-items: center; justify-content: center; padding: 22px;">
+              <span class="card-tag">METRIC 03</span>
+              <div class="neo-card-title" style="margin-top: 4px;">月間インフラ費用</div>
+              <div class="big-stat" style="color: var(--accent-green);">0 円</div>
+              <div class="neo-card-desc">GCP / Cloudflare 常時無料枠で運用</div>
+            </div>
+          </div>
+        </section>
+
+      </div>
     </main>
 
-    <!-- Bottom Control Bar -->
-    <footer class="bottom-controls" id="bottom-controls">
-      <div class="slide-stepper-dots">
-        <div class="step-pill active" onclick="goToSlide(0)"></div>
-        <div class="step-pill" onclick="goToSlide(1)"></div>
-        <div class="step-pill" onclick="goToSlide(2)"></div>
-        <div class="step-pill" onclick="goToSlide(3)"></div>
-        <div class="step-pill" onclick="goToSlide(4)"></div>
+    <!-- Bottom Bar (Controls) -->
+    <footer class="bottom-bar" id="bottom-bar">
+      <div class="stepper-dots">
+        <span class="stepper-pill active" id="pill-0" onclick="goToSlide(0)">#01 OVERVIEW</span>
+        <span class="stepper-pill" id="pill-1" onclick="goToSlide(1)">#02 PROBLEM</span>
+        <span class="stepper-pill" id="pill-2" onclick="goToSlide(2)">#03 SOLUTION</span>
+        <span class="stepper-pill" id="pill-3" onclick="goToSlide(3)">#04 DUAL HORIZON</span>
+        <span class="stepper-pill" id="pill-4" onclick="goToSlide(4)">#05 IMPACT</span>
       </div>
 
-      <div class="action-btn-group">
-        <button id="btn-toggle-play" class="tech-btn primary" onclick="togglePlayPause()">PAUSE</button>
-        <button id="btn-restart" class="tech-btn" onclick="restartShow()">RESTART</button>
-        <button id="btn-clean-mode" class="tech-btn" onclick="toggleCleanMode()">CLEAN MODE (RECORDING)</button>
+      <div class="btn-group">
+        <button id="btn-toggle-play" class="neo-btn" onclick="togglePlayPause()">PAUSE</button>
+        <button id="btn-restart" class="neo-btn neo-btn-white" onclick="restartShow()">RESTART</button>
+        <button id="btn-clean-mode" class="neo-btn neo-btn-white" onclick="toggleCleanMode()">CLEAN MODE (RECORDING)</button>
       </div>
     </footer>
+
   </div>
 
-  <!-- Slide Progression Script (Exact 45.0 Seconds Timeline) -->
+  <!-- Precise 45-Second Timeline Progression Engine -->
   <script>
-    const slides = Array.from(document.querySelectorAll(".slide"));
-    const pills = Array.from(document.querySelectorAll(".step-pill"));
+    const slides = Array.from(document.querySelectorAll(".slide-page"));
+    const tabs = Array.from(document.querySelectorAll(".notebook-tab"));
+    const pills = Array.from(document.querySelectorAll(".stepper-pill"));
     const progressBar = document.getElementById("timeline-progress");
     const displayTimer = document.getElementById("display-timer");
     const btnPlayPause = document.getElementById("btn-toggle-play");
-    const bottomControls = document.getElementById("bottom-controls");
+    const bottomBar = document.getElementById("bottom-bar");
 
-    // Slide timings in seconds (Sum = 45s)
+    // Exact 45-second duration allocation:
     // Slide 1: 7s (0-7s)
     // Slide 2: 8s (7-15s)
     // Slide 3: 10s (15-25s)
     // Slide 4: 12s (25-37s)
     // Slide 5: 8s (37-45s)
     const slideDurations = [7, 8, 10, 12, 8];
-    const totalDuration = slideDurations.reduce((a, b) => a + b, 0); // 45s
+    const totalDuration = slideDurations.reduce((a, b) => a + b, 0); // 45.0s
 
-    let elapsedTime = 0; // in seconds
+    let elapsedTime = 0; // seconds
     let isPlaying = true;
     let timerInterval = null;
-    const tickIntervalMs = 50; // smooth 20fps update
+    const tickIntervalMs = 50; // 20 FPS smooth update
 
     function getSlideIndexAtTime(t) {
       let accumulated = 0;
@@ -723,18 +860,27 @@
       const pct = Math.min(100, (elapsedTime / totalDuration) * 100);
       progressBar.style.width = pct + "%";
 
-      // 2. Timer Label
+      // 2. Timer Indicator
       const curSec = Math.floor(elapsedTime);
       const curMs = Math.floor((elapsedTime % 1) * 10);
       displayTimer.textContent = `00:${String(curSec).padStart(2, '0')}.${curMs} / 00:45.0`;
 
-      // 3. Active Slide & Pills
+      // 3. Active Slide & Tabs & Pills
       const activeIdx = getSlideIndexAtTime(elapsedTime);
+
       slides.forEach((s, idx) => {
         if (idx === activeIdx) {
           s.classList.add("active");
         } else {
           s.classList.remove("active");
+        }
+      });
+
+      tabs.forEach((t, idx) => {
+        if (idx === activeIdx) {
+          t.classList.add("active");
+        } else {
+          t.classList.remove("active");
         }
       });
 
@@ -746,10 +892,10 @@
         }
       });
 
-      // 4. End Condition
+      // 4. Completion
       if (elapsedTime >= totalDuration) {
         pause();
-        displayTimer.textContent = "00:45.0 / 00:45.0 (COMPLETED)";
+        displayTimer.textContent = "00:45.0 / 00:45.0 (DONE)";
         btnPlayPause.textContent = "REPLAY";
       }
     }
@@ -807,10 +953,10 @@
     }
 
     function toggleCleanMode() {
-      bottomControls.classList.toggle("clean-mode");
+      bottomBar.classList.toggle("clean-mode");
     }
 
-    // Keyboard controls for convenient screen recording
+    // Keyboard Shortcuts for Clean Screen Capture
     window.addEventListener("keydown", (e) => {
       if (e.code === "Space") {
         e.preventDefault();
@@ -822,7 +968,7 @@
       }
     });
 
-    // Start playback immediately on load
+    // Start auto-playback immediately on load
     play();
   </script>
 </body>
